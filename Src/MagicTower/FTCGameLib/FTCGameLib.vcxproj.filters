@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{1793d794-cbf7-46cb-85e9-1fb0a327945f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameBullet">
+      <UniqueIdentifier>{e4e3ae95-2cf2-47cb-bbd1-35539eea1e39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Monster">
+      <UniqueIdentifier>{5099fc9d-fe67-4be3-a3b8-d9dfee19d89f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\PlayerBehavior">
+      <UniqueIdentifier>{cb5fc11d-da1a-4f61-8146-c4bbdfa0ee48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameApp">
+      <UniqueIdentifier>{cc240215-7936-4fea-a43d-6fc0f19bb94a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Probability">
+      <UniqueIdentifier>{8e5ba8e5-9d05-405a-8bf6-708995f12096}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Camera">
+      <UniqueIdentifier>{f3741a8e-14ca-4dc1-a972-873c1b9090e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI">
+      <UniqueIdentifier>{cb93ec65-5c5b-47da-a227-869ad5bea1f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\PlayerBehavior\Weapon">
+      <UniqueIdentifier>{e93beea0-fcb4-4385-a347-d4f0770c01b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameItem">
+      <UniqueIdentifier>{505460d0-8089-4426-8fba-21d833ba3514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameParameter">
+      <UniqueIdentifier>{63b7742b-4060-4e90-bc07-3aef67e376e1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\FishDiedEffect.h">
+      <Filter>Game\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\FishGroup.h">
+      <Filter>Game\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\FishMultiCollision.h">
+      <Filter>Game\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\FishNormal.h">
+      <Filter>Game\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\Monster.h">
+      <Filter>Game\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\MonsterGenerate.h">
+      <Filter>Game\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\MonsterManager.h">
+      <Filter>Game\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="GameBullet\Bullet.h">
+      <Filter>Game\GameBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="GameBullet\BulletData.h">
+      <Filter>Game\GameBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="GameBullet\BulletManager.h">
+      <Filter>Game\GameBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="GameBullet\BulletPlayer.h">
+      <Filter>Game\GameBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerBehavior\PlayerBehaviorBase.h">
+      <Filter>Game\PlayerBehavior</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerBehavior\PlayerData.h">
+      <Filter>Game\PlayerBehavior</Filter>
+    </ClInclude>
+    <ClInclude Include="GameApp\GameApp.h">
+      <Filter>Game\GameApp</Filter>
+    </ClInclude>
+    <ClInclude Include="GameApp\SceneChange.h">
+      <Filter>Game\GameApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ProbabilityFish\FishProbability.h">
+      <Filter>Game\Probability</Filter>
+    </ClInclude>
+    <ClInclude Include="FileNameDefine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCamera\GameCamera.h">
+      <Filter>Game\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\GameUI.h">
+      <Filter>Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\FingerMovingDirection.h">
+      <Filter>Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerBehavior\Weapon.h">
+      <Filter>Game\PlayerBehavior\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="FTCGameEventList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameItem\GameItem.h">
+      <Filter>Game\GameItem</Filter>
+    </ClInclude>
+    <ClInclude Include="GameParameter\GameParameter.h">
+      <Filter>Game\GameParameter</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\SwitchWeaponUI.h">
+      <Filter>Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerBehavior\WeaponSelection.h">
+      <Filter>Game\PlayerBehavior\Weapon</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Monster\FishDiedEffect.cpp">
+      <Filter>Game\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\FishGroup.cpp">
+      <Filter>Game\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\FishMultiCollision.cpp">
+      <Filter>Game\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\FishNormal.cpp">
+      <Filter>Game\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\Monster.cpp">
+      <Filter>Game\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\MonsterGenerate.cpp">
+      <Filter>Game\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\MonsterManager.cpp">
+      <Filter>Game\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="GameBullet\Bullet.cpp">
+      <Filter>Game\GameBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="GameBullet\BulletManager.cpp">
+      <Filter>Game\GameBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="GameBullet\BulletPlayer.cpp">
+      <Filter>Game\GameBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerBehavior\PlayerBehaviorBase.cpp">
+      <Filter>Game\PlayerBehavior</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerBehavior\PlayerData.cpp">
+      <Filter>Game\PlayerBehavior</Filter>
+    </ClCompile>
+    <ClCompile Include="GameApp\GameApp.cpp">
+      <Filter>Game\GameApp</Filter>
+    </ClCompile>
+    <ClCompile Include="GameApp\ScaneChange.cpp">
+      <Filter>Game\GameApp</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProbabilityFish\FishProbability.cpp">
+      <Filter>Game\Probability</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\GameUI.cpp">
+      <Filter>Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCamera\GameCamera.cpp">
+      <Filter>Game\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\FingerMovingDirection.cpp">
+      <Filter>Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerBehavior\Weapon.cpp">
+      <Filter>Game\PlayerBehavior\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\SwitchWeaponUI.cpp">
+      <Filter>Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerBehavior\WeaponSelection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="engine.h" />
+    <ClInclude Include="..\..\..\FTCGameLib\GameCamera\GameCamera.h">
+      <Filter>FTCGame\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\GameApp\GameApp.h">
+      <Filter>FTCGame\GameApp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\GameApp\SceneChange.h">
+      <Filter>FTCGame\GameApp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\GameBullet\Bullet.h">
+      <Filter>FTCGame\GameBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\GameBullet\BulletData.h">
+      <Filter>FTCGame\GameBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\GameBullet\BulletManager.h">
+      <Filter>FTCGame\GameBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\GameBullet\BulletPlayer.h">
+      <Filter>FTCGame\GameBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\GameItem\GameItem.h">
+      <Filter>FTCGame\GameItem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\Monster\FishDiedEffect.h">
+      <Filter>FTCGame\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\Monster\FishGroup.h">
+      <Filter>FTCGame\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\Monster\FishMultiCollision.h">
+      <Filter>FTCGame\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\Monster\FishNormal.h">
+      <Filter>FTCGame\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\Monster\Monster.h">
+      <Filter>FTCGame\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\Monster\MonsterGenerate.h">
+      <Filter>FTCGame\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\Monster\MonsterManager.h">
+      <Filter>FTCGame\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\UI\FingerMovingDirection.h">
+      <Filter>FTCGame\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\UI\GameUI.h">
+      <Filter>FTCGame\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\ProbabilityFish\FishProbability.h">
+      <Filter>FTCGame\Probability</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\PlayerBehavior\PlayerBehaviorBase.h">
+      <Filter>FTCGame\PlayerBehavior</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\PlayerBehavior\PlayerData.h">
+      <Filter>FTCGame\PlayerBehavior</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\FTCGameLib\PlayerBehavior\Weapon.h">
+      <Filter>FTCGame\PlayerBehavior</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="engine.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyJni.c" />
+    <ClCompile Include="..\..\..\FTCGameLib\GameCamera\GameCamera.cpp">
+      <Filter>FTCGame\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\GameApp\GameApp.cpp">
+      <Filter>FTCGame\GameApp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\GameApp\ScaneChange.cpp">
+      <Filter>FTCGame\GameApp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\GameBullet\Bullet.cpp">
+      <Filter>FTCGame\GameBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\GameBullet\BulletManager.cpp">
+      <Filter>FTCGame\GameBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\GameBullet\BulletPlayer.cpp">
+      <Filter>FTCGame\GameBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\Monster\FishDiedEffect.cpp">
+      <Filter>FTCGame\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\Monster\FishGroup.cpp">
+      <Filter>FTCGame\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\Monster\FishMultiCollision.cpp">
+      <Filter>FTCGame\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\Monster\FishNormal.cpp">
+      <Filter>FTCGame\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\Monster\Monster.cpp">
+      <Filter>FTCGame\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\Monster\MonsterGenerate.cpp">
+      <Filter>FTCGame\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\Monster\MonsterManager.cpp">
+      <Filter>FTCGame\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\UI\FingerMovingDirection.cpp">
+      <Filter>FTCGame\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\UI\GameUI.cpp">
+      <Filter>FTCGame\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\ProbabilityFish\FishProbability.cpp">
+      <Filter>FTCGame\Probability</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\PlayerBehavior\PlayerBehaviorBase.cpp">
+      <Filter>FTCGame\PlayerBehavior</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\PlayerBehavior\PlayerData.cpp">
+      <Filter>FTCGame\PlayerBehavior</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\FTCGameLib\PlayerBehavior\Weapon.cpp">
+      <Filter>FTCGame\PlayerBehavior</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="FTCGame">
+      <UniqueIdentifier>{695547b6-1c3f-4a98-93c7-960584e6bf30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FTCGame\Camera">
+      <UniqueIdentifier>{fc63824d-acb7-4bc0-aaf3-9d4fde9d121b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FTCGame\GameApp">
+      <UniqueIdentifier>{0e5233b4-ace8-4550-b1b0-60a1e74b88d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FTCGame\GameBullet">
+      <UniqueIdentifier>{9f4eea3e-612a-48df-bc36-8e603826b001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FTCGame\GameItem">
+      <UniqueIdentifier>{0a1a250a-45e9-47c3-a95c-9f6a990b9792}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FTCGame\Monster">
+      <UniqueIdentifier>{b4724286-3611-4f2c-b577-7e855f0aec76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FTCGame\PlayerBehavior">
+      <UniqueIdentifier>{d3f3ffbf-09c7-45f9-bf5f-f58e509f5037}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FTCGame\Probability">
+      <UniqueIdentifier>{2f4fb911-5eac-4aa2-aa34-6e4c921d71ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FTCGame\UI">
+      <UniqueIdentifier>{9df7919c-e96f-4be5-8b29-e84c887fae20}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

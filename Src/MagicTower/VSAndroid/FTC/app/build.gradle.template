@@ -1,0 +1,104 @@
+//https://developer.android.com/studio/build/index.html
+//https://github.com/android/ndk-samples/blob/main/hello-jni/app/build.gradle
+
+apply plugin: 'com.android.$(ConfigurationType)'
+
+
+android 
+{
+    compileSdkVersion = $(AndroidAPILevelNumber)
+    buildToolsVersion = "$(AndroidBuildToolsVersion)"
+
+    defaultConfig
+    {
+        $(ApplicationId)
+        minSdkVersion = 16
+        targetSdkVersion = 29
+        // Defines the version number of your app.
+        versionCode 1
+        // Defines a user-friendly version name for your app.
+        versionName "1.0"
+    }
+
+	signingConfigs {
+
+	   release {
+		   storeFile file("DeliverApp.keystore")
+		   storePassword "1234567890"
+		   keyAlias "HC"
+		   keyPassword "1234567890"
+	   }
+	}
+
+    buildTypes 
+    {
+        debug
+        {
+            minifyEnabled = false
+            proguardFiles.add(file('proguard-rules.txt'))
+            //ndk.debuggable = true
+            debuggable = true
+            //https://github.com/ezored/ezored/issues/23
+            gradle.ext.useLocalLibrary = false
+            gradle.ext.useRemoteLibrary = false
+            gradle.ext.isDebuggable = true
+        }
+        release 
+        {
+            //
+            signingConfig signingConfigs.release
+            //
+            minifyEnabled = false
+            proguardFiles.add(file('proguard-rules.txt'))
+            //ndk.debuggable = true
+            debuggable = true
+            //https://stackoverflow.com/questions/18328730/how-to-create-a-release-signed-apk-file-using-gradle
+        }
+    }
+
+    compileOptions.with 
+    {
+        sourceCompatibility=JavaVersion.VERSION_1_7
+        targetCompatibility=JavaVersion.VERSION_1_7
+    }
+
+    flavorDimensions 'cpuArch'
+    productFlavors 
+    {
+        arm8 
+        {
+            dimension 'cpuArch'
+            ndk 
+            {
+                abiFilters 'arm64-v8a', 'armeabi-v7a'
+            }
+        }
+        x86_64 
+        {
+            dimension 'cpuArch'
+            ndk 
+            {
+                abiFilters 'x86_64', 'x86'
+            }
+        }
+        universal 
+        {
+            dimension 'cpuArch'
+            // include all default ABIs. with NDK-r16,  it is:
+            //   armeabi-v7a, arm64-v8a, x86, x86_64
+        }
+    }
+
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:+'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    $(AarDependencies)
+}
