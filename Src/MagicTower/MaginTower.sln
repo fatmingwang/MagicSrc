@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FTCWin32", "FTCWin32\FTCWin32.vcxproj", "{77E00846-770C-45AA-99A1-EF295FB97B74}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Win32", "Win32\Win32.vcxproj", "{77E00846-770C-45AA-99A1-EF295FB97B74}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "..\..\..\FM79979\Src\FM79979Engine\Core\Core.vcxproj", "{D5962A80-CFCF-437A-B224-01C03CF9FD1A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "..\..\FM79979\Src\FM79979Engine\Core\Core.vcxproj", "{D5962A80-CFCF-437A-B224-01C03CF9FD1A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FatmingAI", "..\..\..\FM79979\Src\FM79979Engine\Core\FatmingAI\FatmingAI.vcxproj", "{377C8B76-B1E4-4004-83E6-65C42799380E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FatmingAI", "..\..\FM79979\Src\FM79979Engine\Core\FatmingAI\FatmingAI.vcxproj", "{377C8B76-B1E4-4004-83E6-65C42799380E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bullet", "..\..\..\FM79979\Src\FM79979Engine\Core\GameplayUT\Physic\Bullet\Bullet.vcxproj", "{B97AEE71-62EC-40F0-ABD0-6EABF0787A3E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bullet", "..\..\FM79979\Src\FM79979Engine\Core\GameplayUT\Physic\Bullet\Bullet.vcxproj", "{B97AEE71-62EC-40F0-ABD0-6EABF0787A3E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FTCGameLib", "FTCGameLib\FTCGameLib.vcxproj", "{3E50106F-529F-435F-A2EC-11918C3C8B40}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameLib", "GameLib\GameLib.vcxproj", "{3E50106F-529F-435F-A2EC-11918C3C8B40}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Freetype", "..\..\..\FM79979\Src\FM79979Engine\Freetype\Freetype.vcxproj", "{29840BD0-19C2-4DDD-BC75-2EC94B6C9EEC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Freetype", "..\..\FM79979\Src\FM79979Engine\Freetype\Freetype.vcxproj", "{29840BD0-19C2-4DDD-BC75-2EC94B6C9EEC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ogg", "..\..\..\FM79979\Src\FM79979Engine\Core\Sound\ogg\ogg.vcxproj", "{D07C6FC2-02D7-41AE-8498-35186CD57B5A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ogg", "..\..\FM79979\Src\FM79979Engine\Core\Sound\ogg\ogg.vcxproj", "{D07C6FC2-02D7-41AE-8498-35186CD57B5A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FTCEmscripten", "FTCEmscripten\FTCEmscripten.vcxproj", "{9A498592-0B17-40A4-B6BA-426E86086FCC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Emscripten", "Emscripten\Emscripten.vcxproj", "{9A498592-0B17-40A4-B6BA-426E86086FCC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

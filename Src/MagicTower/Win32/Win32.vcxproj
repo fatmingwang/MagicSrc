@@ -15,7 +15,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>FTCWin32</ProjectName>
+    <ProjectName>Win32</ProjectName>
     <ProjectGuid>{77E00846-770C-45AA-99A1-EF295FB97B74}</ProjectGuid>
     <RootNamespace>test</RootNamespace>
     <Keyword>Win32Proj</Keyword>
