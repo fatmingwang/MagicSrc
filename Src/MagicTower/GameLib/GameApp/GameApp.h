@@ -1,59 +1,33 @@
 #pragma once
-//
-class	cMonsterManager;
-class	cPlayerManager;
-class	cBulletManager;
-class	cProbabilityFish;
-class	cSceneChange;
-class	cWinMoneyEffectManager;
 
-
-
-
-
-
-class	cFishApp:public cGameApp
-{
-	cFrameBuffer* m_pFrameBuffer;
-protected:
-#ifdef WIN32
-	virtual	void	OpenglInit(HWND e_Hwnd){}
-#endif
-public:
-#if defined(WIN32)
-	cFishApp(HWND e_Hwnd,Vector2 e_vGameResolution = Vector2(1920,1080),Vector2 e_vViewportSize = Vector2(1920,1080));
-#elif defined(ANDROID)
-	cFishApp(ANativeActivity* e_pActivity, JNIEnv* e_pThreadEnv, jobject* e_pAppThreadThis, Vector2 e_vGameResolution, Vector2 e_vViewportSize, NvEGLUtil* e_pNvEGLUtil);
+	class	cSceneControl;
+	class	cMainRoleData;
+	class	cUIInfo;
+	class	cMagicTowerApp:public cGameApp
+	{
+		cUIInfo*	m_pUIInfo;
+		void		Update(float e_fElpaseTime);
+		void		Render();
+	public:
+#if defined(ANDROID)
+		cMagicTowerApp(ANativeActivity* e_pActivity,JNIEnv*e_pThreadEnv,jobject* e_pAppThreadThis,Vector2 e_vGameResolution,Vector2 e_vViewportSize );
+#elif defined(WIN32)
+		cMagicTowerApp(HWND e_Hwnd,Vector2 e_vGameResolution = Vector2(1920.f,1080.f),Vector2 e_vViewportSize = Vector2(1920.f,1080.f));
+		cMagicTowerApp(Vector2 e_vGameResolution,Vector2 e_vViewportSize );
 #else
-	cFishApp(Vector2 e_vGameResolution = Vector2(IPHONE_RESOLUTION_WIDTH,IPHONE_RESOLUTION_HEIGHT),Vector2 e_vViewportSize = Vector2(IPHONE_RESOLUTION_WIDTH,IPHONE_RESOLUTION_HEIGHT));
+		cMagicTowerApp(Vector2 e_vGameResolution = Vector2(IPHONE_RESOLUTION_WIDTH, IPHONE_RESOLUTION_HEIGHT), Vector2 e_vViewportSize = Vector2(IPHONE_RESOLUTION_WIDTH, IPHONE_RESOLUTION_HEIGHT));
 #endif
-	virtual ~cFishApp();
-	void			Init();
-	void			Update(float e_fElpaseTime);
-	void			Render();
-	void			GameDataDestroy();
-	virtual	void	MouseDown(int e_iPosX,int e_iPosY);
-	virtual	void	MouseMove(int e_iPosX,int e_iPosY);
-	virtual	void	MouseUp(int e_iPosX,int e_iPosY);
-	void			KeyDown(char e_char);
-	void			KeyUp(char e_char);
-	//if true game exit
-	bool						m_bLeave;
-	static  float				m_sfVersion;
-	//=======================================
-	static	cMonsterManager*		m_spMonsterManager;
-	static	cPlayerManager*			m_spPlayerManager;
-	static	cBulletManager*			m_pBulletManager;
-	static  cProbabilityFish*		m_spProbabilityFish;
-	static	cSceneChange*			m_spSceneChange;
-	static  cWinMoneyEffectManager* m_spWinMoneyEffectManager;
-
-	static	UINT64				m_sui64CurrentStep;
-	static	float				m_sfMonsterUpdateSpeed;
-	//while scene change player cannot shoot any bullet,and fish has leave scene quickly
-	static	bool				m_sbSceneChange;
-	static	bool				m_sbIsUsingMasterLeeProbability;
-	static  float				m_MiniGameShakeTm;
-	//<root FullScreen="0" Resolution="960,640" ViewPort="960,640" DeviceOrietation="0" />
-	static void					ResoluctionParse2(char*e_strFileName);
-};
+		~cMagicTowerApp();
+		void		Init();
+		void		Destory();
+		void		MouseDown(int e_iPosX,int e_iPosY);
+		void		MouseMove(int e_iPosX,int e_iPosY);
+		void		MouseUp(int e_iPosX,int e_iPosY);
+		void		KeyDown(char e_char);
+		void		ChangeWalkingView();
+		cUIInfo*	GetUIINfo(){return m_pUIInfo;}
+		static		cOrthogonalCamera*		m_sp2DCamera;
+		static		cSceneControl*			m_spSceneControl;
+		static		cMainRoleData*			m_spMainRoleData;
+	};
+	extern	cMagicTowerApp*g_pMagicTowerApp;

@@ -248,25 +248,7 @@
     <ClInclude Include="FTCGameEventList.h" />
     <ClInclude Include="GameApp\GameApp.h" />
     <ClInclude Include="GameApp\SceneChange.h" />
-    <ClInclude Include="GameBullet\Bullet.h" />
-    <ClInclude Include="GameBullet\BulletData.h" />
-    <ClInclude Include="GameBullet\BulletManager.h" />
-    <ClInclude Include="GameBullet\BulletPlayer.h" />
     <ClInclude Include="GameCamera\GameCamera.h" />
-    <ClInclude Include="GameItem\GameItem.h" />
-    <ClInclude Include="GameParameter\GameParameter.h" />
-    <ClInclude Include="Monster\FishDiedEffect.h" />
-    <ClInclude Include="Monster\FishGroup.h" />
-    <ClInclude Include="Monster\FishMultiCollision.h" />
-    <ClInclude Include="Monster\FishNormal.h" />
-    <ClInclude Include="Monster\Monster.h" />
-    <ClInclude Include="Monster\MonsterGenerate.h" />
-    <ClInclude Include="Monster\MonsterManager.h" />
-    <ClInclude Include="PlayerBehavior\PlayerBehaviorBase.h" />
-    <ClInclude Include="PlayerBehavior\PlayerData.h" />
-    <ClInclude Include="PlayerBehavior\Weapon.h" />
-    <ClInclude Include="PlayerBehavior\WeaponSelection.h" />
-    <ClInclude Include="ProbabilityFish\FishProbability.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="UI\FingerMovingDirection.h" />
     <ClInclude Include="UI\GameUI.h" />
@@ -275,22 +257,8 @@
   <ItemGroup>
     <ClCompile Include="GameApp\GameApp.cpp" />
     <ClCompile Include="GameApp\ScaneChange.cpp" />
-    <ClCompile Include="GameBullet\Bullet.cpp" />
-    <ClCompile Include="GameBullet\BulletManager.cpp" />
-    <ClCompile Include="GameBullet\BulletPlayer.cpp" />
     <ClCompile Include="GameCamera\GameCamera.cpp" />
-    <ClCompile Include="Monster\FishDiedEffect.cpp" />
-    <ClCompile Include="Monster\FishGroup.cpp" />
-    <ClCompile Include="Monster\FishMultiCollision.cpp" />
-    <ClCompile Include="Monster\FishNormal.cpp" />
-    <ClCompile Include="Monster\Monster.cpp" />
-    <ClCompile Include="Monster\MonsterGenerate.cpp" />
-    <ClCompile Include="Monster\MonsterManager.cpp" />
-    <ClCompile Include="PlayerBehavior\PlayerBehaviorBase.cpp" />
-    <ClCompile Include="PlayerBehavior\PlayerData.cpp" />
-    <ClCompile Include="PlayerBehavior\Weapon.cpp" />
     <ClCompile Include="PlayerBehavior\WeaponSelection.cpp" />
-    <ClCompile Include="ProbabilityFish\FishProbability.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
