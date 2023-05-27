@@ -21,6 +21,21 @@
     <Filter Include="Game\UI">
       <UniqueIdentifier>{cb93ec65-5c5b-47da-a227-869ad5bea1f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Battle">
+      <UniqueIdentifier>{2e847b89-9b26-4fd5-a716-02ed348c4e76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameSystem">
+      <UniqueIdentifier>{4c569056-53e6-474e-8e06-18c128624eba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Level">
+      <UniqueIdentifier>{6dd975d5-c482-45b5-b97f-ed25b83a0ac5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Object">
+      <UniqueIdentifier>{b74f3ce5-645f-4b2f-b2a6-7872640f2851}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Phase">
+      <UniqueIdentifier>{53b10398-6080-42e6-8b2c-0225f8dc96a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
