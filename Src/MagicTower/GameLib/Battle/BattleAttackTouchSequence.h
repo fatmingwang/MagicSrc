@@ -1,5 +1,4 @@
-#ifndef _MAGIC_TOWER_BATTLE_TOUCH_SEQUENCE_H_
-#define _MAGIC_TOWER_BATTLE_TOUCH_SEQUENCE_H_
+#pragma once
 
 #include "BattlAttackBase.h"
 
@@ -12,5 +11,3 @@ public:
 	virtual	void	Update(float e_fElpaseTime);
 	virtual	void	Render();
 };
-
-#endif

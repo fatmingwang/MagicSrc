@@ -1,5 +1,4 @@
-#ifndef MAP_RULE_H
-#define MAP_RULE_H
+#pragma once
 
 #define	CELL_TYPE_ROAD			1>>0
 #define	CELL_TYPE_BLOCK			1>>1
@@ -76,5 +75,3 @@ POINT	WorldPosTo2ArrayIndex(Vector2 e_vCellSize,Vector2 e_vPos)
 	l_ArrayIndex.y = l_iY;
 	return l_ArrayIndex;
 }
-
-#endif

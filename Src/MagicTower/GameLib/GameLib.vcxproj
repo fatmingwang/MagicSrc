@@ -126,6 +126,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\..\FM79979\Src\FM79979Engine\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -244,20 +245,77 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Battle\BattlAttackBase.h" />
+    <ClInclude Include="Battle\BattleAISystem.h" />
+    <ClInclude Include="Battle\BattleAttackCurveMove.h" />
+    <ClInclude Include="Battle\BattleAttackMoveObject.h" />
+    <ClInclude Include="Battle\BattleAttackPointsTouch.h" />
+    <ClInclude Include="Battle\BattleAttackTouchSequence.h" />
+    <ClInclude Include="Battle\GamePlayAttackPath.h" />
     <ClInclude Include="FileNameDefine.h" />
-    <ClInclude Include="FTCGameEventList.h" />
     <ClInclude Include="GameApp\GameApp.h" />
     <ClInclude Include="GameApp\SceneChange.h" />
     <ClInclude Include="GameCamera\GameCamera.h" />
+    <ClInclude Include="GameSystem\CharacterStatusSystem.h" />
+    <ClInclude Include="GameSystem\ItemInfoSystem.h" />
+    <ClInclude Include="GameSystem\ResourceSystem.h" />
+    <ClInclude Include="GameSystem\SoundSystem.h" />
+    <ClInclude Include="GameSystem\TalkSystem.h" />
+    <ClInclude Include="Level\LevelData.h" />
+    <ClInclude Include="Level\MagicTowerDefineDataNode.h" />
+    <ClInclude Include="Level\MapRule.h" />
+    <ClInclude Include="Level\MapSceneRule.h" />
+    <ClInclude Include="Level\MazeGenerator.h" />
+    <ClInclude Include="Level\StageData.h" />
+    <ClInclude Include="Object\CharacterBase.h" />
+    <ClInclude Include="Object\ItemData.h" />
+    <ClInclude Include="Object\MainCharacterBehavior.h" />
+    <ClInclude Include="Object\MonsterBase.h" />
+    <ClInclude Include="Object\MoveObject.h" />
+    <ClInclude Include="Phase\BattlePhase.h" />
+    <ClInclude Include="Phase\MainMenuPhase.h" />
+    <ClInclude Include="Phase\SceneControl.h" />
+    <ClInclude Include="Phase\ViewMapPhase.h" />
+    <ClInclude Include="Phase\WalkingInMapPhase.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="UI\FingerMovingDirection.h" />
     <ClInclude Include="UI\GameUI.h" />
     <ClInclude Include="UI\SwitchWeaponUI.h" />
+    <ClInclude Include="UI\UIInfo.h" />
+    <ClInclude Include="UI\VirtualGamePad.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Battle\BattlAttackBase.cpp" />
+    <ClCompile Include="Battle\BattleAISystem.cpp" />
+    <ClCompile Include="Battle\BattleAttackCurveMove.cpp" />
+    <ClCompile Include="Battle\BattleAttackMoveObject.cpp" />
+    <ClCompile Include="Battle\BattleAttackPointsTouch.cpp" />
+    <ClCompile Include="Battle\BattleAttackTouchSequence.cpp" />
+    <ClCompile Include="Battle\GamePlayAttackPath.cpp" />
     <ClCompile Include="GameApp\GameApp.cpp" />
     <ClCompile Include="GameApp\ScaneChange.cpp" />
     <ClCompile Include="GameCamera\GameCamera.cpp" />
+    <ClCompile Include="GameSystem\CharacterStatusSystem.cpp" />
+    <ClCompile Include="GameSystem\ItemInfoSystem.cpp" />
+    <ClCompile Include="GameSystem\ResourceSystem.cpp" />
+    <ClCompile Include="GameSystem\SoundSystem.cpp" />
+    <ClCompile Include="GameSystem\TalkSystem.cpp" />
+    <ClCompile Include="Level\LevelData.cpp" />
+    <ClCompile Include="Level\MagicTowerDefineDataNode.cpp" />
+    <ClCompile Include="Level\MapRule.cpp" />
+    <ClCompile Include="Level\MapSceneRule.cpp" />
+    <ClCompile Include="Level\MazeGenerator.cpp" />
+    <ClCompile Include="Level\StageData.cpp" />
+    <ClCompile Include="Object\CharacterBase.cpp" />
+    <ClCompile Include="Object\ItemData.cpp" />
+    <ClCompile Include="Object\MainCharacterBehavior.cpp" />
+    <ClCompile Include="Object\MonsterBase.cpp" />
+    <ClCompile Include="Object\MoveObject.cpp" />
+    <ClCompile Include="Phase\BattlePhase.cpp" />
+    <ClCompile Include="Phase\MainMenuPhase.cpp" />
+    <ClCompile Include="Phase\SceneControl.cpp" />
+    <ClCompile Include="Phase\ViewMapPhase.cpp" />
+    <ClCompile Include="Phase\WalkingInMapPhase.cpp" />
     <ClCompile Include="PlayerBehavior\WeaponSelection.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -266,6 +324,8 @@
     <ClCompile Include="UI\FingerMovingDirection.cpp" />
     <ClCompile Include="UI\GameUI.cpp" />
     <ClCompile Include="UI\SwitchWeaponUI.cpp" />
+    <ClCompile Include="UI\UIInfo.cpp" />
+    <ClCompile Include="UI\VirtualGamePad.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,4 @@
-#ifndef _MAGIC_TOWER_BATTLE_PHASE_H_
-#define _MAGIC_TOWER_BATTLE_PHASE_H_
+#pragma once
 
 class	cMonsterBase;
 class	cMainRoleData;
@@ -27,5 +26,3 @@ public:
 	virtual	const	WCHAR*	GetNextPhaseName();	
 
 };
-
-#endif

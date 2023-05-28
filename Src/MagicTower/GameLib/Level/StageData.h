@@ -1,5 +1,4 @@
-#ifndef _MAGIC_TOWER_STAGE_DATA_H_
-#define _MAGIC_TOWER_STAGE_DATA_H_
+#pragma once
 
 #include "LevelData.h"
 #include "MainCharacterBehavior.h"
@@ -27,5 +26,3 @@ public:
 	POINT						m_ViewableSize;
 	POINT						m_MainRoleFocusGridIndex;
 };
-
-#endif

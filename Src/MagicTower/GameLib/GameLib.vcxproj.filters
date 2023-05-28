@@ -59,10 +59,97 @@
     <ClInclude Include="UI\FingerMovingDirection.h">
       <Filter>Game\UI</Filter>
     </ClInclude>
-    <ClInclude Include="FTCGameEventList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="UI\SwitchWeaponUI.h">
+      <Filter>Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\BattlAttackBase.h">
+      <Filter>Game\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\BattleAttackCurveMove.h">
+      <Filter>Game\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\BattleAttackMoveObject.h">
+      <Filter>Game\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\BattleAttackPointsTouch.h">
+      <Filter>Game\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\BattleAttackTouchSequence.h">
+      <Filter>Game\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSystem\CharacterStatusSystem.h">
+      <Filter>Game\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSystem\ItemInfoSystem.h">
+      <Filter>Game\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSystem\ResourceSystem.h">
+      <Filter>Game\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSystem\SoundSystem.h">
+      <Filter>Game\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSystem\TalkSystem.h">
+      <Filter>Game\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\BattleAISystem.h">
+      <Filter>Game\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\GamePlayAttackPath.h">
+      <Filter>Game\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Level\LevelData.h">
+      <Filter>Game\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Level\MagicTowerDefineDataNode.h">
+      <Filter>Game\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Level\MapRule.h">
+      <Filter>Game\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Level\MapSceneRule.h">
+      <Filter>Game\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Level\MazeGenerator.h">
+      <Filter>Game\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Level\StageData.h">
+      <Filter>Game\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\CharacterBase.h">
+      <Filter>Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\ItemData.h">
+      <Filter>Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\MainCharacterBehavior.h">
+      <Filter>Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\MonsterBase.h">
+      <Filter>Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\MoveObject.h">
+      <Filter>Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Phase\BattlePhase.h">
+      <Filter>Game\Phase</Filter>
+    </ClInclude>
+    <ClInclude Include="Phase\MainMenuPhase.h">
+      <Filter>Game\Phase</Filter>
+    </ClInclude>
+    <ClInclude Include="Phase\SceneControl.h">
+      <Filter>Game\Phase</Filter>
+    </ClInclude>
+    <ClInclude Include="Phase\ViewMapPhase.h">
+      <Filter>Game\Phase</Filter>
+    </ClInclude>
+    <ClInclude Include="Phase\WalkingInMapPhase.h">
+      <Filter>Game\Phase</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\UIInfo.h">
+      <Filter>Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\VirtualGamePad.h">
       <Filter>Game\UI</Filter>
     </ClInclude>
   </ItemGroup>
@@ -90,6 +177,96 @@
     </ClCompile>
     <ClCompile Include="PlayerBehavior\WeaponSelection.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\BattlAttackBase.cpp">
+      <Filter>Game\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\BattleAttackCurveMove.cpp">
+      <Filter>Game\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\BattleAttackMoveObject.cpp">
+      <Filter>Game\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\BattleAttackPointsTouch.cpp">
+      <Filter>Game\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\BattleAttackTouchSequence.cpp">
+      <Filter>Game\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSystem\CharacterStatusSystem.cpp">
+      <Filter>Game\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSystem\ItemInfoSystem.cpp">
+      <Filter>Game\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSystem\ResourceSystem.cpp">
+      <Filter>Game\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSystem\SoundSystem.cpp">
+      <Filter>Game\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSystem\TalkSystem.cpp">
+      <Filter>Game\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\BattleAISystem.cpp">
+      <Filter>Game\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\GamePlayAttackPath.cpp">
+      <Filter>Game\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Level\LevelData.cpp">
+      <Filter>Game\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Level\MagicTowerDefineDataNode.cpp">
+      <Filter>Game\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Level\MapRule.cpp">
+      <Filter>Game\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Level\MapSceneRule.cpp">
+      <Filter>Game\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Level\MazeGenerator.cpp">
+      <Filter>Game\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Level\StageData.cpp">
+      <Filter>Game\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\CharacterBase.cpp">
+      <Filter>Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\ItemData.cpp">
+      <Filter>Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\MainCharacterBehavior.cpp">
+      <Filter>Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\MonsterBase.cpp">
+      <Filter>Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\MoveObject.cpp">
+      <Filter>Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Phase\BattlePhase.cpp">
+      <Filter>Game\Phase</Filter>
+    </ClCompile>
+    <ClCompile Include="Phase\MainMenuPhase.cpp">
+      <Filter>Game\Phase</Filter>
+    </ClCompile>
+    <ClCompile Include="Phase\SceneControl.cpp">
+      <Filter>Game\Phase</Filter>
+    </ClCompile>
+    <ClCompile Include="Phase\ViewMapPhase.cpp">
+      <Filter>Game\Phase</Filter>
+    </ClCompile>
+    <ClCompile Include="Phase\WalkingInMapPhase.cpp">
+      <Filter>Game\Phase</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\UIInfo.cpp">
+      <Filter>Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\VirtualGamePad.cpp">
+      <Filter>Game\UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

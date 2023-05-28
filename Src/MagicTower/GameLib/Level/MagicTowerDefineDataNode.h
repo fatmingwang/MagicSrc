@@ -1,5 +1,4 @@
-#ifndef _MAGIC_TOWER_DEFINE_DATA_NODE_H_
-#define _MAGIC_TOWER_DEFINE_DATA_NODE_H_
+#pragma once
 
 enum	eMagicTowerGridType
 {
@@ -71,5 +70,3 @@ struct	sTelportionData
 };
 
 sTelportionData*	GetTelportionData(TiXmlElement*e_pTlement);
-//end _MAGIC_TOWER_DEFINE_DATA_NODE_H_
-#endif

@@ -1,5 +1,4 @@
-#ifndef	_MAGIC_TOWER_CHARACTER_BASE_H
-#define	_MAGIC_TOWER_CHARACTER_BASE_H
+#pragma once
 
 class	cCharacterBase:public cFAIAnimationCharacter
 {
@@ -8,5 +7,3 @@ public:
 	~cCharacterBase();
 	virtual	void	RenderStatusInfo();
 };
-
-#endif

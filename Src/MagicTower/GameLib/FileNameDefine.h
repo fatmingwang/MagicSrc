@@ -1,9 +1,6 @@
-#ifndef _MAGIC_TOWER_FILE_NAME_DEFINE_H_
-#define _MAGIC_TOWER_FILE_NAME_DEFINE_H_
+#pragma once
 
 
 extern char*	BATTLE_ATTACK_MOVE_OBJECT_FILE_NAME;
 extern char*	MAIN_ROLE_SETUP_DATA;
-extern WCHAR*	UI_INFO_MPDILIST_FILE_NAME;
-
-#endif
+extern wchar_t*	UI_INFO_MPDILIST_FILE_NAME;

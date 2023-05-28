@@ -1,5 +1,4 @@
-#ifndef _MAGIC_TOWER_SCENE_CONTROL_H_
-#define _MAGIC_TOWER_SCENE_CONTROL_H_
+#pragma once
 
 #include "StageData.h"
 #include "WalkingInMapPhase.h"
@@ -18,5 +17,3 @@ public:
 	virtual	bool	Load();
 	void	KeyDown(char e_char);
 };
-
-#endif

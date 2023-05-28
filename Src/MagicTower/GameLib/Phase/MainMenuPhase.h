@@ -1,5 +1,4 @@
-#ifndef _MAGIC_TOWER_MAIN_MENU_PHASE_H_
-#define _MAGIC_TOWER_MAIN_MENU_PHASE_H_
+#pragma once
 
 //GET_SET_DEC(DoButtonGoal_Callback,m_pDoButtonGoal_Callback,GetDoButtonGoal,SetDoButtonGoal);
 
@@ -26,5 +25,3 @@ public:
 	virtual	const   WCHAR*	GetNextPhaseName();
 	virtual	void*	GetData();
 };
-
-#endif

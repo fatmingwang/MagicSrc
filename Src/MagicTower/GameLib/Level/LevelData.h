@@ -1,7 +1,5 @@
-#ifndef _MAGIC_TOWER_DATA_DEFINE_H_
-#define _MAGIC_TOWER_DATA_DEFINE_H_
+#pragma once
 
-#include "../../Core/FMLevelData/AllLevelDataInclude.h" 
 #include "ItemData.h"
 #include "MagicTowerDefineDataNode.h"
 
@@ -71,5 +69,3 @@ public:
 	cGridBehavior*	GetGridBehavior(POINT e_GridIndex,int e_iLayer);
 
 };
-
-#endif

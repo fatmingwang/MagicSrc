@@ -1,5 +1,4 @@
-#ifndef _MAGIC_TOWER_WALKING_IN_MAP_PHASE_H_
-#define _MAGIC_TOWER_WALKING_IN_MAP_PHASE_H_
+#pragma once
 
 #include "LevelData.h"
 #include "MainCharacterBehavior.h"
@@ -36,5 +35,3 @@ public:
 	virtual	const   WCHAR*	GetNextPhaseName();
 	virtual	void*	GetData();
 };
-
-#endif

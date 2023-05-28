@@ -1,5 +1,4 @@
-#ifndef _MAGIC_TOWER_MAIN_CHARACTER_BEHAVIOR_H
-#define _MAGIC_TOWER_MAIN_CHARACTER_BEHAVIOR_H
+#pragma once
 
 #include "LevelData.h"
 #include "VirtualGamePad.h"
@@ -47,5 +46,3 @@ public:
 	virtual	void	Render();
 	virtual	void	RenderAttack(){}
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef _MAGIC_TOWER_BATTLE_ATTACK_MOVE_OBJECT_H_
-#define _MAGIC_TOWER_BATTLE_ATTACK_MOVE_OBJECT_H_
+#pragma once
 #include "BattlAttackBase.h"
 #include "MoveObject.h"
 //===================
@@ -23,5 +22,3 @@ public:
 	virtual	void	Render();
 	virtual	void	DebugRender();
 };
-
-#endif
