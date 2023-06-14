@@ -2,10 +2,10 @@
 #pragma once
 #pragma warning( disable : 4996 )
 #endif
-#include "AllPhaseName.h"
 #include "AllcoreInclude.h" 
 #include "FatmingAI/AllFatmingAIInclude.h" 
 #include "FMLevelData/AllLevelDataInclude.h" 
+#include "AllPhaseName.h"
 
 
 using namespace FATMING_CORE;

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "LevelData.h"
-#include "VirtualGamePad.h"
-#include "BattlAttackBase.h"
-#include "CharacterBase.h"
+#include "../Level/LevelData.h"
+#include "../UI/VirtualGamePad.h"
+#include "../Battle/BattlAttackBase.h"
+#include "../Object/CharacterBase.h"
 
 enum	eMagicTowerMainRoleStatus
 {
@@ -36,9 +36,9 @@ public:
 	int	m_iCurrentExp;
 	int	m_iAllLevelExpNeed[99];//aftern 99 each level need as many as 99's.
 	int	m_iCurrentLV;
-	cItemData	*m_psWeapon;
-	cItemData	*m_psShield;
-	cItemData	*m_psDecoration;
+	class cItemData*	m_psWeapon;
+	class cItemData*	m_psShield;
+	class cItemData*	m_psDecoration;
 	void		MouseDown(int e_iPosX,int e_iPosY);
 	void		MouseHover(int e_iPosX,int e_iPosY);
 	void		MouseUp(int e_iPosX,int e_iPosY);

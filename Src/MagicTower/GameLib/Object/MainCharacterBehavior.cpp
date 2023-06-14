@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "MainCharacterBehavior.h"
 
-char*MAIN_ROLE_SETUP_DATA = "MagicTower/Battle/MainRole/MainRole.xml";
+const char*MAIN_ROLE_SETUP_DATA = "MagicTower/Battle/MainRole/MainRole.xml";
 const wchar_t*g_strMainRoleStatusName[] = {L"Idle",L"Attack",L"AttackFailed",L"Hurt",L"Died"};
 //<Battle Pos="710,200,0"/>
 

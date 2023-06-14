@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "SceneControl.h"
+#include "../GameApp/GameApp.h"
 
 cSceneControl::cSceneControl()
 {

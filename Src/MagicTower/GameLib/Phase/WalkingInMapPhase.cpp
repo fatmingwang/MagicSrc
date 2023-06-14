@@ -1,11 +1,15 @@
 #include "stdafx.h"
 #include "WalkingInMapPhase.h"
+#include "../Object/MainCharacterBehavior.h"
 #include "SceneControl.h"
 #include "BattlePhase.h"
-#include "UIInfo.h"
-#include "GameApp.h"
+#include "../Level/MapSceneRule.h"
+#include "../UI/UIInfo.h"
+#include "../GameApp/GameApp.h"
+//#include "UIInfo.h"
+//#include "GameApp.h"
 cWalkingInMapPhase::cWalkingInMapPhase(cMainRoleData*e_pMainRoleData,cNamedTypedObjectVector<cStoreyData>*e_pAllStoreyData
-									   ,int e_iViewableRow,int e_iViewableColumn,POINT e_GridSize,POINT e_iOffsetMapPosIndex,WCHAR*e_strCurrentStoreyName)
+									   ,int e_iViewableRow,int e_iViewableColumn,POINT e_GridSize,POINT e_iOffsetMapPosIndex,const wchar_t*e_strCurrentStoreyName)
 {
 	m_pMonsterGridBehavior = 0;
 	m_bWalkingModeIsFix = false;

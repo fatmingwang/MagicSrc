@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ItemData.h"
 #include "MagicTowerDefineDataNode.h"
 
 //========================

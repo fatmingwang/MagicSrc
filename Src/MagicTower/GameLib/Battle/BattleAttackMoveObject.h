@@ -1,6 +1,5 @@
 #pragma once
 #include "BattlAttackBase.h"
-#include "MoveObject.h"
 //===================
 //
 //2 moving objects keep moving at a direction,while they are overlap,click button
@@ -9,7 +8,7 @@
 //===================
 class	cBattleAttackMoveObject:public cBattleBase
 {
-	sTwoMovingObjectController*m_pTwoMovingObjectController;
+	struct sTwoMovingObjectController*m_pTwoMovingObjectController;
     virtual void			InternalMouseMove(int e_iPosX,int e_iPosY);
     virtual void			InternalMouseDown(int e_iPosX,int e_iPosY);
     virtual void    		InternalMouseUp(int e_iPosX,int e_iPosY);

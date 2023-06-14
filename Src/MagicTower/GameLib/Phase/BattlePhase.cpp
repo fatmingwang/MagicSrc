@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "BattlePhase.h"
-#include "MagicTowerDefineDataNode.h"
-#include "MainCharacterBehavior.h"
-#include "BattlAttackBase.h"
-#include "MonsterBase.h"
+#include "../Level/MagicTowerDefineDataNode.h"
+#include "../Object/MainCharacterBehavior.h"
+#include "../Battle/BattlAttackBase.h"
+#include "../Object/MonsterBase.h"
 cBattlePhase::cBattlePhase(cMainRoleData*e_pMainRoleData,cGridBehavior*e_pGridBehavior)
 {
 	this->SetName(BATTLE_PHASE);

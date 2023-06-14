@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "MapSceneRule.h"
-
+#include "../GameApp/GameApp.h"
 cMapSceneViewRule::cMapSceneViewRule(cStoreyData*e_pStoreyData,int e_iViewableRow,int e_iViewableColumn,
 							 cMainRoleData*e_pMainRoleData,POINT e_GridSize,POINT e_iOffsetMapPosIndex)
 {

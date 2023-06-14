@@ -46,7 +46,7 @@ eMagicTowerGridType		NameToMagicTowerGridType(const WCHAR*e_strName)
 		return MTGT_DOWN;
 	}
 
-	WCHAR*l_strMonsterName = L"Monster";
+	const wchar_t*l_strMonsterName = L"Monster";
 	int	l_iLength = (int)wcslen(l_strMonsterName);
 	bool	l_bSame = true;
 	for( int i=0;i<l_iLength;++i )

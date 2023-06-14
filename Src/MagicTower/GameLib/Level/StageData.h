@@ -1,8 +1,8 @@
 #pragma once
 
 #include "LevelData.h"
-#include "MainCharacterBehavior.h"
-#include "../../Core/FMLevelData/AllLevelDataInclude.h"
+//#include "MainCharacterBehavior.h"
+//#include "../../Core/FMLevelData/AllLevelDataInclude.h"
 
 
 //<Data>

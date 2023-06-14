@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "FingerMovingDirection.h"
-#include "../FTCGameEventList.h"
 
 
 cFingerMovingDirection::cFingerMovingDirection()
@@ -20,7 +19,7 @@ cClickBehavior* cFingerMovingDirection::MouseUp(int e_iPosX, int e_iPosY)
 		auto l_vDownUpDis = -m_MouseMoveData.DownUp();
 		if (l_vDownUpDis.Length() < m_fMinAllowToMoveDis)
 		{
-			cCommonApp::EventMessageShot(eFTC_GameEventList::eFTC_GEL_FIRE_BULLET,nullptr);
+			//cCommonApp::EventMessageShot(eFTC_GameEventList::eFTC_GEL_FIRE_BULLET,nullptr);
 			
 			return l_Clicked;
 		}
@@ -55,7 +54,7 @@ cClickBehavior* cFingerMovingDirection::MouseUp(int e_iPosX, int e_iPosY)
 		if (l_MovingDirection != eDirection::eD_MAX)
 		{
 			FMLOG("MovingDirection is %s", l_strDirection.c_str());
-			cCommonApp::EventMessageShot(eFTC_GameEventList::eFTC_GEL_GESTURE,&l_MovingDirection,sizeof(l_MovingDirection));
+			//cCommonApp::EventMessageShot(eFTC_GameEventList::eFTC_GEL_GESTURE,&l_MovingDirection,sizeof(l_MovingDirection));
 		}
 	}
 	return l_Clicked;

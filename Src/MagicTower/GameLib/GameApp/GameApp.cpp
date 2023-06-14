@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "GameApp.h"
-#include "SceneControl.h"
-#include "MainCharacterBehavior.h"
-#include "UIInfo.h"
+#include "../Phase/SceneControl.h"
+#include "../Object/MainCharacterBehavior.h"
+#include "../UI/UIInfo.h"
+#include "../FileNameDefine.h"
 UT::sTimeAndFPS g_TimeAndFPS;
 cSceneControl*					cMagicTowerApp::m_spSceneControl = 0;
 cOrthogonalCamera*				cMagicTowerApp::m_sp2DCamera = 0;

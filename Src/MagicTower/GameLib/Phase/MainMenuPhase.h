@@ -6,7 +6,7 @@ class cMainMenuPhase:public cSimplePhase
 {
 	int					m_iMPDIBGIndex;//0
 	int					m_iOptionsCount;//
-	std::wstring		m_strMainMenuMPDIFileName;
+	std::string			m_strMainMenuMPDIFileName;
 	int					m_iCurrentSelectedIndex;
 	cMPDI**				m_ppSelectionMPDI;
 	cMPDI*				m_pBGMPDI;

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "UIInfo.h"
 
-WCHAR*	UI_INFO_MPDILIST_FILE_NAME = L"MagicTower/Image/UIInfo.mpdi";
+const WCHAR*	UI_INFO_MPDILIST_FILE_NAME = L"MagicTower/Image/UIInfo.mpdi";
 
 cUIInfo::cUIInfo()
 {

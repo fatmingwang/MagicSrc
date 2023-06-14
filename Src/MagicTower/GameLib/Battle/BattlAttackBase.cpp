@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "BattlAttackBase.h"
 #include "BattleAttackMoveObject.h"
 #include "BattleAttackPointsTouch.h"

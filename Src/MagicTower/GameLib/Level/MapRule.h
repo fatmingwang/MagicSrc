@@ -11,7 +11,7 @@
 //======================
 struct	sBaseCharacterData
 {
-	WCHAR	strName[MAX_PATH];	//
+	wchar_t strName[MAX_PATH];	//
 	int	iHP;					//
 	int	iDefence;				//
 	int	iStrgeth;				//
@@ -19,7 +19,7 @@ struct	sBaseCharacterData
 	int	iAgile;					//
 	sBaseCharacterData()
 	{
-		memset(strName,0,sizeof(WCHAR)*MAX_PAH);
+		memset(strName,0,sizeof(wchar_t)*MAX_PATH);
 		iHP = 0;
 		iDefence = 0;
 		iStrgeth = 0;
@@ -41,16 +41,16 @@ struct	cMainRoleData:public sBaseCharacterData
 	int	iCurrentExp;
 	int	iAllLevelExpNeed[99];
 	int	iCurrentLV;
-	sItemData	*psWeapon;
-	sItemData	*psShield;
-	sItemData	*psDecoration;
+	//sItemData	*psWeapon;
+	//sItemData	*psShield;
+	//sItemData	*psDecoration;
 };
 //========================
 //
 //========================
 class	cCellData
 {
-	void	int	m_iCellType;
+	int	m_iCellType;
 	cBaseImage*m_pImage;
 	Vector2	m_vPos;
 	//if it filled specific condition,it could become another cell data.

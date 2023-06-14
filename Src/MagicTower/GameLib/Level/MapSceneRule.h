@@ -1,7 +1,7 @@
 #pragma once
 
 #include "LevelData.h"
-#include "MainCharacterBehavior.h"
+#include "../Object/MainCharacterBehavior.h"
 //a map contian a lot units,here is the rule to divide it into a small partition,
 //so the user can control character to move in a part of map,and only could see a part it map,
 //because somethimes the map is too big,so we have to divide it into a suitable size

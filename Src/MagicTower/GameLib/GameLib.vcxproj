@@ -254,7 +254,6 @@
     <ClInclude Include="Battle\GamePlayAttackPath.h" />
     <ClInclude Include="FileNameDefine.h" />
     <ClInclude Include="GameApp\GameApp.h" />
-    <ClInclude Include="GameApp\SceneChange.h" />
     <ClInclude Include="GameCamera\GameCamera.h" />
     <ClInclude Include="GameSystem\CharacterStatusSystem.h" />
     <ClInclude Include="GameSystem\ItemInfoSystem.h" />
@@ -293,7 +292,6 @@
     <ClCompile Include="Battle\BattleAttackTouchSequence.cpp" />
     <ClCompile Include="Battle\GamePlayAttackPath.cpp" />
     <ClCompile Include="GameApp\GameApp.cpp" />
-    <ClCompile Include="GameApp\ScaneChange.cpp" />
     <ClCompile Include="GameCamera\GameCamera.cpp" />
     <ClCompile Include="GameSystem\CharacterStatusSystem.cpp" />
     <ClCompile Include="GameSystem\ItemInfoSystem.cpp" />
@@ -316,7 +314,6 @@
     <ClCompile Include="Phase\SceneControl.cpp" />
     <ClCompile Include="Phase\ViewMapPhase.cpp" />
     <ClCompile Include="Phase\WalkingInMapPhase.cpp" />
-    <ClCompile Include="PlayerBehavior\WeaponSelection.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>

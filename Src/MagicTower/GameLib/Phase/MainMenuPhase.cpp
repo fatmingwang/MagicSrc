@@ -6,7 +6,7 @@ cMainMenuPhase::cMainMenuPhase(const WCHAR*e_strMPDIListFileName,int e_iOptionsC
 	m_pBGMPDI = 0;
 	for(int i=1;i<e_iOptionsCount;++i)
 		m_ppSelectionMPDI[i] = 0;
-	m_strMainMenuMPDIFileName = cMPDIList::FileToMPDIListName(e_strMPDIListFileName);
+	m_strMainMenuMPDIFileName = cMPDIList::GetFileName(e_strMPDIListFileName);
 	cMPDIList*l_pMPDIList = cGameApp::GetMPDIListByFileName(e_strMPDIListFileName);
 	m_iOptionsCount = e_iOptionsCount;
 	m_ppSelectionMPDI = new cMPDI*[e_iOptionsCount];
@@ -22,7 +22,7 @@ cMainMenuPhase::cMainMenuPhase(const WCHAR*e_strMPDIListFileName,int e_iOptionsC
 
 cMainMenuPhase::~cMainMenuPhase()
 {
-	cGameApp::m_spAnimationParser->RemoveObject(m_strMainMenuMPDIFileName.c_str());
+	//cGameApp::m_spAnimationParser->RemoveObject(m_strMainMenuMPDIFileName);
 }
 
 void	cMainMenuPhase::Init()

@@ -44,9 +44,6 @@
     <ClInclude Include="GameApp\GameApp.h">
       <Filter>Game\GameApp</Filter>
     </ClInclude>
-    <ClInclude Include="GameApp\SceneChange.h">
-      <Filter>Game\GameApp</Filter>
-    </ClInclude>
     <ClInclude Include="FileNameDefine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -157,9 +154,6 @@
     <ClCompile Include="GameApp\GameApp.cpp">
       <Filter>Game\GameApp</Filter>
     </ClCompile>
-    <ClCompile Include="GameApp\ScaneChange.cpp">
-      <Filter>Game\GameApp</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -174,9 +168,6 @@
     </ClCompile>
     <ClCompile Include="UI\SwitchWeaponUI.cpp">
       <Filter>Game\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerBehavior\WeaponSelection.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Battle\BattlAttackBase.cpp">
       <Filter>Game\Battle</Filter>

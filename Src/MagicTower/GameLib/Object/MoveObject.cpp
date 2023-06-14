@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "MoveObject.h"
 
 //<MovingObject Range="0,0,100,100" Speed="" Gesture="" DelayToGo="">

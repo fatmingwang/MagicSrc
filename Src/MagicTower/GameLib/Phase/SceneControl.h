@@ -1,6 +1,6 @@
 #pragma once
 
-#include "StageData.h"
+#include "../Level/StageData.h"
 #include "WalkingInMapPhase.h"
 
 class	cSceneControl:public cPhaseManager
