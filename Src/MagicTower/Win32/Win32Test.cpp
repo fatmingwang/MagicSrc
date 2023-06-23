@@ -50,7 +50,7 @@ int APIENTRY _tWinMain( HINSTANCE hInstance,
 	{
 		return FALSE;
 	} // end if
-	g_pGameApp = new cMagicTowerApp( g_hWnd, cGameApp::m_spOpenGLRender->m_vGameResolution, Vector2(cGameApp::m_spOpenGLRender->m_vViewPortSize.Width(), cGameApp::m_spOpenGLRender->m_vViewPortSize.Height()));
+	g_pGameApp = new cMagicTowerApp( g_hWnd, Vector2(1280,720), Vector2(cGameApp::m_spOpenGLRender->m_vViewPortSize.Width(), cGameApp::m_spOpenGLRender->m_vViewPortSize.Height()));
 	g_pGameApp->Init();
 	cGameApp::m_spOpenGLRender->SetAcceptRationWithGameresolution((int)cGameApp::m_spOpenGLRender->m_vViewPortSize.Width(), (int)cGameApp::m_spOpenGLRender->m_vViewPortSize.Height(), (int)cGameApp::m_spOpenGLRender->m_vGameResolution.x, (int)cGameApp::m_spOpenGLRender->m_vGameResolution.y);
 	SetTimer( g_hWnd, 0, 0, NULL ) ;
@@ -139,7 +139,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    hInst = hInstance; // Store instance handle in our global variable
 	bool	l_bFullScreen = false;
 	cNodeISAX	l_NodeISAX;
-	cGameApp::m_spOpenGLRender = new cOpenGLRender(Vector2(720, 1280));
+	cGameApp::m_spOpenGLRender = new cOpenGLRender(Vector2(1280, 720));
 	auto &l_vResolution = cGameApp::m_spOpenGLRender->m_vViewPortSize;
 
 	//cGameApp::m_spOpenGLRender->m_vViewPortSize.x = 0;
@@ -149,7 +149,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 	DWORD	l_dwFlag = WS_OVERLAPPEDWINDOW;
 	//auto l_vResolution = cGameApp::m_spOpenGLRender->m_vViewPortSize;
-	auto l_Size = l_vResolution.Size();
+	//auto l_Size = l_vResolution.Size();
+	//POINT l_Size = {720,1280};
+	POINT l_Size = { 1280,720 };
 	if(cGameApp::m_sbFullScreen)
 		l_dwFlag = WS_VISIBLE | WS_POPUP |	WS_CLIPSIBLINGS | WS_CLIPCHILDREN;
 	g_hWnd = CreateWindow(szWindowClass, szTitle, l_dwFlag, 0, 0, (int)l_Size.x, (int)l_Size.y, NULL, NULL, hInstance, NULL);
