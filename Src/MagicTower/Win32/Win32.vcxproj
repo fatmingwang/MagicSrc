@@ -59,7 +59,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\..\..\..\..\FTC_1_Media\</OutDir>
+    <OutDir>..\..\..\..\MagicTowerMedia</OutDir>
     <IntDir>..\..\..\..\Intermedia\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_NO_PTHREAD_WITH_BULLET|x64'">
@@ -76,7 +76,7 @@
     <ClCompile>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\FM79979\Src\FM79979Engine\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -93,7 +93,7 @@
       <EntryPointSymbol>
       </EntryPointSymbol>
       <TerminalServerAware>true</TerminalServerAware>
-      <AdditionalLibraryDirectories>..\..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\FM79979\Src\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>openAL32.lib;alut.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -101,7 +101,7 @@
     <ClCompile>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\MagicSrc\FM79979\Src\FM79979Engine\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -118,7 +118,7 @@
       <EntryPointSymbol>
       </EntryPointSymbol>
       <TerminalServerAware>true</TerminalServerAware>
-      <AdditionalLibraryDirectories>..\..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\FM79979\Src\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>openAL32.lib;alut.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -128,7 +128,7 @@
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>..\GameApp;..\..\..\include\bt;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\MagicSrc\FM79979\Src\FM79979Engine\Core;..\GameApp;..\..\..\include\bt;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -146,7 +146,7 @@
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalLibraryDirectories>..\..\..\lib;;C:\Program Files (x86)\Visual Leak Detector\lib\Win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\FM79979\Src\lib;;C:\Program Files (x86)\Visual Leak Detector\lib\Win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -170,22 +170,28 @@
     <ResourceCompile Include="test.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\FM79979\Src\FM79979Engine\Core\Core.vcxproj">
+    <ProjectReference Include="..\..\..\FM79979\Src\FM79979Engine\Core\Core.vcxproj">
       <Project>{d5962a80-cfcf-437a-b224-01c03cf9fd1a}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\FM79979\Src\FM79979Engine\Core\FatmingAI\FatmingAI.vcxproj">
+    <ProjectReference Include="..\..\..\FM79979\Src\FM79979Engine\Core\FatmingAI\FatmingAI.vcxproj">
       <Project>{377c8b76-b1e4-4004-83e6-65c42799380e}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\FM79979\Src\FM79979Engine\Core\GameplayUT\Physic\Bullet\Bullet.vcxproj">
+    <ProjectReference Include="..\..\..\FM79979\Src\FM79979Engine\Core\FMEvent\Event.vcxproj">
+      <Project>{cb79dca3-5f7a-423f-ba3e-01df441c06b1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\FM79979\Src\FM79979Engine\Core\FMLevelData\FMLevelData.vcxproj">
+      <Project>{446a6d50-5176-4d3c-938b-65e7b41d0873}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\FM79979\Src\FM79979Engine\Core\GameplayUT\Physic\Bullet\Bullet.vcxproj">
       <Project>{b97aee71-62ec-40f0-abd0-6eabf0787a3e}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\FM79979\Src\FM79979Engine\Core\Sound\ogg\ogg.vcxproj">
+    <ProjectReference Include="..\..\..\FM79979\Src\FM79979Engine\Core\Sound\ogg\ogg.vcxproj">
       <Project>{d07c6fc2-02d7-41ae-8498-35186cd57b5a}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\FM79979\Src\FM79979Engine\Freetype\Freetype.vcxproj">
+    <ProjectReference Include="..\..\..\FM79979\Src\FM79979Engine\Freetype\Freetype.vcxproj">
       <Project>{29840bd0-19c2-4ddd-bc75-2ec94b6c9eec}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\FTCGameLib\FTCGameLib.vcxproj">
+    <ProjectReference Include="..\GameLib\GameLib.vcxproj">
       <Project>{3e50106f-529f-435f-a2ec-11918c3c8b40}</Project>
     </ProjectReference>
   </ItemGroup>

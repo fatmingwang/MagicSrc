@@ -8,9 +8,9 @@
 // and not in this file
 
 
-#pragma comment(lib, "../../../lib/OpenAL32.lib")
-#pragma comment(lib, "../../../lib/alut.lib")
-#pragma comment(lib, "../../../lib/glew.lib")
+#pragma comment(lib, "OpenAL32.lib")
+#pragma comment(lib, "alut.lib")
+#pragma comment(lib, "glew.lib")
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "Glu32.lib")
 #pragma comment(lib, "gdi32.lib")

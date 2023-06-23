@@ -3,7 +3,7 @@
 #include "Windowsx.h"
 
 
-#include "../FTCGameLib/GameApp/GameApp.h"
+#include "../GameLib/GameApp/GameApp.h"
 //
 #define MAX_LOADSTRING 100
 //
@@ -50,7 +50,7 @@ int APIENTRY _tWinMain( HINSTANCE hInstance,
 	{
 		return FALSE;
 	} // end if
-	g_pGameApp = new cFishApp( g_hWnd, cGameApp::m_spOpenGLRender->m_vGameResolution, Vector2(cGameApp::m_spOpenGLRender->m_vViewPortSize.Width(), cGameApp::m_spOpenGLRender->m_vViewPortSize.Height()));
+	g_pGameApp = new cMagicTowerApp( g_hWnd, cGameApp::m_spOpenGLRender->m_vGameResolution, Vector2(cGameApp::m_spOpenGLRender->m_vViewPortSize.Width(), cGameApp::m_spOpenGLRender->m_vViewPortSize.Height()));
 	g_pGameApp->Init();
 	cGameApp::m_spOpenGLRender->SetAcceptRationWithGameresolution((int)cGameApp::m_spOpenGLRender->m_vViewPortSize.Width(), (int)cGameApp::m_spOpenGLRender->m_vViewPortSize.Height(), (int)cGameApp::m_spOpenGLRender->m_vGameResolution.x, (int)cGameApp::m_spOpenGLRender->m_vGameResolution.y);
 	SetTimer( g_hWnd, 0, 0, NULL ) ;
@@ -146,7 +146,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 	//cGameApp::m_spOpenGLRender->m_vViewPortSize.y = 0;
 	//cGameApp::m_spOpenGLRender->m_vViewPortSize.z = 1024.f;
 	//cGameApp::m_spOpenGLRender->m_vViewPortSize.w = 768.f;
-	cFishApp::ResoluctionParse2( "FishSetup.xml" );
 
 	DWORD	l_dwFlag = WS_OVERLAPPEDWINDOW;
 	//auto l_vResolution = cGameApp::m_spOpenGLRender->m_vViewPortSize;
@@ -205,7 +204,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		{
 			g_bTimerDone = true;
 			g_pGameApp->Run();
-			cFishApp*l_pFishApp = (cFishApp*)g_pGameApp;
 			g_bTimerDone = false;
 		}
 		//else
