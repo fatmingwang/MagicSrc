@@ -18,8 +18,8 @@
 #include <emscripten/emscripten.h>
 #include <emscripten/websocket.h>
 
-#include "../../../../FM79979/Src/FM79979Engine/Core/AllCoreInclude.h"
-#include "../FTCGameLib/GameApp/GameApp.h"
+#include "../../../FM79979/Src/FM79979Engine/Core/AllCoreInclude.h"
+#include "../GameLib/GameApp/GameApp.h"
 
 cGameApp* g_pGameApp = 0;
 cPreLoadFromInternet* g_pPreLoadFromInternet = nullptr;
@@ -293,9 +293,9 @@ int main()
 		//	printf("emscripten_websocket_is_supported failed\n");
 		//}
 		cGameApp::m_sbDebugFunctionWorking = false;
-		g_pGameApp = new cFishApp(cGameApp::m_spOpenGLRender->m_vGameResolution, Vector2(cGameApp::m_spOpenGLRender->m_vViewPortSize.Width(), cGameApp::m_spOpenGLRender->m_vViewPortSize.Height()));
-		cGameApp::m_spOpenGLRender->m_vGameResolution.x = 720;
-		cGameApp::m_spOpenGLRender->m_vGameResolution.y = 1280;
+		g_pGameApp = new cMagicTowerApp(cGameApp::m_spOpenGLRender->m_vGameResolution, Vector2(cGameApp::m_spOpenGLRender->m_vViewPortSize.Width(), cGameApp::m_spOpenGLRender->m_vViewPortSize.Height()));
+		cGameApp::m_spOpenGLRender->m_vGameResolution.x = 1280;
+		cGameApp::m_spOpenGLRender->m_vGameResolution.y = 720;
 		cGameApp::m_spOpenGLRender->SetAcceptRationWithGameresolution(CANVANS_HEIGHT, CANVANS_WIDTH, (int)cGameApp::m_spOpenGLRender->m_vGameResolution.x, (int)cGameApp::m_spOpenGLRender->m_vGameResolution.y);
 		//g_p0814adds = new cBaseImage("0814a.dds");
 		g_pGameApp->Init();

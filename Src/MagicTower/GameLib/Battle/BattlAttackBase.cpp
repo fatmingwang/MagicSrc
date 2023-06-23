@@ -9,7 +9,7 @@ cBattleBase::cBattleBase(eBattleType	e_eBattleType)
 	m_iObjectLV = 0;
 	m_fPower = 0.f;
 	m_EnergyRecoveryTime.SetTargetTime(1.f);
-	m_eBattleType = m_eBattleType;
+	m_eBattleType = e_eBattleType;
 }
 
 cBattleBase::~cBattleBase()

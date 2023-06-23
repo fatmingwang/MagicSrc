@@ -147,7 +147,7 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <LanguageExtensions>EnableLanguageExtensions</LanguageExtensions>
       <AdditionalOptions>-r %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;..\..\..\FM79979\Src\FM79979Engine\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>

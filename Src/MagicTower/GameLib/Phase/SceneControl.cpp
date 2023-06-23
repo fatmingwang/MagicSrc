@@ -14,8 +14,8 @@ cSceneControl::~cSceneControl()
 
 bool	cSceneControl::Load()
 {
-	WCHAR	l_str[MAX_PATH];
-	GetCurrentDirectory(MAX_PATH,l_str);
+	//WCHAR	l_str[MAX_PATH];
+	//GetCurrentDirectory(MAX_PATH,l_str);
 	bool l_b = m_GameData.Parse("MagicTower/Data.xml");
 	assert(l_b);
 	int	l_iTotalStorey = m_GameData.m_LevelData.Count();

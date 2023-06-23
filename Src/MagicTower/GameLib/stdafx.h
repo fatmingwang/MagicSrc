@@ -2,7 +2,7 @@
 #pragma once
 #pragma warning( disable : 4996 )
 #endif
-#include "AllcoreInclude.h" 
+#include "AllCoreInclude.h" 
 #include "FatmingAI/AllFatmingAIInclude.h" 
 #include "FMLevelData/AllLevelDataInclude.h" 
 #include "AllPhaseName.h"
