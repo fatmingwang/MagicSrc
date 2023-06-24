@@ -36,6 +36,9 @@
     <Filter Include="Game\Phase">
       <UniqueIdentifier>{53b10398-6080-42e6-8b2c-0225f8dc96a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Level\cyucelenMaze">
+      <UniqueIdentifier>{9608f955-3e38-4fe1-9794-c5e1a01cbc5e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -149,6 +152,12 @@
     <ClInclude Include="UI\VirtualGamePad.h">
       <Filter>Game\UI</Filter>
     </ClInclude>
+    <ClInclude Include="Level\cyucelenMaze\cell.h">
+      <Filter>Game\Level\cyucelenMaze</Filter>
+    </ClInclude>
+    <ClInclude Include="Level\cyucelenMaze\grid.h">
+      <Filter>Game\Level\cyucelenMaze</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameApp\GameApp.cpp">
@@ -258,6 +267,15 @@
     </ClCompile>
     <ClCompile Include="UI\VirtualGamePad.cpp">
       <Filter>Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Level\cyucelenMaze\cell.cpp">
+      <Filter>Game\Level\cyucelenMaze</Filter>
+    </ClCompile>
+    <ClCompile Include="Level\cyucelenMaze\cyucelen_main.cpp">
+      <Filter>Game\Level\cyucelenMaze</Filter>
+    </ClCompile>
+    <ClCompile Include="Level\cyucelenMaze\grid.cpp">
+      <Filter>Game\Level\cyucelenMaze</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

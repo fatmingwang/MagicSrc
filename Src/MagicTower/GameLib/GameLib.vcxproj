@@ -260,6 +260,8 @@
     <ClInclude Include="GameSystem\ResourceSystem.h" />
     <ClInclude Include="GameSystem\SoundSystem.h" />
     <ClInclude Include="GameSystem\TalkSystem.h" />
+    <ClInclude Include="Level\cyucelenMaze\cell.h" />
+    <ClInclude Include="Level\cyucelenMaze\grid.h" />
     <ClInclude Include="Level\LevelData.h" />
     <ClInclude Include="Level\MagicTowerDefineDataNode.h" />
     <ClInclude Include="Level\MapRule.h" />
@@ -298,6 +300,9 @@
     <ClCompile Include="GameSystem\ResourceSystem.cpp" />
     <ClCompile Include="GameSystem\SoundSystem.cpp" />
     <ClCompile Include="GameSystem\TalkSystem.cpp" />
+    <ClCompile Include="Level\cyucelenMaze\cell.cpp" />
+    <ClCompile Include="Level\cyucelenMaze\cyucelen_main.cpp" />
+    <ClCompile Include="Level\cyucelenMaze\grid.cpp" />
     <ClCompile Include="Level\LevelData.cpp" />
     <ClCompile Include="Level\MagicTowerDefineDataNode.cpp" />
     <ClCompile Include="Level\MapRule.cpp" />
