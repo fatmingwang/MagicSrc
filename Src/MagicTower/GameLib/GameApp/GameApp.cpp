@@ -4,6 +4,11 @@
 #include "../Object/MainCharacterBehavior.h"
 #include "../UI/UIInfo.h"
 #include "../FileNameDefine.h"
+
+#include "../Level/cyucelenMaze/grid.h"
+
+cCyucelenMazeGrid* g_pCyucelenMazeGrid = nullptr;
+
 UT::sTimeAndFPS g_TimeAndFPS;
 cSceneControl*					cMagicTowerApp::m_spSceneControl = 0;
 cOrthogonalCamera*				cMagicTowerApp::m_sp2DCamera = 0;
@@ -25,6 +30,8 @@ cMagicTowerApp::cMagicTowerApp(Vector2 e_vGameResolution, Vector2 e_vViewportSiz
 	m_spSceneControl = 0;
 	m_sp2DCamera = 0;
 	m_pUIInfo = 0;
+	g_pCyucelenMazeGrid = new cCyucelenMazeGrid(10, 10);
+	g_pCyucelenMazeGrid->generateMaze();
 }
 
 cMagicTowerApp::~cMagicTowerApp()
@@ -76,15 +83,22 @@ void	cMagicTowerApp::Render()
 	if( g_bGameLeave )
 		return;
 	cGameApp::Render();
-	if(m_pUIInfo)
-		m_pUIInfo->Render();
-	m_sp2DCamera->Render();
-	if( m_spSceneControl )
-		m_spSceneControl->Render();
-	if( m_spSceneControl )
-		m_spSceneControl->DebugRender();
-	cGameApp::RenderFont(0,0,UT::ComposeMsgByFormat(L"Mouse:%d,%d",cGameApp::m_sMousePosition.x,cGameApp::m_sMousePosition.y).c_str());
-	GLRender::glDisable2D();
+	if (g_pCyucelenMazeGrid)
+	{
+		g_pCyucelenMazeGrid->DebugRender();
+	}
+	else
+	{
+		if (m_pUIInfo)
+			m_pUIInfo->Render();
+		m_sp2DCamera->Render();
+		if (m_spSceneControl)
+			m_spSceneControl->Render();
+		if (m_spSceneControl)
+			m_spSceneControl->DebugRender();
+		cGameApp::RenderFont(0, 0, UT::ComposeMsgByFormat(L"Mouse:%d,%d", cGameApp::m_sMousePosition.x, cGameApp::m_sMousePosition.y).c_str());
+		GLRender::glDisable2D();
+	}
 #ifdef WIN32
 	SwapBuffers (this->m_spOpenGLRender->m_Hdc);
 #endif

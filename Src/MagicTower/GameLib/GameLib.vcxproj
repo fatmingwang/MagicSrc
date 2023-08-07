@@ -301,7 +301,6 @@
     <ClCompile Include="GameSystem\SoundSystem.cpp" />
     <ClCompile Include="GameSystem\TalkSystem.cpp" />
     <ClCompile Include="Level\cyucelenMaze\cell.cpp" />
-    <ClCompile Include="Level\cyucelenMaze\cyucelen_main.cpp" />
     <ClCompile Include="Level\cyucelenMaze\grid.cpp" />
     <ClCompile Include="Level\LevelData.cpp" />
     <ClCompile Include="Level\MagicTowerDefineDataNode.cpp" />

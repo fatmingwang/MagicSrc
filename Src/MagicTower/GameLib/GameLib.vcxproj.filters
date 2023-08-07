@@ -271,9 +271,6 @@
     <ClCompile Include="Level\cyucelenMaze\cell.cpp">
       <Filter>Game\Level\cyucelenMaze</Filter>
     </ClCompile>
-    <ClCompile Include="Level\cyucelenMaze\cyucelen_main.cpp">
-      <Filter>Game\Level\cyucelenMaze</Filter>
-    </ClCompile>
     <ClCompile Include="Level\cyucelenMaze\grid.cpp">
       <Filter>Game\Level\cyucelenMaze</Filter>
     </ClCompile>

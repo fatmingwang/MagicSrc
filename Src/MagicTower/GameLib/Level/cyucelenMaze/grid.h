@@ -1,39 +1,39 @@
-#ifndef GRID_H
-#define GRID_H
+#pragma once
 
 #include <stack>
 #include <vector>
 #include "cell.h"
 //#include "ncurses.h"
 
-class Grid
+class cCyucelenMazeGrid
 {
-	//let random be more stright.
-	struct sRandomData
-	{
-		eDirection Direction;
-		int iKeepDirectionCountMax;
-		int iKeepDirectionCountSmall;
-		int iRestTimeToKeepDirectionC;
-	};
+	////let random be more stright.
+	//struct sRandomData
+	//{
+	//	int iDirection;//eDirection
+	//	int iKeepDirectionCountMax;
+	//	int iKeepDirectionCountSmall;
+	//	int iRestTimeToKeepDirectionC;
+	//};
 private:
-  int width;
-  int height;
+	int width;
+	int height;
+	bool	m_bGenerationFinished;
 
-  std::vector<Cell> cells;
-  std::stack<Cell *> backtrace;
-  Cell *m_pCurrent;
+	std::vector<cCyucelenMazeCell> m_CellVector;
+	std::stack<cCyucelenMazeCell*> backtrace;
+	cCyucelenMazeCell* m_pCurrent;
 
-  void createCells();
-  int CalculateIndex(int i, int j);
-  std::vector<Cell *> getAvailableNeighbors();
-  Cell *findNextCell();
-  void render();
+	void createCells();
+	int CalculateIndex(int i, int j);
+	std::vector<cCyucelenMazeCell*> getAvailableNeighbors();
+	cCyucelenMazeCell* findNextCell();
+	void render();
 
- public:
-  Grid(int width, int height);
-  //-1 for generator all at once
-  void generateMaze(int e_iStep = -1);
+public:
+	cCyucelenMazeGrid(int width, int height);
+	//-1 for generator all at once
+	void	generateMaze(int e_iStep = -1);
+	void	DebugRender();
+	bool	IsGenerationFinished() { return m_bGenerationFinished; }
 };
-
-#endif
