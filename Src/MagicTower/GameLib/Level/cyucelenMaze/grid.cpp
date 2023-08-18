@@ -9,8 +9,8 @@
 cCyucelenMazeGrid::cCyucelenMazeGrid(int width, int height)
 {
 	m_bGenerationFinished = false;
-	this->width = width;
-	this->height = height;
+	this->m_iWidth = width;
+	this->m_iHeight = height;
 	createCells();
 	m_pCurrent = &m_CellVector[0];
 }
@@ -19,11 +19,12 @@ void cCyucelenMazeGrid::createCells()
 {
 	m_CellVector.clear();
 	m_bGenerationFinished = false;
-	for (int row = 0; row < height; row++)
+	for (int column = 0; column < m_iWidth; column++)
 	{
-		for (int column = 0; column < width; column++)
+		for (int row = 0; row < m_iHeight; row++)
 		{
-			m_CellVector.push_back(cCyucelenMazeCell(row, column));
+			int l_iIndex = column + row * m_iWidth;
+			m_CellVector.push_back(cCyucelenMazeCell(column, row, l_iIndex));
 		}
 	}
 }
@@ -61,6 +62,12 @@ void cCyucelenMazeGrid::generateMaze(int e_iStep)
 			break;
 		}
 	}
+#ifdef DEBUG
+	for (auto l_Cell : m_CellVector)
+	{
+		l_Cell.DumpInfo();
+	}
+#endif
 }
 
 void cCyucelenMazeGrid::render()
@@ -71,62 +78,77 @@ void cCyucelenMazeGrid::render()
 	}
 }
 
-void cCyucelenMazeGrid::DebugRender()
+void cCyucelenMazeGrid::DebugRender(int e_iPosX, int e_iPosY, bool e_bDoStrip)
 {
 	float	l_fGridSizeX = 100;
 	float	l_fGridSizeY = 100;
-	float	l_fWallToCenterX = 25;
-	float	l_fWallToCenterY = 25;
+	float	l_fWallToCenterX = 45;
+	float	l_fWallToCenterY = 45;
 	float	l_fOffsetX = 0;
 	float	l_fOffsetY = 0;
-	float	l_fStartPosX = 50;
-	float	l_fStartPosY = 50;
+	float	l_fStartPosX = 50+ e_iPosX;
+	float	l_fStartPosY = 50+ e_iPosY;
 	float	l_fCurrentPosX = l_fStartPosX;
 	float	l_fCurrentPosY = l_fStartPosY;
-	for (int i = 0; i < width; ++i)
+	for (int i = 0; i < m_iWidth; ++i)
 	{
 		l_fCurrentPosX = i * l_fGridSizeX + l_fStartPosX;
-		for (int j = 0; j < height; ++j)
+		for (int j = 0; j < m_iHeight; ++j)
 		{
 			l_fCurrentPosY = l_fStartPosY + j * l_fGridSizeY;
-			int l_iIndex = i + j * width;
-			if (l_iIndex >= width * height)
+			int l_iIndex = i + j * m_iWidth;
+			if (l_iIndex >= m_iWidth * m_iHeight)
 			{
 				int a = 0;
 			}
 			cCyucelenMazeCell& l_Cell = m_CellVector[l_iIndex];
+			bool l_bIsLeftExists = false;
+			bool l_bIsUpExists = false;
 			for (int k = 0; k < 4; ++k)
 			{
-				Vector2 l_vPosOffset(0, 0);
-				if (l_Cell.walls[k])
+				if (!l_Cell.walls[k])
 				{
-					const wchar_t* l_strWall = nullptr;
-					switch (k)
+					continue;
+				}
+				Vector2 l_vPosOffset(0, 0);
+				const wchar_t* l_strWall = nullptr;
+				switch (k)
+				{
+				case cCyucelenMazeCell::direction::LEFT:
+					if (i > 0 && e_bDoStrip)
 					{
-					case cCyucelenMazeCell::direction::LEFT:
-						l_vPosOffset.x = -l_fWallToCenterX;
-						l_strWall = L"|";
-						break;
-					case cCyucelenMazeCell::direction::TOP:
-						l_strWall = L"-";
-						l_vPosOffset.y = -l_fWallToCenterX;
-						break;
-					case cCyucelenMazeCell::direction::RIGHT:
-						l_strWall = L"|";
-						l_vPosOffset.x = l_fWallToCenterX;
-						break;
-					case cCyucelenMazeCell::direction::BOTTOM:
-						l_strWall = L"_";
-						l_vPosOffset.y = l_fWallToCenterX;
-						break;
+						continue;
 					}
+					l_vPosOffset.x = -l_fWallToCenterX;
+					l_strWall = L"O";
+					break;
+				case cCyucelenMazeCell::direction::TOP:
+					if (j > 0 && e_bDoStrip)
+					{
+						continue;
+					}
+					l_strWall = L"O";
+					l_vPosOffset.y = -l_fWallToCenterX;
+					break;
+				case cCyucelenMazeCell::direction::RIGHT:
+					l_strWall = L"O";
+					l_vPosOffset.x = l_fWallToCenterX;
+					break;
+				case cCyucelenMazeCell::direction::BOTTOM:
+					l_strWall = L"O";
+					l_vPosOffset.y = l_fWallToCenterX;
+					break;
+				}
+				if (l_strWall )
+				{
 					cGameApp::m_spGlyphFontRender->SetFontColor(Vector4(1, 1, 0, 1));
 					cGameApp::RenderFont(l_fCurrentPosX+ l_vPosOffset.x, l_fCurrentPosY+ l_vPosOffset.y, l_strWall);
 				}
-				else
-				{
-
-				}
+				//else
+				//{
+				//	cGameApp::m_spGlyphFontRender->SetFontColor(Vector4(0, 1, 0, 1));
+				//	cGameApp::RenderFont(l_fCurrentPosX + l_vPosOffset.x, l_fCurrentPosY + l_vPosOffset.y, L"R");
+				//}
 			}
 			cGameApp::m_spGlyphFontRender->SetFontColor(Vector4(1, 1, 1, 1));
 			cGameApp::RenderFont(l_fCurrentPosX, l_fCurrentPosY, ValueToStringW(l_iIndex).c_str());
@@ -150,7 +172,9 @@ std::vector<cCyucelenMazeCell*> cCyucelenMazeGrid::getAvailableNeighbors() {
 
 	int currentRow = m_pCurrent->getRow();
 	int currentColumn = m_pCurrent->getColumn();
-
+#ifdef DEBUG
+	int iIndex = m_pCurrent->iIndex;
+#endif
 	int neighborIndexes[4] =
 	{
 		CalculateIndex(currentRow - 1, currentColumn),
@@ -172,9 +196,9 @@ std::vector<cCyucelenMazeCell*> cCyucelenMazeGrid::getAvailableNeighbors() {
 
 int cCyucelenMazeGrid::CalculateIndex(int row, int column)
 {
-	if (row < 0 || column < 0 || column > width - 1 || row > height - 1)
+	if (row < 0 || column < 0 || column > m_iWidth - 1 || row > m_iHeight - 1)
 	{
 		return -1;
 	}
-	return column + row * width;
+	return column + row * m_iWidth;
 }

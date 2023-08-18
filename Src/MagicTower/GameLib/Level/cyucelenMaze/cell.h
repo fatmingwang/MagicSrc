@@ -18,7 +18,7 @@ private:
 public:
 	enum direction { TOP, RIGHT, BOTTOM, LEFT, MAX };
 	bool walls[4];
-	cCyucelenMazeCell(int i, int j);
+	cCyucelenMazeCell(int i, int j,int e_iIndex);
 
 	void removeWalls(cCyucelenMazeCell&);
 
@@ -30,4 +30,8 @@ public:
 	int		getColumn();
 	void	Render();
 	void	DebugRender();
+	void	DumpInfo();
+#ifdef DEBUG
+	int iIndex;
+#endif
 };

@@ -5,6 +5,15 @@
 #include "cell.h"
 //#include "ncurses.h"
 
+
+// __ __ __ __ __ __
+//| 0| 1| 2| 3| 4| 5|
+// -- -- -- -- -- --
+//| 6| 7| 8| 9|10|11|
+// -- -- -- -- -- --
+
+
+
 class cCyucelenMazeGrid
 {
 	////let random be more stright.
@@ -16,8 +25,8 @@ class cCyucelenMazeGrid
 	//	int iRestTimeToKeepDirectionC;
 	//};
 private:
-	int width;
-	int height;
+	int		m_iWidth;
+	int		m_iHeight;
 	bool	m_bGenerationFinished;
 
 	std::vector<cCyucelenMazeCell> m_CellVector;
@@ -34,6 +43,6 @@ public:
 	cCyucelenMazeGrid(int width, int height);
 	//-1 for generator all at once
 	void	generateMaze(int e_iStep = -1);
-	void	DebugRender();
+	void	DebugRender(int e_iPosX, int e_iPosY,bool e_bDoStrip);
 	bool	IsGenerationFinished() { return m_bGenerationFinished; }
 };

@@ -3,10 +3,13 @@
 #include <stdlib.h>
 #include <iostream>
 
-cCyucelenMazeCell::cCyucelenMazeCell(int row, int column)
+cCyucelenMazeCell::cCyucelenMazeCell(int row, int column, int e_iIndex)
 {
 	this->row = row;
 	this->column = column;
+#ifdef DEBUG
+	iIndex = e_iIndex;
+#endif
 	visited = false;
 	m_bIsDeadEnd = false;
 	setWalls();
@@ -36,6 +39,27 @@ void cCyucelenMazeCell::Render()
 
 void	cCyucelenMazeCell::DebugRender()
 {
+}
+
+void cCyucelenMazeCell::DumpInfo()
+{
+#ifdef DEBUG
+	std::string l_strInfo = ValueToString(this->iIndex);
+	l_strInfo += ":";
+	for (int l_Direction = direction::TOP; l_Direction != direction::MAX; ++l_Direction)
+	{
+		if (this->walls[l_Direction])
+		{
+			l_strInfo += "1,";
+		}
+		else
+		{
+			l_strInfo += "0,";
+		}
+	}
+	FMLOG(l_strInfo.c_str());
+	
+#endif
 }
 
 void cCyucelenMazeCell::removeWalls(cCyucelenMazeCell& next)

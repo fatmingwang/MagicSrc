@@ -30,7 +30,7 @@ cMagicTowerApp::cMagicTowerApp(Vector2 e_vGameResolution, Vector2 e_vViewportSiz
 	m_spSceneControl = 0;
 	m_sp2DCamera = 0;
 	m_pUIInfo = 0;
-	g_pCyucelenMazeGrid = new cCyucelenMazeGrid(10, 10);
+	g_pCyucelenMazeGrid = new cCyucelenMazeGrid(5, 5);
 	g_pCyucelenMazeGrid->generateMaze();
 }
 
@@ -85,7 +85,7 @@ void	cMagicTowerApp::Render()
 	cGameApp::Render();
 	if (g_pCyucelenMazeGrid)
 	{
-		g_pCyucelenMazeGrid->DebugRender();
+		g_pCyucelenMazeGrid->DebugRender(0,0,true);
 	}
 	else
 	{
