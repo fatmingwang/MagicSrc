@@ -19,6 +19,7 @@ public:
 	enum direction { TOP, RIGHT, BOTTOM, LEFT, MAX };
 	bool walls[4];
 	cCyucelenMazeCell(int i, int j,int e_iIndex);
+	cCyucelenMazeCell();
 
 	void removeWalls(cCyucelenMazeCell&);
 
@@ -31,6 +32,8 @@ public:
 	void	Render();
 	void	DebugRender();
 	void	DumpInfo();
+	//e_pWallPosAndDirectionVector:string is Vector2
+	void	DumpWallData(std::map<std::string, bool>* e_pWallPosAndDirectionVector,float e_fStartX, float e_fStartY, float e_fGridSizeX, float e_fGridSizeY);
 #ifdef DEBUG
 	int iIndex;
 #endif

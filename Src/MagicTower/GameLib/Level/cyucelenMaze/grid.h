@@ -45,4 +45,8 @@ public:
 	void	generateMaze(int e_iStep = -1);
 	void	DebugRender(int e_iPosX, int e_iPosY,bool e_bDoStrip);
 	bool	IsGenerationFinished() { return m_bGenerationFinished; }
+	//
+	//bool true for vertical ,false for horozontal
+	//
+	void	GetAllWallData(std::map<std::string, bool>* e_pWallPosAndDirectionVector, float e_fStartX, float e_fStartY, float e_fGridSizeX, float e_fGridSizeY);
 };

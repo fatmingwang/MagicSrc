@@ -3,6 +3,17 @@
 #include <stdlib.h>
 #include <iostream>
 
+cCyucelenMazeCell::cCyucelenMazeCell()
+{
+	this->row = -1;
+	this->column = -1;
+#ifdef DEBUG
+	iIndex = -1;
+#endif
+	visited = false;
+	m_bIsDeadEnd = false;
+	setWalls();
+}
 cCyucelenMazeCell::cCyucelenMazeCell(int row, int column, int e_iIndex)
 {
 	this->row = row;
@@ -60,6 +71,49 @@ void cCyucelenMazeCell::DumpInfo()
 	FMLOG(l_strInfo.c_str());
 	
 #endif
+}
+
+void	cCyucelenMazeCell::DumpWallData(std::map<std::string, bool>* e_pWallPosAndDirectionVector, float e_fStartX, float e_fStartY, float e_fGridSizeX, float e_fGridSizeY)
+{
+	Vector2 l_Pos(e_fStartX + e_fGridSizeX * this->column, e_fStartY + e_fGridSizeY * this->row);
+	for (int e_Direction = direction::TOP; e_Direction != direction::MAX; ++e_Direction)
+	{
+		if (walls[e_Direction])
+		{			
+			bool l_bHorizontal = true;
+			Vector2 l_FinalPos = l_Pos;
+			if (e_Direction = direction::LEFT)
+			{
+				l_FinalPos.x += -e_fGridSizeX / 2;
+				l_FinalPos.y += -e_fGridSizeY / 2;
+			}
+			else
+			if (e_Direction = direction::TOP)
+			{
+				l_FinalPos.x += -e_fGridSizeX / 2 + e_fStartX;
+				l_FinalPos.y += -e_fGridSizeY / 2 + e_fStartY;
+			}
+			else
+			if (e_Direction = direction::RIGHT)
+			{
+				l_FinalPos.x += e_fGridSizeX / 2 + e_fStartX;
+				l_FinalPos.y += e_fGridSizeY / 2 + e_fStartY;
+
+			}
+			else
+			if (e_Direction = direction::BOTTOM)
+			{
+				l_FinalPos.x += -e_fGridSizeX / 2 + e_fStartX;
+				l_FinalPos.y += e_fGridSizeY / 2 + e_fStartY;
+
+			}
+			if (e_Direction == direction::TOP || e_Direction == direction::BOTTOM)
+			{
+				l_bHorizontal = false;
+			}
+			e_pWallPosAndDirectionVector->insert(std::make_pair(ValueToString(l_FinalPos), l_bHorizontal));
+		}
+	}
 }
 
 void cCyucelenMazeCell::removeWalls(cCyucelenMazeCell& next)
