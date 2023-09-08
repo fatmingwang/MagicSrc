@@ -29,6 +29,11 @@ private:
 	int		m_iHeight;
 	bool	m_bGenerationFinished;
 
+	float m_fStartX;
+	float m_fStartY;
+	float m_fGridSizeX;
+	float m_fGridSizeY;
+
 	std::vector<cCyucelenMazeCell> m_CellVector;
 	std::stack<cCyucelenMazeCell*> backtrace;
 	cCyucelenMazeCell* m_pCurrent;
@@ -48,5 +53,5 @@ public:
 	//
 	//bool true for vertical ,false for horozontal
 	//
-	void	GetAllWallData(std::map<std::string, bool>* e_pWallPosAndDirectionVector, float e_fStartX, float e_fStartY, float e_fGridSizeX, float e_fGridSizeY);
+	void	GetAllWallData(std::map<std::string, bool>* e_pWallPosAndDirectionVector, float e_fStartX, float e_fStartY);
 };

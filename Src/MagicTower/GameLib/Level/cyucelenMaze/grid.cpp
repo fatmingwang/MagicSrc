@@ -8,6 +8,11 @@
 
 cCyucelenMazeGrid::cCyucelenMazeGrid(int width, int height)
 {
+	m_fStartX = 50;
+	m_fStartY = 50;
+	m_fGridSizeX = 100;
+	m_fGridSizeY = 100;
+
 	m_bGenerationFinished = false;
 	this->m_iWidth = width;
 	this->m_iHeight = height;
@@ -81,14 +86,14 @@ void cCyucelenMazeGrid::render()
 
 void cCyucelenMazeGrid::DebugRender(int e_iPosX, int e_iPosY, bool e_bDoStrip)
 {
-	float	l_fGridSizeX = 100;
-	float	l_fGridSizeY = 100;
-	float	l_fStartPosX = 50.f+ e_iPosX;
-	float	l_fStartPosY = 50.f+ e_iPosY;
+	float	l_fGridSizeX = m_fGridSizeX;
+	float	l_fGridSizeY = m_fGridSizeY;
+	float	l_fStartPosX = m_fStartX + e_iPosX;
+	float	l_fStartPosY = m_fStartY + e_iPosY;
 	float	l_fCurrentPosX = l_fStartPosX;
 	float	l_fCurrentPosY = l_fStartPosY;
-	float	l_fWallToCenterX = 45;
-	float	l_fWallToCenterY = 45;
+	float	l_fWallToCenterX = l_fGridSizeX/2;
+	float	l_fWallToCenterY = l_fGridSizeY/2;
 	for (int i = 0; i < m_iWidth; ++i)
 	{
 		l_fCurrentPosX = i * l_fGridSizeX + l_fStartPosX;
@@ -156,7 +161,7 @@ void cCyucelenMazeGrid::DebugRender(int e_iPosX, int e_iPosY, bool e_bDoStrip)
 }
 //row odd is horizontal    -
 //row even is vertical     |
-void cCyucelenMazeGrid::GetAllWallData(std::map<std::string, bool>* e_pWallPosAndDirectionVector, float e_fStartX, float e_fStartY, float e_fGridSizeX, float e_fGridSizeY)
+void cCyucelenMazeGrid::GetAllWallData(std::map<std::string, bool>* e_pWallPosAndDirectionVector, float e_fStartX, float e_fStartY)
 {
 	for (int i=0;i<this->m_iHeight;++i)
 	{
@@ -164,7 +169,7 @@ void cCyucelenMazeGrid::GetAllWallData(std::map<std::string, bool>* e_pWallPosAn
 		{
 			int l_iIndex = j+i* m_iWidth;
 			auto l_Cell = m_CellVector[l_iIndex];
-			l_Cell.DumpWallData(e_pWallPosAndDirectionVector, e_fStartX,e_fStartY,e_fGridSizeX,e_fGridSizeY);
+			l_Cell.DumpWallData(e_pWallPosAndDirectionVector, e_fStartX+this->m_fStartX,e_fStartY + this->m_fStartY,this->m_fGridSizeX, this->m_fGridSizeY);
 		}
 		
 	}

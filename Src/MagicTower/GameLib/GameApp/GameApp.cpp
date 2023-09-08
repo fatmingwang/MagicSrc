@@ -33,12 +33,9 @@ cMagicTowerApp::cMagicTowerApp(Vector2 e_vGameResolution, Vector2 e_vViewportSiz
 	g_pCyucelenMazeGrid = new cCyucelenMazeGrid(10, 7);
 	g_pCyucelenMazeGrid->generateMaze();
 	std::map<std::string, bool>l_WallPosAndDirectionVector;
-	float l_fStartX = 50;
-	float l_fStartY = 50;
-	float l_fGridSizeX = 50;
-	float l_fGridSizeY = 50;
-	;
-	g_pCyucelenMazeGrid->GetAllWallData(&l_WallPosAndDirectionVector, l_fStartX, l_fStartY,l_fGridSizeX, l_fGridSizeY);
+	float l_fStartX = 0;
+	float l_fStartY = 0;
+	g_pCyucelenMazeGrid->GetAllWallData(&l_WallPosAndDirectionVector, l_fStartX, l_fStartY);
 }
 
 cMagicTowerApp::~cMagicTowerApp()
