@@ -78,6 +78,7 @@ void	cCyucelenMazeCell::DumpWallData(std::map<std::string, bool>* e_pWallPosAndD
 	Vector2 l_Pos(e_fStartX + e_fGridSizeX * this->column, e_fStartY + e_fGridSizeY * this->row);
 	int l_iMax = direction::MAX;
 	int l_Direction = 0;
+	l_Pos.y -= e_fGridSizeY / 2-15;
 	for (; l_Direction < l_iMax; ++l_Direction)
 	{
 		if (walls[l_Direction])
@@ -86,32 +87,32 @@ void	cCyucelenMazeCell::DumpWallData(std::map<std::string, bool>* e_pWallPosAndD
 			Vector2 l_FinalPos = l_Pos;
 			if (l_Direction == direction::LEFT)
 			{
-				l_FinalPos.x += -e_fGridSizeX / 2;
-				l_FinalPos.y += -e_fGridSizeY / 2;
+				l_FinalPos.x += -(e_fGridSizeX /2);
 			}
 			else
 			if (l_Direction == direction::TOP)
 			{
-				l_FinalPos.x += -e_fGridSizeX / 2;
-				l_FinalPos.y += -e_fGridSizeY / 2;
+				l_FinalPos.y -= e_fGridSizeY / 2;
 			}
 			else
 			if (l_Direction == direction::RIGHT)
 			{
 				l_FinalPos.x += e_fGridSizeX / 2;
-				l_FinalPos.y += e_fGridSizeY / 2;
 
 			}
 			else
 			if (l_Direction == direction::BOTTOM)
 			{
-				l_FinalPos.x += -e_fGridSizeX / 2;
 				l_FinalPos.y += e_fGridSizeY / 2;
 
 			}
-			if (l_Direction == direction::TOP || l_Direction == direction::BOTTOM)
+			if (l_Direction == direction::LEFT || l_Direction == direction::RIGHT)
 			{
 				l_bHorizontal = false;
+			}
+			if (l_FinalPos.x == 0)
+			{
+				int a = 0;
 			}
 			e_pWallPosAndDirectionVector->insert(std::make_pair(ValueToString(l_FinalPos), l_bHorizontal));
 		}

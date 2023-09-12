@@ -8,7 +8,7 @@
 
 cCyucelenMazeGrid::cCyucelenMazeGrid(int width, int height)
 {
-	m_fStartX = 50;
+	m_fStartX = 150;
 	m_fStartY = 50;
 	m_fGridSizeX = 100;
 	m_fGridSizeY = 100;
@@ -169,6 +169,10 @@ void cCyucelenMazeGrid::GetAllWallData(std::map<std::string, bool>* e_pWallPosAn
 		{
 			int l_iIndex = j+i* m_iWidth;
 			auto l_Cell = m_CellVector[l_iIndex];
+			if (l_iIndex == 12)
+			{
+				int a = 0;
+			}
 			l_Cell.DumpWallData(e_pWallPosAndDirectionVector, e_fStartX+this->m_fStartX,e_fStartY + this->m_fStartY,this->m_fGridSizeX, this->m_fGridSizeY);
 		}
 		

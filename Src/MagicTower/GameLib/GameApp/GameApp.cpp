@@ -15,6 +15,20 @@ cOrthogonalCamera*				cMagicTowerApp::m_sp2DCamera = 0;
 cMainRoleData*					cMagicTowerApp::m_spMainRoleData = 0;;
 cMagicTowerApp*					g_pMagicTowerApp = 0;
 bool							g_bGameLeave = false;
+std::map<std::string, bool>		g_WallPosAndDirectionVector;
+cBaseImage* g_pWallImae = nullptr;
+void	GenRandomMap()
+{
+	auto l_iWidth = rand() % 5 + 6;
+	auto l_iHeight = rand() % 5 + 2;
+	SAFE_DELETE(g_pCyucelenMazeGrid);
+	g_pCyucelenMazeGrid = new cCyucelenMazeGrid(l_iWidth, l_iHeight);
+	g_pCyucelenMazeGrid->generateMaze();
+	float l_fStartX = 0;
+	float l_fStartY = 0;
+	g_WallPosAndDirectionVector.clear();
+	g_pCyucelenMazeGrid->GetAllWallData(&g_WallPosAndDirectionVector, l_fStartX, l_fStartY);
+}
 #ifdef WIN32
 cMagicTowerApp::cMagicTowerApp(HWND e_Hwnd, Vector2 e_vGameResolution, Vector2 e_vViewportSize)
 	:cGameApp(e_Hwnd, e_vGameResolution, e_vViewportSize)
@@ -30,12 +44,9 @@ cMagicTowerApp::cMagicTowerApp(Vector2 e_vGameResolution, Vector2 e_vViewportSiz
 	m_spSceneControl = 0;
 	m_sp2DCamera = 0;
 	m_pUIInfo = 0;
-	g_pCyucelenMazeGrid = new cCyucelenMazeGrid(10, 7);
-	g_pCyucelenMazeGrid->generateMaze();
-	std::map<std::string, bool>l_WallPosAndDirectionVector;
-	float l_fStartX = 0;
-	float l_fStartY = 0;
-	g_pCyucelenMazeGrid->GetAllWallData(&l_WallPosAndDirectionVector, l_fStartX, l_fStartY);
+
+	g_pWallImae = new cBaseImage("MagicTower/Image/Wall.png");
+	GenRandomMap();
 }
 
 cMagicTowerApp::~cMagicTowerApp()
@@ -89,6 +100,25 @@ void	cMagicTowerApp::Render()
 	cGameApp::Render();
 	if (g_pCyucelenMazeGrid)
 	{
+		int l_iIndex = 0;
+		for (auto l_IT = g_WallPosAndDirectionVector.begin(); l_IT != g_WallPosAndDirectionVector.end(); ++l_IT)
+		{
+			auto l_Data = l_IT;
+			Vector2 l_vPos = GetVector2(l_Data->first.c_str());
+			if (l_vPos.x < 0)
+			{
+				int a = 0;
+			}
+			bool l_bHorizontal = l_Data->second;
+			auto l_Mat = cMatrix44::TranslationMatrix(l_vPos);
+			if (l_bHorizontal)
+			{
+				l_Mat *= cMatrix44::ZAxisRotationMatrix(3.14 / 2);
+			}
+			g_pWallImae->Render(l_Mat);
+			//cGameApp::RenderFont(l_vPos.x, l_vPos.y+15,ValueToStringW(l_iIndex));
+			++l_iIndex;
+		}
 		g_pCyucelenMazeGrid->DebugRender(0,0,true);
 	}
 	else
@@ -154,6 +184,7 @@ void	cMagicTowerApp::KeyDown(char e_char)
 {
 	if( g_bGameLeave )
 		return;
+	GenRandomMap();
 	//cGameApp::KeyDown(e_char);
 	if( m_spSceneControl )
 		m_spSceneControl->KeyDown(e_char);
