@@ -14,7 +14,7 @@
 
 
 
-class cCyucelenMazeGrid
+class cCyucelenMazeGrid :public Frame
 {
 	////let random be more stright.
 	//struct sRandomData
@@ -25,12 +25,11 @@ class cCyucelenMazeGrid
 	//	int iRestTimeToKeepDirectionC;
 	//};
 private:
+	struct sBatchData* m_pBatchData;
 	int		m_iWidth;
 	int		m_iHeight;
 	bool	m_bGenerationFinished;
 
-	float m_fStartX;
-	float m_fStartY;
 	float m_fGridSizeX;
 	float m_fGridSizeY;
 
@@ -42,16 +41,20 @@ private:
 	int CalculateIndex(int i, int j);
 	std::vector<cCyucelenMazeCell*> getAvailableNeighbors();
 	cCyucelenMazeCell* findNextCell();
-	void render();
-
+	cBaseImage* m_pWallImae;
+	std::map<std::string, bool>		m_WallPosAndDirectionVector;
 public:
 	cCyucelenMazeGrid(int width, int height);
+	virtual ~cCyucelenMazeGrid();
 	//-1 for generator all at once
 	void	generateMaze(int e_iStep = -1);
-	void	DebugRender(int e_iPosX, int e_iPosY,bool e_bDoStrip);
+	void	DebugRender(bool e_bDoStrip);
+	void	Render();
 	bool	IsGenerationFinished() { return m_bGenerationFinished; }
 	//
 	//bool true for vertical ,false for horozontal
 	//
-	void	GetAllWallData(std::map<std::string, bool>* e_pWallPosAndDirectionVector, float e_fStartX, float e_fStartY);
+	void	GetAllWallData(std::map<std::string, bool>* e_pWallPosAndDirectionVector);
+	void	GenRandomMap();
+
 };
