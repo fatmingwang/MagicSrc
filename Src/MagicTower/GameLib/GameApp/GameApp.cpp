@@ -5,9 +5,9 @@
 #include "../UI/UIInfo.h"
 #include "../FileNameDefine.h"
 
-#include "../Level/cyucelenMaze/grid.h"
+#include "../Level/MazeRender.h"
 
-cCyucelenMazeGrid* g_pCyucelenMazeGrid = nullptr;
+cMazeRender* g_pCyucelenMazeGrid = nullptr;
 
 UT::sTimeAndFPS g_TimeAndFPS;
 cSceneControl*					cMagicTowerApp::m_spSceneControl = 0;
@@ -32,7 +32,9 @@ cMagicTowerApp::cMagicTowerApp(Vector2 e_vGameResolution, Vector2 e_vViewportSiz
 	m_spSceneControl = 0;
 	m_sp2DCamera = 0;
 	m_pUIInfo = 0;
-	g_pCyucelenMazeGrid = new cCyucelenMazeGrid(6,6);
+	g_pCyucelenMazeGrid = new cMazeRender(6,6);
+	g_pCyucelenMazeGrid->SetLocalPosition(Vector3(150, 150, 0));
+	g_pCyucelenMazeGrid->GenRandomMap();
 }
 
 cMagicTowerApp::~cMagicTowerApp()

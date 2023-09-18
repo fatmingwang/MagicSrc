@@ -267,6 +267,7 @@
     <ClInclude Include="Level\MapRule.h" />
     <ClInclude Include="Level\MapSceneRule.h" />
     <ClInclude Include="Level\MazeGenerator.h" />
+    <ClInclude Include="Level\MazeRender.h" />
     <ClInclude Include="Level\StageData.h" />
     <ClInclude Include="Object\CharacterBase.h" />
     <ClInclude Include="Object\ItemData.h" />
@@ -307,6 +308,7 @@
     <ClCompile Include="Level\MapRule.cpp" />
     <ClCompile Include="Level\MapSceneRule.cpp" />
     <ClCompile Include="Level\MazeGenerator.cpp" />
+    <ClCompile Include="Level\MazeRender.cpp" />
     <ClCompile Include="Level\StageData.cpp" />
     <ClCompile Include="Object\CharacterBase.cpp" />
     <ClCompile Include="Object\ItemData.cpp" />

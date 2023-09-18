@@ -39,6 +39,9 @@
     <Filter Include="Game\Level\cyucelenMaze">
       <UniqueIdentifier>{9608f955-3e38-4fe1-9794-c5e1a01cbc5e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Level\MazeRender">
+      <UniqueIdentifier>{d17cb285-0b5c-4fd5-885e-9d086e50946d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -158,6 +161,9 @@
     <ClInclude Include="Level\cyucelenMaze\grid.h">
       <Filter>Game\Level\cyucelenMaze</Filter>
     </ClInclude>
+    <ClInclude Include="Level\MazeRender.h">
+      <Filter>Game\Level\MazeRender</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameApp\GameApp.cpp">
@@ -273,6 +279,9 @@
     </ClCompile>
     <ClCompile Include="Level\cyucelenMaze\grid.cpp">
       <Filter>Game\Level\cyucelenMaze</Filter>
+    </ClCompile>
+    <ClCompile Include="Level\MazeRender.cpp">
+      <Filter>Game\Level\MazeRender</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
