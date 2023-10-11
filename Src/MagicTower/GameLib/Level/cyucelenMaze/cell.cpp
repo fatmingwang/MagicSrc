@@ -119,6 +119,30 @@ void	cCyucelenMazeCell::DumpWallData(std::map<std::string, bool>* e_pWallPosAndD
 	}
 }
 
+bool cCyucelenMazeCell::IsMoveable(eDirection e_eDirection)
+{
+	if (e_eDirection == eDirection::eD_UP)
+	{
+		return walls[TOP];
+	}
+	else
+	if (e_eDirection == eDirection::eD_RIGHT)
+	{
+		return walls[RIGHT];
+	}
+	else
+	if (e_eDirection == eDirection::eD_DOWN)
+	{
+		return walls[BOTTOM];
+	}
+	else
+	if (e_eDirection == eDirection::eD_LEFT)
+	{
+		return walls[LEFT];
+	}
+	return false;
+}
+
 void cCyucelenMazeCell::removeWalls(cCyucelenMazeCell& next)
 {
 	int x = column - next.column;

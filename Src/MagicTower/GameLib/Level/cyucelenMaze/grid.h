@@ -27,6 +27,9 @@ class cCyucelenMazeGrid
 protected:
 	int		m_iWidth;
 	int		m_iHeight;
+	int		m_iLastGeneratedPosX;
+	int		m_iLastGeneratedPosY;
+
 	bool	m_bGenerationFinished;
 
 	float	m_fGridSizeX;
@@ -53,5 +56,11 @@ public:
 	//
 	void	GetAllWallData(std::map<std::string, bool>* e_pWallPosAndDirectionVector,float e_fStartX, float e_fStartY);
 	void	GenRandomMap(float e_fStartX, float e_fStartY);
+	cCyucelenMazeCell* GetCell(int e_iX, int e_iY);
+	bool	IsMovable(int e_iFromX, int e_iFromY,int e_iToX, int e_iToY);
+	int		GetWidth();
+	int		GetHeight();
+	void	GetLastPoint(int&e_iX, int&e_iY);
+	void	GetRightDownCornerPoint(int& e_iX, int& e_iY);
 
 };

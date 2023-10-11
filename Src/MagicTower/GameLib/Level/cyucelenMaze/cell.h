@@ -16,8 +16,8 @@ private:
 	bool m_bIsDeadEnd;
 
 public:
-	enum direction { TOP, RIGHT, BOTTOM, LEFT, MAX };
-	bool walls[4];
+	enum direction { TOP = 0, RIGHT, BOTTOM, LEFT, MAX };
+	bool walls[direction::MAX];
 	cCyucelenMazeCell(int i, int j,int e_iIndex);
 	cCyucelenMazeCell();
 
@@ -37,4 +37,5 @@ public:
 #ifdef DEBUG
 	int iIndex;
 #endif
+	bool	IsMoveable(eDirection e_eDirection);
 };

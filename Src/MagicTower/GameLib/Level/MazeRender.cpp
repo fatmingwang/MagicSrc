@@ -146,3 +146,91 @@ void cMazeRender::GenerateMaze(int e_iStep)
 		}
 	}
 }
+
+bool cMazeRender::IsMovable(int e_iNowPosX, int e_iNowPosY,eDirection e_eDirection)
+{
+	cCyucelenMazeCell*l_pCellt = GetCell(e_iNowPosX,e_iNowPosY);
+	if (!l_pCellt)
+	{
+		return false;
+	}
+	return l_pCellt->IsMoveable(e_eDirection);
+}
+
+bool cMazeRender::IsMovable(int e_iNowPosX, int e_iNowPosY, int e_iTargetPosX, int e_iTargetPosY)
+{
+	//cCyucelenMazeCell* l_pCellt = GetCell(e_iNowPosX, e_iNowPosY);
+	//if (!l_pCellt)
+	//{
+	//	return false;
+	//}
+	//return l_pCellt->IsMoveable(e_eDirection);
+	return false;
+}
+
+bool cMazeRender::NextJunction(int e_iNowPosX, int e_iNowPosY,eDirection e_eDirection, int& e_iPosX, int& e_iPosY)
+{
+	cCyucelenMazeCell*l_pCellt = GetCell(e_iNowPosX, e_iNowPosY);
+	if (!l_pCellt)
+	{
+		e_iPosX = -1;
+		e_iPosY = -1;
+		return false;
+	}
+	e_iPosX = l_pCellt->getRow();
+	e_iPosY = l_pCellt->getColumn();
+	while (l_pCellt)
+	{
+		if (l_pCellt->IsMoveable(e_eDirection))
+		{
+			e_iPosX = l_pCellt->getRow();
+			e_iPosY = l_pCellt->getColumn();
+			switch (e_eDirection)
+			{
+				case eD_LEFT:
+					--e_iNowPosX;
+					break;
+				case eD_UP:
+					--e_iNowPosY;
+					break;
+				case eD_RIGHT:
+					++e_iNowPosX;
+					break;
+				case eD_DOWN:
+					++e_iNowPosY;
+					break;
+			}
+			l_pCellt = GetCell(e_iNowPosX, e_iNowPosY);
+		}
+		else
+		{
+			break;
+		}
+	}
+
+	return true;
+}
+
+std::vector<eDirection> cMazeRender::GetMovableDirection(int e_iNowPosX, int e_iNowPosY)
+{
+	std::vector<eDirection> l_Vector;
+	cCyucelenMazeCell*l_pCellt = GetCell(e_iNowPosX, e_iNowPosY);
+	if (l_pCellt)
+	{
+		eDirection l_eLazyArray[4] = { eD_LEFT ,eD_UP,eD_RIGHT,eD_DOWN};
+		for (int i = 0; i < 4; ++i)
+		{
+			if (l_pCellt->IsMoveable(l_eLazyArray[i]))
+			{
+				l_Vector.push_back(l_eLazyArray[i]);
+			}
+		}
+	}
+	return l_Vector;
+}
+
+bool cMazeRender::GetExitPoint(int& e_iPosX, int& e_iPosY)
+{
+	this->GetLastPoint(e_iPosX, e_iPosY);
+	return true;
+}

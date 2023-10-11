@@ -8,6 +8,8 @@
 
 cCyucelenMazeGrid::cCyucelenMazeGrid(int width, int height)
 {
+	m_iLastGeneratedPosX = -1;
+	m_iLastGeneratedPosY = -1;
 	m_fGridSizeX = 100;
 	m_fGridSizeY = 100;
 
@@ -67,6 +69,8 @@ void cCyucelenMazeGrid::generateMaze(int e_iStep)
 		if (backtrace.size() == 0)
 		{//finish
 			m_bGenerationFinished = true;
+			m_iLastGeneratedPosX = m_pCurrent->getRow();
+			m_iLastGeneratedPosY = m_pCurrent->getColumn();
 			break;
 		}
 	}
@@ -108,6 +112,57 @@ void	cCyucelenMazeGrid::GenRandomMap(float e_fStartX, float e_fStartY)
 	generateMaze();
 	m_WallPosAndDirectionVector.clear();
 	GetAllWallData(&m_WallPosAndDirectionVector, e_fStartX,e_fStartY);
+}
+
+cCyucelenMazeCell* cCyucelenMazeGrid::GetCell(int e_iX, int e_iY)
+{
+	int l_iIndex = e_iX + e_iY * m_iWidth;
+	if (l_iIndex >= m_CellVector.size())
+	{
+		return nullptr;
+	}
+	cCyucelenMazeCell*l_Cell = &m_CellVector[l_iIndex];
+	return l_Cell;
+}
+
+bool cCyucelenMazeGrid::IsMovable(int e_iFromX, int e_iFromY, int e_iToX, int e_iToY)
+{
+	auto l_FromCell = GetCell(e_iFromX, e_iFromY);
+	if (l_FromCell)
+	{
+		auto l_ToCell = GetCell(e_iToX, e_iToY);
+		if (l_ToCell)
+		{
+			
+		}
+		else
+		{
+			return false;
+		}
+	}
+	return false;
+}
+
+int cCyucelenMazeGrid::GetWidth()
+{
+	return m_iWidth;
+}
+
+int cCyucelenMazeGrid::GetHeight()
+{
+	return m_iHeight;
+}
+
+void cCyucelenMazeGrid::GetLastPoint(int& e_iX, int& e_iY)
+{
+	e_iX = m_iLastGeneratedPosX;
+	e_iY = m_iLastGeneratedPosY;
+}
+
+void cCyucelenMazeGrid::GetRightDownCornerPoint(int& e_iX, int& e_iY)
+{
+	e_iX = this->m_iWidth;
+	e_iY = this->m_iHeight;
 }
 
 cCyucelenMazeCell* cCyucelenMazeGrid::findNextCell()

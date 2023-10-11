@@ -15,4 +15,9 @@ public:
 	void	DebugRender(bool e_bDoStrip);
 	void	GenerateMaze(int e_iStep = -1);
 
+	bool					IsMovable(int e_iNowPosX, int e_iNowPosY,eDirection e_eDirection);
+	bool					IsMovable(int e_iNowPosX, int e_iNowPosY,int e_iTargetPosX, int e_iTargetPosY);
+	bool					NextJunction(int e_iNowPosX, int e_iNowPosY,eDirection e_eDirection,int&e_iPosX, int& e_iPosY);
+	std::vector<eDirection>	GetMovableDirection(int e_iNowPosX, int e_iNowPosY);
+	bool					GetExitPoint(int& e_iPosX, int& e_iPosY);
 };
