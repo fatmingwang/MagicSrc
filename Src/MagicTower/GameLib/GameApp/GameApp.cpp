@@ -157,7 +157,7 @@ void	cMagicTowerApp::KeyDown(char e_char)
 		return;
 	if (g_pCyucelenMazeGrid)
 	{
-		g_pCyucelenMazeGrid->GenRandomMap();
+		g_pCyucelenMazeGrid->KeyUp(e_char);
 	}
 	//cGameApp::KeyDown(e_char);
 	if( m_spSceneControl )

@@ -5,6 +5,7 @@ cMazeRender::cMazeRender(int e_iWidth, int e_iHeight):cCyucelenMazeGrid(e_iWidth
 {
 	m_pWallImae = new cBaseImage("MagicTower/Image/Wall.png");
 	m_pBatchData = new sBatchData();
+	m_pMazeMovingObject = new cMazeMovingObject(this);
 }
 
 cMazeRender::~cMazeRender()
@@ -17,6 +18,11 @@ void cMazeRender::GenRandomMap()
 {
 	auto l_vPos = this->GetWorldPosition();
 	cCyucelenMazeGrid::GenRandomMap(l_vPos.x, l_vPos.y);
+	if (this->m_pMazeMovingObject)
+	{
+		this->m_pMazeMovingObject->m_iCurrentX = 0;
+		this->m_pMazeMovingObject->m_iCurrentY = 0;
+	}
 }
 
 void cMazeRender::Render()
@@ -56,6 +62,10 @@ void cMazeRender::Render()
 	//{
 	//	e_pRenderObject->Render();
 	//}
+	if (this->m_pMazeMovingObject)
+	{
+		this->m_pMazeMovingObject->Render();
+	}
 }
 
 void cMazeRender::DebugRender(bool e_bDoStrip)
@@ -233,4 +243,86 @@ bool cMazeRender::GetExitPoint(int& e_iPosX, int& e_iPosY)
 {
 	this->GetLastPoint(e_iPosX, e_iPosY);
 	return true;
+}
+
+bool cMazeRender::GetCellPos(int e_iCellX, int e_iCellY, Vector2& e_vPos)
+{
+	auto l_pCell = this->GetCell(e_iCellX, e_iCellY);
+	if (l_pCell)
+	{
+		e_vPos = Vector2(this->m_fGridSizeX * e_iCellX, this->m_fGridSizeY * e_iCellY);
+		return true;
+	}
+	return false;
+}
+
+void cMazeRender::KeyUp(unsigned char e_Key)
+{
+	if (e_Key == 38)//up
+	{
+		GenRandomMap();
+	}
+	if (this->m_pMazeMovingObject)
+	{
+		this->m_pMazeMovingObject->KeyUp(e_Key);
+	}
+}
+
+cMazeMovingObject::cMazeMovingObject(cMazeRender* e_pMazeRender)
+{
+	m_pMazeRender = e_pMazeRender;
+}
+
+cMazeMovingObject::~cMazeMovingObject()
+{
+}
+
+void cMazeMovingObject::Render()
+{
+	Vector2 l_vPos;
+	if (this->m_pMazeRender->GetCellPos(this->m_iCurrentX, this->m_iCurrentY, l_vPos))
+	{
+		auto l_vPos2 = this->m_pMazeRender->GetWorldPosition();
+		l_vPos.x += l_vPos2.x;
+		l_vPos.y += l_vPos2.y;
+		GLRender::RenderSphere(Vector2(l_vPos.x, l_vPos.y), 60);
+	}
+}
+
+void cMazeMovingObject::KeyUp(unsigned char e_Key)
+{
+	int	l_iCurrentX = m_iCurrentX;
+	int	l_iCurrentY = m_iCurrentY;
+	eDirection l_Direciont = eD_LEFT;
+	switch (e_Key)
+	{
+		case 'A':
+			l_Direciont = eD_LEFT;
+			l_iCurrentX -= 1;
+			break;
+		case 'W':
+			l_Direciont = eD_UP;
+			l_iCurrentY -= 1;
+			break;
+		case 'D':
+			l_Direciont = eD_RIGHT;
+			l_iCurrentX += 1;
+			break;
+		case 'S':
+			l_Direciont = eD_DOWN;
+			l_iCurrentY += 1;
+			break;
+		default:
+			return;
+			break;
+	}
+	if (m_pMazeRender)
+	{
+		if (m_pMazeRender->IsMovable(m_iCurrentX, m_iCurrentY, l_Direciont))
+		{
+			m_iCurrentX = l_iCurrentX;
+			m_iCurrentY = l_iCurrentY;
+			this->m_pMazeRender->GetCellPos(m_iCurrentX, m_iCurrentY, m_vRenderPos);
+		}
+	}
 }

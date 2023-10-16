@@ -24,6 +24,27 @@ cGameApp			*g_pGameApp = 0;
 
 
 
+void	TweenyTest()
+{
+	//tween.tcc line 113.
+	//https://easings.net/zh-tw
+	//https://github.com/mobius3/tweeny-demos
+	auto tween1 = tweeny::from(0.0, 1.0f).to(1.0f, 0.0f).via(tweeny::easing::enumerated::stepped, tweeny::easing::linear);
+	//auto tween1 = tweeny::from(0.0, 1.0f).to(1.0f, 0.0f).via("stepped", "linear");
+	auto l_Array2 = tween1.step(1);
+	//tween1.step()
+	auto helloworld = tweeny::from('h', 'e', 'l', 'l', 'o').to('w', 'o', 'r', 'l', 'd').during(50);
+	for (int i = 0; i < 50; i++)
+	{
+		auto l_str = helloworld.step(1);
+		std::string l_strResult = UT::ComposeMsgByFormat("%d: ", i);
+		for (char c : l_str)
+		{
+			l_strResult += c;
+		}
+		FMLOG(l_strResult.c_str());
+	}// 
+}
 
 
 
@@ -34,7 +55,8 @@ int APIENTRY _tWinMain( HINSTANCE hInstance,
 {
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
-
+	FMLog::Init();
+	//TweenyTest();
  	// TODO: Place code here.
 	MSG msg;
 	//HACCEL hAccelTable;
@@ -73,7 +95,6 @@ int APIENTRY _tWinMain( HINSTANCE hInstance,
 	NamedTypedObject::DumpUnReleaseInfo();
 	return (int) msg.wParam;
 }
-
 
 
 //

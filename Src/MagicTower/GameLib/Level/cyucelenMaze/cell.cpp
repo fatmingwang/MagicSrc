@@ -123,22 +123,22 @@ bool cCyucelenMazeCell::IsMoveable(eDirection e_eDirection)
 {
 	if (e_eDirection == eDirection::eD_UP)
 	{
-		return walls[TOP];
+		return !walls[TOP];
 	}
 	else
 	if (e_eDirection == eDirection::eD_RIGHT)
 	{
-		return walls[RIGHT];
+		return !walls[RIGHT];
 	}
 	else
 	if (e_eDirection == eDirection::eD_DOWN)
 	{
-		return walls[BOTTOM];
+		return !walls[BOTTOM];
 	}
 	else
 	if (e_eDirection == eDirection::eD_LEFT)
 	{
-		return walls[LEFT];
+		return !walls[LEFT];
 	}
 	return false;
 }
