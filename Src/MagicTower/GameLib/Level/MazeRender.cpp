@@ -62,10 +62,6 @@ void cMazeRender::Render()
 	//{
 	//	e_pRenderObject->Render();
 	//}
-	if (this->m_pMazeMovingObject)
-	{
-		this->m_pMazeMovingObject->Render();
-	}
 }
 
 void cMazeRender::DebugRender(bool e_bDoStrip)
@@ -142,6 +138,10 @@ void cMazeRender::DebugRender(bool e_bDoStrip)
 			cGameApp::m_spGlyphFontRender->SetFontColor(Vector4(1, 1, 1, 1));
 			cGameApp::RenderFont(l_fCurrentPosX, l_fCurrentPosY, ValueToStringW(l_iIndex).c_str());
 		}
+	}
+	if (this->m_pMazeMovingObject)
+	{
+		this->m_pMazeMovingObject->Render();
 	}
 }
 
@@ -245,15 +245,29 @@ bool cMazeRender::GetExitPoint(int& e_iPosX, int& e_iPosY)
 	return true;
 }
 
-bool cMazeRender::GetCellPos(int e_iCellX, int e_iCellY, Vector2& e_vPos)
+bool cMazeRender::GetCellPos(int e_iCellX, int e_iCellY, Vector2& e_vPos, int* e_piNumWall)
 {
 	auto l_pCell = this->GetCell(e_iCellX, e_iCellY);
 	if (l_pCell)
 	{
 		e_vPos = Vector2(this->m_fGridSizeX * e_iCellX, this->m_fGridSizeY * e_iCellY);
+		if (e_piNumWall)
+		{
+			*e_piNumWall = l_pCell->GetWallCount();
+		}
 		return true;
 	}
 	return false;
+}
+
+int	cMazeRender::GetCellWallCount(int e_iCellX, int e_iCellY)
+{
+	auto l_pCell = this->GetCell(e_iCellX, e_iCellY);
+	if (l_pCell)
+	{
+		return l_pCell->GetWallCount();
+	}
+	return -1;
 }
 
 void cMazeRender::KeyUp(unsigned char e_Key)
@@ -271,6 +285,7 @@ void cMazeRender::KeyUp(unsigned char e_Key)
 cMazeMovingObject::cMazeMovingObject(cMazeRender* e_pMazeRender)
 {
 	m_pMazeRender = e_pMazeRender;
+	m_bKeepMovingTillHitTheWall = true;
 }
 
 cMazeMovingObject::~cMazeMovingObject()
@@ -322,7 +337,12 @@ void cMazeMovingObject::KeyUp(unsigned char e_Key)
 		{
 			m_iCurrentX = l_iCurrentX;
 			m_iCurrentY = l_iCurrentY;
-			this->m_pMazeRender->GetCellPos(m_iCurrentX, m_iCurrentY, m_vRenderPos);
+			int l_iNumWall = 0;
+			this->m_pMazeRender->GetCellPos(m_iCurrentX, m_iCurrentY, m_vRenderPos, &l_iNumWall);
+			if (m_bKeepMovingTillHitTheWall && l_iNumWall > 1)
+			{
+				KeyUp(e_Key);
+			}
 		}
 	}
 }

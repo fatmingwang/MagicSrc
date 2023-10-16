@@ -13,7 +13,8 @@ private:
 	int row, column;
 	bool visited;
 	//put some item here?
-	bool m_bIsDeadEnd;
+	bool	m_bIsDeadEnd;
+	int		m_iNumWall = 0;
 
 public:
 	enum direction { TOP = 0, RIGHT, BOTTOM, LEFT, MAX };
@@ -23,9 +24,9 @@ public:
 
 	void removeWalls(cCyucelenMazeCell&);
 
-	void setWalls();
-	void setVisited(bool);
-	bool isVisited();
+	void	setWalls();
+	void	setVisited(bool);
+	bool	isVisited();
 
 	int		getRow();
 	int		getColumn();
@@ -38,4 +39,5 @@ public:
 	int iIndex;
 #endif
 	bool	IsMoveable(eDirection e_eDirection);
+	int		GetWallCount() { return m_iNumWall;}
 };

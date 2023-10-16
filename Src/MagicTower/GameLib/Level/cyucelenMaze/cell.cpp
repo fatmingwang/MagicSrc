@@ -28,6 +28,7 @@ cCyucelenMazeCell::cCyucelenMazeCell(int row, int column, int e_iIndex)
 
 void cCyucelenMazeCell::setWalls()
 {
+	m_iNumWall = 0;
 	for (int i = 0; i < 4; i++)
 	{
 		walls[i] = true;
@@ -169,11 +170,16 @@ void cCyucelenMazeCell::removeWalls(cCyucelenMazeCell& next)
 		next.walls[TOP] = false;
 	}
 	int l_iNumDeadEnd = 0;
+	m_iNumWall = 0;
 	for (int l_Direction = direction::TOP; l_Direction != direction::MAX; ++l_Direction)
 	{
 		if (!walls[l_Direction])
 		{
 			++l_iNumDeadEnd;
+		}
+		else
+		{
+			++m_iNumWall;
 		}
 	}
 	if (l_iNumDeadEnd >= 3)
