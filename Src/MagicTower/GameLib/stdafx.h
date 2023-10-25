@@ -2,6 +2,7 @@
 #pragma once
 #pragma warning( disable : 4996 )
 #endif
+#include "../Tween/TweenyManager.h"
 #include "AllCoreInclude.h" 
 #include "FatmingAI/AllFatmingAIInclude.h" 
 #include "FMLevelData/AllLevelDataInclude.h" 

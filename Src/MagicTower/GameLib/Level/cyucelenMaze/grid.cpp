@@ -104,8 +104,8 @@ void cCyucelenMazeGrid::GetAllWallData(std::map<std::string, bool>* e_pWallPosAn
 
 void	cCyucelenMazeGrid::GenRandomMap(float e_fStartX, float e_fStartY)
 {
-	auto l_iWidth = rand() % 5 + 6;
-	auto l_iHeight = rand() % 5 + 2;
+	auto l_iWidth = rand() % 10 + 12;
+	auto l_iHeight = rand() % 10 + 5;
 	this->m_iWidth = l_iWidth;
 	this->m_iHeight = l_iHeight;
 	createCells();

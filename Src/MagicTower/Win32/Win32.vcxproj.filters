@@ -8,30 +8,6 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="include\dispatcher.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\easing.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\easingresolve.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\int2type.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\tween.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\tweenpoint.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\tweentraits.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\tweeny.h">
-      <Filter>include</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="test.rc" />
@@ -39,24 +15,5 @@
   <ItemGroup>
     <Image Include="small.ico" />
     <Image Include="test.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="include">
-      <UniqueIdentifier>{29babcd2-7566-4e32-b9f0-135725729813}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="include\tween.hpp">
-      <Filter>include</Filter>
-    </None>
-    <None Include="include\tweenone.hpp">
-      <Filter>include</Filter>
-    </None>
-    <None Include="include\tweenpoint.hpp">
-      <Filter>include</Filter>
-    </None>
-    <None Include="include\tweeny.hpp">
-      <Filter>include</Filter>
-    </None>
   </ItemGroup>
 </Project>

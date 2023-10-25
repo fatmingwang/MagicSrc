@@ -12,6 +12,7 @@ cMazeRender::~cMazeRender()
 {
 	SAFE_DELETE(m_pWallImae);
 	SAFE_DELETE(m_pBatchData);
+	SAFE_DELETE(m_pMazeMovingObject);
 }
 
 void cMazeRender::GenRandomMap()
@@ -301,7 +302,7 @@ void cMazeMovingObject::Render()
 		l_vPos.x += l_vPos2.x;
 		l_vPos.y += l_vPos2.y;
 		GLRender::RenderSphere(Vector2(l_vPos.x, l_vPos.y), 60);
-	}
+	}	
 }
 
 void cMazeMovingObject::KeyUp(unsigned char e_Key)

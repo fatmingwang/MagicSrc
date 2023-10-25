@@ -21,31 +21,73 @@ bool				g_bLeave = false;
 cGameApp			*g_pGameApp = 0;
 
 #include <direct.h>
-
-
-
-void	TweenyTest()
-{
-	//tween.tcc line 113.
-	//https://easings.net/zh-tw
-	//https://github.com/mobius3/tweeny-demos
-	auto tween1 = tweeny::from(0.0, 1.0f).to(1.0f, 0.0f).via(tweeny::easing::enumerated::stepped, tweeny::easing::linear);
-	//auto tween1 = tweeny::from(0.0, 1.0f).to(1.0f, 0.0f).via("stepped", "linear");
-	auto l_Array2 = tween1.step(1);
-	//tween1.step()
-	auto helloworld = tweeny::from('h', 'e', 'l', 'l', 'o').to('w', 'o', 'r', 'l', 'd').during(50);
-	for (int i = 0; i < 50; i++)
-	{
-		auto l_str = helloworld.step(1);
-		std::string l_strResult = UT::ComposeMsgByFormat("%d: ", i);
-		for (char c : l_str)
-		{
-			l_strResult += c;
-		}
-		FMLOG(l_strResult.c_str());
-	}// 
-}
-
+//
+//
+//bool print2(tweeny::tween<int,int,int>&, int p,int q,int r)
+//{
+//	return true;
+//}
+//
+///* Prints a line, showing the tween value and a dot corresponding to that value */
+//bool print(tweeny::tween<int>&, int p)
+//{
+//	FMLOG("%+.3d |", p); // 3 digits with sign
+//	std::string l_Str;
+//	for (int i = 0; i <= 100; i++)
+//	{
+//		l_Str += i == p ? '.' : '-';
+//	}
+//	FMLOG(l_Str.c_str());
+//	FMLOG("%c\n", p == 100 ? ';' : '|');
+//	return false;
+//}
+//
+///* Runs the tween with the designated easing */
+//
+//template<typename EasingT> void test(tweeny::tween<int>& tween, EasingT easing) {
+//	tween.via(0, easing);
+//	tween.seek(0);
+//	for (int i = 0; i <= 100; i++)
+//	{
+//		auto l_Current = tween.step(0.01f);
+//	}
+//}
+///* Nacro to help call test() with each type of easing */
+//#define EASING_TEST(tween, easing) \
+//    FMLOG("%s\n", #easing " In/Out/InOut"); \
+//    test(tween, easing ## In); \
+//    test(tween, easing ## Out); \
+//    test(tween, easing ## InOut)
+//
+//#define LLL(T)T ## In
+//
+//void	TweenyTest()
+//{
+//	//auto lll = tweeny::easing::quadraticIn;
+//	auto t2 = tweeny::from(0,0,0).to(100,100,100).during(100).onStep(print2);
+//	auto t = tweeny::from(0).to(100).during(100).onStep(print);
+//	EASING_TEST(t, tweeny::easing::quadratic);
+//	//auto l_e = tweeny::easing::quadratic;
+//	////tween.tcc line 113.
+//	////https://easings.net/zh-tw
+//	////https://github.com/mobius3/tweeny-demos
+//	//auto tween1 = tweeny::from(0.0, 1.0f).to(1.0f, 0.0f).via(tweeny::easing::enumerated::stepped, tweeny::easing::linear);
+//	////auto tween1 = tweeny::from(0.0, 1.0f).to(1.0f, 0.0f).via("stepped", "linear");
+//	//auto l_Array2 = tween1.step(1);
+//	////tween1.step()
+//	//auto helloworld = tweeny::from('h', 'e', 'l', 'l', 'o').to('w', 'o', 'r', 'l', 'd').during(50);
+//	//for (int i = 0; i < 50; i++)
+//	//{
+//	//	auto l_str = helloworld.step(1);
+//	//	std::string l_strResult = UT::ComposeMsgByFormat("%d: ", i);
+//	//	for (char c : l_str)
+//	//	{
+//	//		l_strResult += c;
+//	//	}
+//	//	FMLOG(l_strResult.c_str());
+//	//}//
+//}
+//
 
 
 int APIENTRY _tWinMain( HINSTANCE hInstance,

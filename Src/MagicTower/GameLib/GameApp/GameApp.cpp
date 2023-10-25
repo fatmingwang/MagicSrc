@@ -16,6 +16,8 @@ cMainRoleData*					cMagicTowerApp::m_spMainRoleData = 0;;
 cMagicTowerApp*					g_pMagicTowerApp = 0;
 bool							g_bGameLeave = false;
 
+cTweenyTestObject* g_pTweenyTestObject = nullptr;
+
 
 #ifdef WIN32
 cMagicTowerApp::cMagicTowerApp(HWND e_Hwnd, Vector2 e_vGameResolution, Vector2 e_vViewportSize)
@@ -35,6 +37,7 @@ cMagicTowerApp::cMagicTowerApp(Vector2 e_vGameResolution, Vector2 e_vViewportSiz
 	g_pCyucelenMazeGrid = new cMazeRender(6,6);
 	g_pCyucelenMazeGrid->SetLocalPosition(Vector3(150, 150, 0));
 	g_pCyucelenMazeGrid->GenRandomMap();
+	g_pTweenyTestObject = new cTweenyTestObject();
 }
 
 cMagicTowerApp::~cMagicTowerApp()
@@ -45,6 +48,8 @@ cMagicTowerApp::~cMagicTowerApp()
 	SAFE_DELETE(m_spSceneControl);
 	SAFE_DELETE(m_sp2DCamera);
 	SAFE_DELETE(m_spMainRoleData);
+	SAFE_DELETE(g_pTweenyTestObject);
+	cTweenyManager::DestroyInstance();
 }
 
 void	cMagicTowerApp::Init()
@@ -76,6 +81,7 @@ void	cMagicTowerApp::Update(float e_fElpaseTime)
 	if( g_bGameLeave )
 		return;
 	cGameApp::Update(e_fElpaseTime);
+	cTweenyManager::GetInstance()->Update(e_fElpaseTime);
 	if( m_spSceneControl )
 		m_spSceneControl->Update(e_fElpaseTime);
 	if(m_pUIInfo)
@@ -89,8 +95,17 @@ void	cMagicTowerApp::Render()
 	cGameApp::Render();
 	if (g_pCyucelenMazeGrid)
 	{
+		GLRender::glEnable2D(1920 * 2, 1080 * 2);
 		g_pCyucelenMazeGrid->Render();
 		g_pCyucelenMazeGrid->DebugRender(true);
+
+		
+		{
+			for (auto l_vPos : g_pTweenyTestObject->m_vTestVector)
+			{
+				GLRender::RenderSphere(l_vPos, 30);
+			}
+		}
 	}
 	else
 	{
@@ -158,6 +173,10 @@ void	cMagicTowerApp::KeyDown(char e_char)
 	if (g_pCyucelenMazeGrid)
 	{
 		g_pCyucelenMazeGrid->KeyUp(e_char);
+	}
+	if (g_pTweenyTestObject)
+	{
+		g_pTweenyTestObject->KeyUp();
 	}
 	//cGameApp::KeyDown(e_char);
 	if( m_spSceneControl )
