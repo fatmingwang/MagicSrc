@@ -99,11 +99,15 @@ void	cMagicTowerApp::Render()
 		g_pCyucelenMazeGrid->Render();
 		g_pCyucelenMazeGrid->DebugRender(true);
 
-		
+		if(g_pTweenyTestObject)
 		{
+			RenderFilledRectangle(Vector2::Zero,1920*2,1080*2,Vector4(0.1,0.1,0.1,0.7),0);
+			int l_iIndex = 1;
 			for (auto l_vPos : g_pTweenyTestObject->m_vTestVector)
 			{
+				//cGameApp::RenderFont(50.f, l_vPos.y, ValueToString((tweeny::easing::enumerated)l_iIndex));
 				GLRender::RenderSphere(l_vPos, 30);
+				++l_iIndex;
 			}
 		}
 	}

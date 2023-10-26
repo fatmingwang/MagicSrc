@@ -269,6 +269,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		{
 			g_bTimerDone = true;
 			g_pGameApp->Run();
+			SetWindowText(g_hWnd, UT::CharToWchar(g_pGameApp->m_sTimeAndFPS.GetFPS()).c_str());
 			g_bTimerDone = false;
 		}
 		//else
