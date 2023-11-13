@@ -168,6 +168,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\..\..\FM79979\Src\FM79979Engine\Core;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -252,6 +253,7 @@
     <ClInclude Include="Battle\BattleAttackPointsTouch.h" />
     <ClInclude Include="Battle\BattleAttackTouchSequence.h" />
     <ClInclude Include="Battle\GamePlayAttackPath.h" />
+    <ClInclude Include="Data\DialogContent.h" />
     <ClInclude Include="FileNameDefine.h" />
     <ClInclude Include="GameApp\GameApp.h" />
     <ClInclude Include="GameCamera\GameCamera.h" />

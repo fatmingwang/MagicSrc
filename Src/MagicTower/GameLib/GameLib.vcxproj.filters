@@ -42,6 +42,9 @@
     <Filter Include="Game\Level\MazeRender">
       <UniqueIdentifier>{d17cb285-0b5c-4fd5-885e-9d086e50946d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Data">
+      <UniqueIdentifier>{1c4aef0a-5b86-431e-b1b4-ac150c9e1b20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -163,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="Level\MazeRender.h">
       <Filter>Game\Level\MazeRender</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\DialogContent.h">
+      <Filter>Game\Data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

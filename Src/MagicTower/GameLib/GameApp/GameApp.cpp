@@ -4,6 +4,7 @@
 #include "../Object/MainCharacterBehavior.h"
 #include "../UI/UIInfo.h"
 #include "../FileNameDefine.h"
+#include "../GameCamera/GameCamera.h"
 
 #include "../Level/MazeRender.h"
 
@@ -37,7 +38,7 @@ cMagicTowerApp::cMagicTowerApp(Vector2 e_vGameResolution, Vector2 e_vViewportSiz
 	g_pCyucelenMazeGrid = new cMazeRender(6,6);
 	g_pCyucelenMazeGrid->SetLocalPosition(Vector3(150, 150, 0));
 	g_pCyucelenMazeGrid->GenRandomMap();
-	g_pTweenyTestObject = new cTweenyTestObject();
+	//g_pTweenyTestObject = new cTweenyTestObject();
 }
 
 cMagicTowerApp::~cMagicTowerApp()
@@ -86,6 +87,7 @@ void	cMagicTowerApp::Update(float e_fElpaseTime)
 		m_spSceneControl->Update(e_fElpaseTime);
 	if(m_pUIInfo)
 		m_pUIInfo->Update(e_fElpaseTime);
+	cGameCamera::GetInstance()->Update(e_fElpaseTime);
 }
 
 void	cMagicTowerApp::Render()
@@ -95,7 +97,8 @@ void	cMagicTowerApp::Render()
 	cGameApp::Render();
 	if (g_pCyucelenMazeGrid)
 	{
-		GLRender::glEnable2D(1920 * 2, 1080 * 2);
+		//GLRender::glEnable2D(1920 * 2, 1080 * 2);
+		cGameCamera::GetInstance()->Render();
 		g_pCyucelenMazeGrid->Render();
 		g_pCyucelenMazeGrid->DebugRender(true);
 
@@ -107,6 +110,13 @@ void	cMagicTowerApp::Render()
 			{
 				//cGameApp::RenderFont(50.f, l_vPos.y, ValueToString((tweeny::easing::enumerated)l_iIndex));
 				GLRender::RenderSphere(l_vPos, 30);
+				++l_iIndex;
+			}
+			l_iIndex = 1;
+			for (auto l_vPos : g_pTweenyTestObject->m_vTestVector)
+			{
+				cGameApp::RenderFont(50.f, l_vPos.y, ValueToString((tweeny::easing::enumerated)l_iIndex));
+				//GLRender::RenderSphere(l_vPos, 30);
 				++l_iIndex;
 			}
 		}
@@ -177,11 +187,13 @@ void	cMagicTowerApp::KeyDown(char e_char)
 	if (g_pCyucelenMazeGrid)
 	{
 		g_pCyucelenMazeGrid->KeyUp(e_char);
+		cGameCamera::GetInstance()->SetCurrentPos(g_pCyucelenMazeGrid->GetCurrentPos());
 	}
 	if (g_pTweenyTestObject)
 	{
 		g_pTweenyTestObject->KeyUp();
 	}
+	cGameCamera::GetInstance()->KeyUp(e_char);
 	//cGameApp::KeyDown(e_char);
 	if( m_spSceneControl )
 		m_spSceneControl->KeyDown(e_char);

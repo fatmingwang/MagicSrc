@@ -3,14 +3,17 @@
 
 class cGameCamera :public NamedTypedObject, cSingltonTemplate<cGameCamera>
 {
+	unsigned int							m_uiLastTweenID = -1;
+	cTweenyObject							m_TweenyObject;
+	//Vector2									m_vCurrentPos;
+	Vector2									m_vTargetPosPos;
 	sRandomAssignValueWithTime<float>		m_RandomAssignValueWithTime;
 
-	Vector2							m_vViewRange;
-	Vector4							m_vCurrentViewRect;
-	cOrthogonalCamera				m_Camera;
-	sMoveToDestTimeCounter<Vector4>	m_CameraZoomChangeBehavior;
+	Vector4									m_vCurrentViewRect;
+	cOrthogonalCamera						m_Camera;
+	sMoveToDestTimeCounter<Vector4>			m_CameraZoomChangeBehavior;
 
-	bool							m_bZoomOut;
+	bool									m_bZoomOut;
 	//
 	cGameCamera();
 	~cGameCamera();
@@ -23,4 +26,5 @@ public:
 	void		KeyUp(unsigned char e_ucKey);
 
 	Vector4		GetViewRect();
+	void		SetCurrentPos(Vector2 e_vPos);
 };

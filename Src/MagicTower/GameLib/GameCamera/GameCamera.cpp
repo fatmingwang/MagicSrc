@@ -1,8 +1,11 @@
 #include "stdafx.h"
 #include "GameCamera.h"
 
-#define	FTC_GAME_RESOLUTION_WIDTH	720
-#define	FTC_GAME_RESOLUTION_HEIGHT	1280
+//#define	FTC_GAME_RESOLUTION_WIDTH	720
+//#define	FTC_GAME_RESOLUTION_HEIGHT	1280
+
+#define	FTC_GAME_RESOLUTION_WIDTH	1280
+#define	FTC_GAME_RESOLUTION_HEIGHT	720
 
 TYPDE_DEFINE_MARCO(cGameCamera)
 
@@ -41,6 +44,7 @@ TYPDE_DEFINE_MARCO(cGameCamera)
 cGameCamera::cGameCamera()
 {
 	m_bZoomOut = false;
+	m_vTargetPosPos = Vector2::Zero;
 	//m_Camera.SetViewRect(Vector4(0, 0, FTC_GAME_RESOLUTION_WIDTH, FTC_GAME_RESOLUTION_HEIGHT));
 	auto l_vViewRect = Vector4(0, 0, FTC_GAME_RESOLUTION_WIDTH, FTC_GAME_RESOLUTION_HEIGHT);
 	m_CameraZoomChangeBehavior.vCurrentPos = l_vViewRect;
@@ -66,6 +70,7 @@ void cGameCamera::Update(float e_fElpaseTime)
 		m_Camera.SetViewRect(m_CameraZoomChangeBehavior.vCurrentPos);
 		m_vCurrentViewRect = m_CameraZoomChangeBehavior.vCurrentPos;
 	}
+
 	if (!m_RandomAssignValueWithTime.IsFinish())
 	{
 		m_RandomAssignValueWithTime.Update(e_fElpaseTime);
@@ -112,6 +117,8 @@ void cGameCamera::Update(float e_fElpaseTime)
 
 void cGameCamera::Render()
 {
+	//auto l_vPos = m_Camera.GetWorldPosition();
+	//m_Camera.Render(Vector2(l_vPos.x, l_vPos.y));
 	m_Camera.Render();
 }
 
@@ -137,7 +144,7 @@ void cGameCamera::KeyUp(unsigned char e_ucKey)
 		{
 			m_CameraZoomChangeBehavior.SetTimeAndPosData(
 				Vector4(-l_vSize.x / 2, -l_vSize.y / 2, l_vSize.x + l_vSize.x / 2, l_vSize.y + l_vSize.y / 2),
-				m_CameraZoomChangeBehavior.vCurrentPos, l_fTime
+				this->m_CameraZoomChangeBehavior.vCurrentPos, l_fTime
 			);
 		}
 		else
@@ -161,4 +168,38 @@ Vector4		cGameCamera::GetViewRect()
 {
 	return m_Camera.GetViewRect();
 	return Vector4();
+}
+
+void cGameCamera::SetCurrentPos(Vector2 e_vPos)
+{
+	//lazy,do object size offset.
+	e_vPos.x += 100;
+	e_vPos.y += 100;
+	if (m_vTargetPosPos == e_vPos)
+	{
+		return;
+	}
+	m_TweenyObject.ChancelTween(m_uiLastTweenID, false);
+	m_uiLastTweenID = -1;
+	float l_fTime = (m_vTargetPosPos - e_vPos).Length()/200.f;
+	if (l_fTime > 1.f)
+	{
+		l_fTime = 1.f;
+	}
+	m_TweenyObject.AddTweeny(tweeny::easing::enumerated::linear, m_Camera.GetCameraPos(), e_vPos, l_fTime,
+		[this](Vector2 e_Vector2)
+		{
+			m_Camera.SetViewRectByCameraPos(e_Vector2);
+		},
+		[this]()
+		{
+			m_Camera.SetViewRectByCameraPos(m_vTargetPosPos);
+		}
+	);
+	//auto l_vPos = m_Camera.GetCameraPos();
+	m_vTargetPosPos = e_vPos;
+	//m_Camera.SetViewRectByCameraPos(e_vPos);
+	//m_Camera.Reset();
+	//m_CameraZoomChangeBehavior.vCurrentPos = e_vPos;
+	//m_CameraZoomChangeBehavior.vCurrentPos.z = 0;
 }

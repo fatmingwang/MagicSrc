@@ -283,10 +283,20 @@ void cMazeRender::KeyUp(unsigned char e_Key)
 	}
 }
 
+Vector2 cMazeRender::GetCurrentPos()
+{
+	if (this->m_pMazeMovingObject)
+	{
+		return this->m_pMazeMovingObject->GetCurrentPos();
+	}
+	return Vector2();
+}
+
 cMazeMovingObject::cMazeMovingObject(cMazeRender* e_pMazeRender)
 {
 	m_pMazeRender = e_pMazeRender;
 	m_bKeepMovingTillHitTheWall = true;
+	m_vRenderPos = Vector2::Zero;
 }
 
 cMazeMovingObject::~cMazeMovingObject()
@@ -346,4 +356,9 @@ void cMazeMovingObject::KeyUp(unsigned char e_Key)
 			}
 		}
 	}
+}
+
+Vector2 cMazeMovingObject::GetCurrentPos()
+{
+	return m_vRenderPos;
 }

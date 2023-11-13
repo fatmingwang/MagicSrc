@@ -24,6 +24,7 @@ public:
 	bool					GetCellPos(int e_iCellX, int e_iCellY, Vector2& e_vPos,int *e_piNumWall = nullptr);
 	int						GetCellWallCount(int e_iCellX, int e_iCellY);
 	void					KeyUp(unsigned char e_Key);
+	Vector2					GetCurrentPos();
 };
 
 class cMazeMovingObject:public NamedTypedObject
@@ -38,5 +39,6 @@ public:
 	cMazeMovingObject(cMazeRender* e_pMazeRender);
 	virtual ~cMazeMovingObject();
 	void	Render();
-	void	KeyUp(unsigned char e_Key);
+	void			KeyUp(unsigned char e_Key);
+	Vector2			GetCurrentPos();
 };
