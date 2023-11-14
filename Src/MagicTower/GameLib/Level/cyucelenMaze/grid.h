@@ -40,7 +40,6 @@ protected:
 	cCyucelenMazeCell* m_pCurrent;
 
 	void createCells();
-	int CalculateIndex(int i, int j);
 	std::vector<cCyucelenMazeCell*> getAvailableNeighbors();
 	cCyucelenMazeCell* findNextCell();
 	std::map<std::string, bool>		m_WallPosAndDirectionVector;
@@ -55,12 +54,15 @@ public:
 	//bool true for vertical ,false for horozontal
 	//
 	void	GetAllWallData(std::map<std::string, bool>* e_pWallPosAndDirectionVector,float e_fStartX, float e_fStartY);
-	void	GenRandomMap(float e_fStartX, float e_fStartY);
+	void	GenRandomMap(float e_fStartX, float e_fStartY,bool e_bRandomlyRemoveWall = false,float e_fPercentage = 0.f);
 	cCyucelenMazeCell* GetCell(int e_iX, int e_iY);
+	cCyucelenMazeCell* GetCell(int e_iIndex);
 	bool	IsMovable(int e_iFromX, int e_iFromY,int e_iToX, int e_iToY);
 	int		GetWidth();
 	int		GetHeight();
 	void	GetLastPoint(int&e_iX, int&e_iY);
 	void	GetRightDownCornerPoint(int& e_iX, int& e_iY);
-
+	bool	IsAllowToRemoveWall(int e_iIndex, cCyucelenMazeCell::direction e_Direction);
+	POINT	IndexGetRowAndColumn(int e_iIndex);
+	int		CalculateIndex(int e_iColumn, int e_iRow);
 };

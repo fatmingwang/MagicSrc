@@ -2,6 +2,7 @@
 #include "cell.h"
 #include <stdlib.h>
 #include <iostream>
+#include "grid.h"
 
 cCyucelenMazeCell::cCyucelenMazeCell()
 {
@@ -142,6 +143,40 @@ bool cCyucelenMazeCell::IsMoveable(eDirection e_eDirection)
 		return !walls[LEFT];
 	}
 	return false;
+}
+
+int cCyucelenMazeCell::GetWallCount()
+{
+	//m_iNumWall = 0;
+	//for (int l_Direction = direction::TOP; l_Direction != direction::MAX; ++l_Direction)
+	//{
+	//	if (walls[l_Direction])
+	//	{
+	//		++m_iNumWall;
+	//	}
+	//}
+	return m_iNumWall;
+}
+
+cCyucelenMazeCell* cCyucelenMazeCell::GetNeighborCell(direction e_direction, cCyucelenMazeGrid* e_pCyucelenMazeGrid)
+{
+	int l_iIndex = -1;
+	switch (e_direction)
+	{
+		case direction::LEFT:
+			l_iIndex = e_pCyucelenMazeGrid->CalculateIndex(this->column-1,this->row);
+			break;
+		case direction::TOP:
+			l_iIndex = e_pCyucelenMazeGrid->CalculateIndex(this->column, this->row-1);
+			break;
+		case direction::RIGHT:
+			l_iIndex = e_pCyucelenMazeGrid->CalculateIndex(this->column+1, this->row);
+			break;
+		case direction::BOTTOM:
+			l_iIndex = e_pCyucelenMazeGrid->CalculateIndex(this->column, this->row+1);
+			break;
+	}
+	return e_pCyucelenMazeGrid->GetCell(l_iIndex);
 }
 
 void cCyucelenMazeCell::removeWalls(cCyucelenMazeCell& next)

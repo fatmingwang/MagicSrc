@@ -37,6 +37,7 @@ cMagicTowerApp::cMagicTowerApp(Vector2 e_vGameResolution, Vector2 e_vViewportSiz
 	m_pUIInfo = 0;
 	g_pCyucelenMazeGrid = new cMazeRender(6,6);
 	g_pCyucelenMazeGrid->SetLocalPosition(Vector3(150, 150, 0));
+	//g_pCyucelenMazeGrid->GenRandomMap(true,0.9);
 	g_pCyucelenMazeGrid->GenRandomMap();
 	//g_pTweenyTestObject = new cTweenyTestObject();
 }

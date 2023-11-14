@@ -15,10 +15,12 @@ cMazeRender::~cMazeRender()
 	SAFE_DELETE(m_pMazeMovingObject);
 }
 
-void cMazeRender::GenRandomMap()
+void cMazeRender::GenRandomMap(bool e_bRandomlyRemoveWall, float e_fPercentage)
 {
+	e_bRandomlyRemoveWall = true;
+	e_fPercentage = 0.1;
 	auto l_vPos = this->GetWorldPosition();
-	cCyucelenMazeGrid::GenRandomMap(l_vPos.x, l_vPos.y);
+	cCyucelenMazeGrid::GenRandomMap(l_vPos.x, l_vPos.y, e_bRandomlyRemoveWall, e_fPercentage);
 	if (this->m_pMazeMovingObject)
 	{
 		this->m_pMazeMovingObject->m_iCurrentX = 0;
@@ -76,68 +78,72 @@ void cMazeRender::DebugRender(bool e_bDoStrip)
 	float	l_fCurrentPosY = l_fStartPosY;
 	float	l_fWallToCenterX = l_fGridSizeX / 2;
 	float	l_fWallToCenterY = l_fGridSizeY / 2;
-	for (int i = 0; i < m_iWidth; ++i)
+	bool l_bRenderIndex = true;
+	if (l_bRenderIndex)
 	{
-		l_fCurrentPosX = i * l_fGridSizeX + l_fStartPosX;
-		for (int j = 0; j < m_iHeight; ++j)
+		for (int i = 0; i < m_iWidth; ++i)
 		{
-			l_fCurrentPosY = l_fStartPosY + j * l_fGridSizeY;
-			int l_iIndex = i + j * m_iWidth;
-			if (l_iIndex >= m_iWidth * m_iHeight)
+			l_fCurrentPosX = i * l_fGridSizeX + l_fStartPosX;
+			for (int j = 0; j < m_iHeight; ++j)
 			{
-				int a = 0;
-			}
-			cCyucelenMazeCell& l_Cell = m_CellVector[l_iIndex];
-			bool l_bIsLeftExists = false;
-			bool l_bIsUpExists = false;
-			for (int k = 0; k < 4; ++k)
-			{
-				if (!l_Cell.walls[k])
+				l_fCurrentPosY = l_fStartPosY + j * l_fGridSizeY;
+				int l_iIndex = i + j * m_iWidth;
+				if (l_iIndex >= m_iWidth * m_iHeight)
 				{
-					continue;
+					int a = 0;
 				}
-				Vector2 l_vPosOffset(0, 0);
-				const wchar_t* l_strWall = nullptr;
-				switch (k)
+				cCyucelenMazeCell& l_Cell = m_CellVector[l_iIndex];
+				bool l_bIsLeftExists = false;
+				bool l_bIsUpExists = false;
+				for (int k = 0; k < 4; ++k)
 				{
-				case cCyucelenMazeCell::direction::LEFT:
-					if (i > 0 && e_bDoStrip)
+					if (!l_Cell.walls[k])
 					{
 						continue;
 					}
-					l_vPosOffset.x = -l_fWallToCenterX;
-					l_strWall = L"O";
-					break;
-				case cCyucelenMazeCell::direction::TOP:
-					if (j > 0 && e_bDoStrip)
+					Vector2 l_vPosOffset(0, 0);
+					const wchar_t* l_strWall = nullptr;
+					switch (k)
 					{
-						continue;
+					case cCyucelenMazeCell::direction::LEFT:
+						if (i > 0 && e_bDoStrip)
+						{
+							continue;
+						}
+						l_vPosOffset.x = -l_fWallToCenterX;
+						l_strWall = L"O";
+						break;
+					case cCyucelenMazeCell::direction::TOP:
+						if (j > 0 && e_bDoStrip)
+						{
+							continue;
+						}
+						l_strWall = L"O";
+						l_vPosOffset.y = -l_fWallToCenterX;
+						break;
+					case cCyucelenMazeCell::direction::RIGHT:
+						l_strWall = L"O";
+						l_vPosOffset.x = l_fWallToCenterX;
+						break;
+					case cCyucelenMazeCell::direction::BOTTOM:
+						l_strWall = L"O";
+						l_vPosOffset.y = l_fWallToCenterX;
+						break;
 					}
-					l_strWall = L"O";
-					l_vPosOffset.y = -l_fWallToCenterX;
-					break;
-				case cCyucelenMazeCell::direction::RIGHT:
-					l_strWall = L"O";
-					l_vPosOffset.x = l_fWallToCenterX;
-					break;
-				case cCyucelenMazeCell::direction::BOTTOM:
-					l_strWall = L"O";
-					l_vPosOffset.y = l_fWallToCenterX;
-					break;
+					if (l_strWall)
+					{
+						cGameApp::m_spGlyphFontRender->SetFontColor(Vector4(1, 1, 0, 1));
+						cGameApp::RenderFont(l_fCurrentPosX + l_vPosOffset.x, l_fCurrentPosY + l_vPosOffset.y, l_strWall);
+					}
+					//else
+					//{
+					//	cGameApp::m_spGlyphFontRender->SetFontColor(Vector4(0, 1, 0, 1));
+					//	cGameApp::RenderFont(l_fCurrentPosX + l_vPosOffset.x, l_fCurrentPosY + l_vPosOffset.y, L"R");
+					//}
 				}
-				if (l_strWall)
-				{
-					cGameApp::m_spGlyphFontRender->SetFontColor(Vector4(1, 1, 0, 1));
-					cGameApp::RenderFont(l_fCurrentPosX + l_vPosOffset.x, l_fCurrentPosY + l_vPosOffset.y, l_strWall);
-				}
-				//else
-				//{
-				//	cGameApp::m_spGlyphFontRender->SetFontColor(Vector4(0, 1, 0, 1));
-				//	cGameApp::RenderFont(l_fCurrentPosX + l_vPosOffset.x, l_fCurrentPosY + l_vPosOffset.y, L"R");
-				//}
+				cGameApp::m_spGlyphFontRender->SetFontColor(Vector4(1, 1, 1, 1));
+				cGameApp::RenderFont(l_fCurrentPosX, l_fCurrentPosY, ValueToStringW(l_iIndex).c_str());
 			}
-			cGameApp::m_spGlyphFontRender->SetFontColor(Vector4(1, 1, 1, 1));
-			cGameApp::RenderFont(l_fCurrentPosX, l_fCurrentPosY, ValueToStringW(l_iIndex).c_str());
 		}
 	}
 	if (this->m_pMazeMovingObject)
@@ -275,6 +281,7 @@ void cMazeRender::KeyUp(unsigned char e_Key)
 {
 	if (e_Key == 38)//up
 	{
+		//GenRandomMap(true,0.3f);
 		GenRandomMap();
 	}
 	if (this->m_pMazeMovingObject)

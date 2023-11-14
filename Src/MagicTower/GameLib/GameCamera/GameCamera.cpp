@@ -51,6 +51,7 @@ cGameCamera::cGameCamera()
 	m_vCurrentViewRect = l_vViewRect;
 	m_Camera.SetViewRect(l_vViewRect);
 	m_CameraZoomChangeBehavior.MoveToDestinationTC.bTragetTimrReached = true;
+	//m_Camera.SetViewRectByCameraPos(m_vTargetPosPos);
 
 	m_RandomAssignValueWithTime.SetData(1.f, -15.f, 15.f);
 	m_RandomAssignValueWithTime.m_TC.bTragetTimrReached = true;
@@ -179,14 +180,19 @@ void cGameCamera::SetCurrentPos(Vector2 e_vPos)
 	{
 		return;
 	}
+	if (m_uiLastTweenID != -1)
+	{
+		int a = 0;
+	}
 	m_TweenyObject.ChancelTween(m_uiLastTweenID, false);
-	m_uiLastTweenID = -1;
 	float l_fTime = (m_vTargetPosPos - e_vPos).Length()/200.f;
 	if (l_fTime > 1.f)
 	{
 		l_fTime = 1.f;
 	}
-	m_TweenyObject.AddTweeny(tweeny::easing::enumerated::linear, m_Camera.GetCameraPos(), e_vPos, l_fTime,
+	//auto l_ErasingType = tweeny::easing::enumerated::linear;
+	auto l_ErasingType = tweeny::easing::enumerated::circularOut;
+	m_uiLastTweenID = m_TweenyObject.AddTweeny(l_ErasingType, m_Camera.GetCameraPos(), e_vPos, l_fTime,
 		[this](Vector2 e_Vector2)
 		{
 			m_Camera.SetViewRectByCameraPos(e_Vector2);
@@ -194,6 +200,7 @@ void cGameCamera::SetCurrentPos(Vector2 e_vPos)
 		[this]()
 		{
 			m_Camera.SetViewRectByCameraPos(m_vTargetPosPos);
+			m_uiLastTweenID = -1;
 		}
 	);
 	//auto l_vPos = m_Camera.GetCameraPos();

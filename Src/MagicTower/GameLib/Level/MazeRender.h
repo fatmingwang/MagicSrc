@@ -11,7 +11,7 @@ private:
 public:
 	cMazeRender(int e_iWidth, int e_iHeight);
 	virtual ~cMazeRender();
-	void	GenRandomMap();
+	void	GenRandomMap(bool e_bRandomlyRemoveWall = false,float e_fPercentage = 0.f);
 	void	Render();
 	void	DebugRender(bool e_bDoStrip);
 	void	GenerateMaze(int e_iStep = -1);

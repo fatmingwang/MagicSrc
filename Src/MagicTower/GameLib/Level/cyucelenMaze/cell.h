@@ -39,5 +39,6 @@ public:
 	int iIndex;
 #endif
 	bool	IsMoveable(eDirection e_eDirection);
-	int		GetWallCount() { return m_iNumWall;}
+	int		GetWallCount();
+	cCyucelenMazeCell* GetNeighborCell(direction e_direction, class cCyucelenMazeGrid*e_pCyucelenMazeGrid);
 };
