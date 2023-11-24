@@ -41,10 +41,10 @@ protected:
 
 	void createCells();
 	std::vector<cCyucelenMazeCell*> getAvailableNeighbors();
-	cCyucelenMazeCell* findNextCell();
+	cCyucelenMazeCell*				findNextCell();
 	std::map<std::string, bool>		m_WallPosAndDirectionVector;
 	//-1 for generator all at once
-	void	generateMaze(int e_iStep = -1);
+	void							generateMaze(int e_iStep = -1);
 public:
 	cCyucelenMazeGrid(int width, int height);
 	virtual ~cCyucelenMazeGrid();

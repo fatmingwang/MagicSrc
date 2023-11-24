@@ -29,5 +29,7 @@
 		static		cOrthogonalCamera*		m_sp2DCamera;
 		static		cSceneControl*			m_spSceneControl;
 		static		cMainRoleData*			m_spMainRoleData;
+		//
+		cPhaseManager m_PhaseManager;
 	};
 	extern	cMagicTowerApp*g_pMagicTowerApp;

@@ -45,6 +45,9 @@
     <Filter Include="Game\Data">
       <UniqueIdentifier>{1c4aef0a-5b86-431e-b1b4-ac150c9e1b20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\TestCase">
+      <UniqueIdentifier>{305f4a5b-16c6-4f1d-83a6-2806b2b7d774}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -170,6 +173,9 @@
     <ClInclude Include="Data\DialogContent.h">
       <Filter>Game\Data</Filter>
     </ClInclude>
+    <ClInclude Include="TestCase\MazeTest.h">
+      <Filter>Game\TestCase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameApp\GameApp.cpp">
@@ -288,6 +294,9 @@
     </ClCompile>
     <ClCompile Include="Level\MazeRender.cpp">
       <Filter>Game\Level\MazeRender</Filter>
+    </ClCompile>
+    <ClCompile Include="TestCase\MazeTest.cpp">
+      <Filter>Game\TestCase</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -5,19 +5,18 @@
 #include "../UI/UIInfo.h"
 #include "../FileNameDefine.h"
 #include "../GameCamera/GameCamera.h"
+#include "../TestCase/MazeTest.h"
+//#include "../Level/MazeRender.h"
 
-#include "../Level/MazeRender.h"
+//cMazeRender* g_pCyucelenMazeGrid = nullptr;
+//cTweenyTestObject* g_pTweenyTestObject = nullptr;
 
-cMazeRender* g_pCyucelenMazeGrid = nullptr;
 
-UT::sTimeAndFPS g_TimeAndFPS;
 cSceneControl*					cMagicTowerApp::m_spSceneControl = 0;
 cOrthogonalCamera*				cMagicTowerApp::m_sp2DCamera = 0;
 cMainRoleData*					cMagicTowerApp::m_spMainRoleData = 0;;
 cMagicTowerApp*					g_pMagicTowerApp = 0;
 bool							g_bGameLeave = false;
-
-cTweenyTestObject* g_pTweenyTestObject = nullptr;
 
 
 #ifdef WIN32
@@ -35,22 +34,15 @@ cMagicTowerApp::cMagicTowerApp(Vector2 e_vGameResolution, Vector2 e_vViewportSiz
 	m_spSceneControl = 0;
 	m_sp2DCamera = 0;
 	m_pUIInfo = 0;
-	g_pCyucelenMazeGrid = new cMazeRender(6,6);
-	g_pCyucelenMazeGrid->SetLocalPosition(Vector3(150, 150, 0));
-	//g_pCyucelenMazeGrid->GenRandomMap(true,0.9);
-	g_pCyucelenMazeGrid->GenRandomMap();
-	//g_pTweenyTestObject = new cTweenyTestObject();
 }
 
 cMagicTowerApp::~cMagicTowerApp()
 {
-	SAFE_DELETE(g_pCyucelenMazeGrid);
 	g_bGameLeave = true;
 	SAFE_DELETE(m_pUIInfo);
 	SAFE_DELETE(m_spSceneControl);
 	SAFE_DELETE(m_sp2DCamera);
 	SAFE_DELETE(m_spMainRoleData);
-	SAFE_DELETE(g_pTweenyTestObject);
 	cTweenyManager::DestroyInstance();
 }
 
@@ -71,6 +63,11 @@ void	cMagicTowerApp::Init()
 		m_spSceneControl->Load();
 	m_pUIInfo = new cUIInfo();
 	//g_pDebugFont = new cGlyphFontRender("MagicTower/Font");
+
+	//AddTestPhase(eTestPhase::eTP_MAZE,this->m_PhaseManager);
+	//SetWorkingTestPhase(eTestPhase::eTP_MAZE, this->m_PhaseManager);
+	AddTestPhase(eTestPhase::eTP_TWEEN, this->m_PhaseManager);
+	SetWorkingTestPhase(eTestPhase::eTP_TWEEN, this->m_PhaseManager);
 }
 
 void	cMagicTowerApp::Destory()
@@ -80,47 +77,36 @@ void	cMagicTowerApp::Destory()
 
 void	cMagicTowerApp::Update(float e_fElpaseTime)
 {
-	if( g_bGameLeave )
+	if (g_bGameLeave)
+	{
 		return;
+	}
 	cGameApp::Update(e_fElpaseTime);
 	cTweenyManager::GetInstance()->Update(e_fElpaseTime);
-	if( m_spSceneControl )
-		m_spSceneControl->Update(e_fElpaseTime);
-	if(m_pUIInfo)
-		m_pUIInfo->Update(e_fElpaseTime);
 	cGameCamera::GetInstance()->Update(e_fElpaseTime);
+	if (m_PhaseManager.GetCurrentPhase() != -1)
+	{
+		m_PhaseManager.Render();
+	}
+	else
+	{
+		if (m_spSceneControl)
+			m_spSceneControl->Update(e_fElpaseTime);
+		if (m_pUIInfo)
+			m_pUIInfo->Update(e_fElpaseTime);
+	}
 }
 
 void	cMagicTowerApp::Render()
 {
-	if( g_bGameLeave )
-		return;
-	cGameApp::Render();
-	if (g_pCyucelenMazeGrid)
+	if (g_bGameLeave)
 	{
-		//GLRender::glEnable2D(1920 * 2, 1080 * 2);
-		cGameCamera::GetInstance()->Render();
-		g_pCyucelenMazeGrid->Render();
-		g_pCyucelenMazeGrid->DebugRender(true);
-
-		if(g_pTweenyTestObject)
-		{
-			RenderFilledRectangle(Vector2::Zero,1920*2,1080*2,Vector4(0.1,0.1,0.1,0.7),0);
-			int l_iIndex = 1;
-			for (auto l_vPos : g_pTweenyTestObject->m_vTestVector)
-			{
-				//cGameApp::RenderFont(50.f, l_vPos.y, ValueToString((tweeny::easing::enumerated)l_iIndex));
-				GLRender::RenderSphere(l_vPos, 30);
-				++l_iIndex;
-			}
-			l_iIndex = 1;
-			for (auto l_vPos : g_pTweenyTestObject->m_vTestVector)
-			{
-				cGameApp::RenderFont(50.f, l_vPos.y, ValueToString((tweeny::easing::enumerated)l_iIndex));
-				//GLRender::RenderSphere(l_vPos, 30);
-				++l_iIndex;
-			}
-		}
+		return;
+	}
+	cGameApp::Render();
+	if (m_PhaseManager.GetCurrentPhase() != -1)
+	{
+		m_PhaseManager.Render();
 	}
 	else
 	{
@@ -147,8 +133,11 @@ void	cMagicTowerApp::MouseDown(int e_iPosX,int e_iPosY)
 #ifdef WASM
 	m_sMousePosition.y += EMSDK::EMSDK_GetCanvasPosY();
 #endif
-	if( m_spSceneControl )
-		this->m_spSceneControl->MouseDown(this->m_sMousePosition.x,this->m_sMousePosition.y);
+	if (m_spSceneControl)
+	{
+		this->m_spSceneControl->MouseDown(this->m_sMousePosition.x, this->m_sMousePosition.y);
+	}
+	m_PhaseManager.MouseDown(this->m_sMousePosition.x, this->m_sMousePosition.y);
 }
 
 void	cMagicTowerApp::MouseMove(int e_iPosX,int e_iPosY)
@@ -159,8 +148,11 @@ void	cMagicTowerApp::MouseMove(int e_iPosX,int e_iPosY)
 #ifdef WASM
 	m_sMousePosition.y += EMSDK::EMSDK_GetCanvasPosY();
 #endif
-		if( m_spSceneControl )
-	this->m_spSceneControl->MouseMove(this->m_sMousePosition.x,this->m_sMousePosition.y);
+	if (m_spSceneControl)
+	{
+		this->m_spSceneControl->MouseMove(this->m_sMousePosition.x, this->m_sMousePosition.y);
+	}
+	m_PhaseManager.MouseMove(this->m_sMousePosition.x, this->m_sMousePosition.y);
 }
 
 void	cMagicTowerApp::MouseUp(int e_iPosX,int e_iPosY)
@@ -177,27 +169,25 @@ void	cMagicTowerApp::MouseUp(int e_iPosX,int e_iPosY)
 		EMSDK::EMSDK_JSDoFullscreen();
 	}
 #endif
-		if( m_spSceneControl )
-	this->m_spSceneControl->MouseUp(this->m_sMousePosition.x,this->m_sMousePosition.y);
+	if (m_spSceneControl)
+	{
+		this->m_spSceneControl->MouseUp(this->m_sMousePosition.x, this->m_sMousePosition.y);
+	}
+	m_PhaseManager.MouseUp(this->m_sMousePosition.x, this->m_sMousePosition.y);
 }
 
 void	cMagicTowerApp::KeyDown(char e_char)
 {
 	if( g_bGameLeave )
 		return;
-	if (g_pCyucelenMazeGrid)
-	{
-		g_pCyucelenMazeGrid->KeyUp(e_char);
-		cGameCamera::GetInstance()->SetCurrentPos(g_pCyucelenMazeGrid->GetCurrentPos());
-	}
-	if (g_pTweenyTestObject)
-	{
-		g_pTweenyTestObject->KeyUp();
-	}
+	m_PhaseManager.KeyDown(e_char);
 	cGameCamera::GetInstance()->KeyUp(e_char);
 	//cGameApp::KeyDown(e_char);
-	if( m_spSceneControl )
+	if (m_spSceneControl)
+	{
 		m_spSceneControl->KeyDown(e_char);
+	}
+	m_PhaseManager.KeyDown(e_char);
 }
 
 void	cMagicTowerApp::ChangeWalkingView()
