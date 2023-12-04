@@ -282,6 +282,7 @@
     <ClInclude Include="Phase\ViewMapPhase.h" />
     <ClInclude Include="Phase\WalkingInMapPhase.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TestCase\GamePlayTesting.h" />
     <ClInclude Include="TestCase\MazeTest.h" />
     <ClInclude Include="UI\FingerMovingDirection.h" />
     <ClInclude Include="UI\GameUI.h" />
@@ -327,6 +328,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TestCase\GamePlayTesting.cpp" />
     <ClCompile Include="TestCase\MazeTest.cpp" />
     <ClCompile Include="UI\FingerMovingDirection.cpp" />
     <ClCompile Include="UI\GameUI.cpp" />

@@ -1,6 +1,7 @@
 #include "stdafx.h"
-#include "BattleAttackMoveObject.h"
 #include "../Object/MoveObject.h"
+#include "BattleAttackMoveObject.h"
+
 
 const char*BATTLE_ATTACK_MOVE_OBJECT_FILE_NAME = "MagicTower/Battle/BattleAttackMoveObject.xml";
 

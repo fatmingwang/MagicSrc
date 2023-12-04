@@ -66,8 +66,9 @@ void	cMagicTowerApp::Init()
 
 	//AddTestPhase(eTestPhase::eTP_MAZE,this->m_PhaseManager);
 	//SetWorkingTestPhase(eTestPhase::eTP_MAZE, this->m_PhaseManager);
-	AddTestPhase(eTestPhase::eTP_TWEEN, this->m_PhaseManager);
-	SetWorkingTestPhase(eTestPhase::eTP_TWEEN, this->m_PhaseManager);
+	//AddTestPhase(eTestPhase::eTP_TWEEN, this->m_PhaseManager);
+	//SetWorkingTestPhase(eTestPhase::eTP_TWEEN, this->m_PhaseManager);
+	AddTestPhase(eTestPhase::eTP_BATTLE_ATTACK_MOVING_OBJECT_TESTING, this->m_PhaseManager,true);
 }
 
 void	cMagicTowerApp::Destory()
@@ -86,7 +87,7 @@ void	cMagicTowerApp::Update(float e_fElpaseTime)
 	cGameCamera::GetInstance()->Update(e_fElpaseTime);
 	if (m_PhaseManager.GetCurrentPhase() != -1)
 	{
-		m_PhaseManager.Render();
+		m_PhaseManager.Update(e_fElpaseTime);
 	}
 	else
 	{

@@ -17,6 +17,7 @@ enum eTestPhase
 {
 	eTP_MAZE = 0,
 	eTP_TWEEN,
+	eTP_BATTLE_ATTACK_MOVING_OBJECT_TESTING,
 	eTP_MAX
 };
 
@@ -47,5 +48,5 @@ public:
 	virtual	void	KeyDown(char e_cKey)override;
 };
 
-void AddTestPhase(eTestPhase e_eTestPhase, cPhaseManager&e_PhaseManager);
+void AddTestPhase(eTestPhase e_eTestPhase, cPhaseManager&e_PhaseManager,bool e_bSetCurrent = false);
 void SetWorkingTestPhase(eTestPhase e_eTestPhase, cPhaseManager& e_PhaseManager);

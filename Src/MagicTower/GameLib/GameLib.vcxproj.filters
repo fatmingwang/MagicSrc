@@ -176,6 +176,9 @@
     <ClInclude Include="TestCase\MazeTest.h">
       <Filter>Game\TestCase</Filter>
     </ClInclude>
+    <ClInclude Include="TestCase\GamePlayTesting.h">
+      <Filter>Game\TestCase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameApp\GameApp.cpp">
@@ -296,6 +299,9 @@
       <Filter>Game\Level\MazeRender</Filter>
     </ClCompile>
     <ClCompile Include="TestCase\MazeTest.cpp">
+      <Filter>Game\TestCase</Filter>
+    </ClCompile>
+    <ClCompile Include="TestCase\GamePlayTesting.cpp">
       <Filter>Game\TestCase</Filter>
     </ClCompile>
   </ItemGroup>

@@ -2,6 +2,8 @@
 #include "MazeTest.h"
 #include "../Level/MazeRender.h"
 #include "../GameCamera/GameCamera.h"
+#include "./GamePlayTesting.h"
+
 TYPDE_DEFINE_MARCO(cMazeTest);
 TYPDE_DEFINE_MARCO(cTweenTest);
 
@@ -14,6 +16,7 @@ cMazeTest::cMazeTest()
 cMazeTest::~cMazeTest()
 {
 	SAFE_DELETE(m_pCyucelenMazeGrid);
+	cGameCamera::DestroyInstance();
 }
 
 void cMazeTest::Init()
@@ -50,6 +53,7 @@ cTweenTest::cTweenTest()
 cTweenTest::~cTweenTest()
 {
 	SAFE_DELETE(m_pTweenyTestObject);
+	cGameCamera::DestroyInstance();
 }
 
 void cTweenTest::Init()
@@ -92,7 +96,7 @@ void cTweenTest::KeyDown(char e_cKey)
 	m_pTweenyTestObject->KeyUp();
 }
 
-void AddTestPhase(eTestPhase e_eTestPhase, cPhaseManager& e_PhaseManager)
+void AddTestPhase(eTestPhase e_eTestPhase, cPhaseManager& e_PhaseManager, bool e_bSetCurrent)
 {
 	switch (e_eTestPhase)
 	{
@@ -110,6 +114,17 @@ void AddTestPhase(eTestPhase e_eTestPhase, cPhaseManager& e_PhaseManager)
 				e_PhaseManager.AddObject(l_pTweenTest);
 			}
 		break;
+		case eTP_BATTLE_ATTACK_MOVING_OBJECT_TESTING:
+			if (!e_PhaseManager.GetObject(cBattleAttackMoveObjectTesting::TypeID))
+			{
+				cBattleAttackMoveObjectTesting* l_pTweenTest = new cBattleAttackMoveObjectTesting();
+				e_PhaseManager.AddObject(l_pTweenTest);
+			}
+		break;
+	}
+	if (e_bSetCurrent)
+	{
+		SetWorkingTestPhase(e_eTestPhase, e_PhaseManager);
 	}
 }
 
@@ -122,6 +137,9 @@ void SetWorkingTestPhase(eTestPhase e_eTestPhase,cPhaseManager& e_PhaseManager)
 		break;
 	case eTestPhase::eTP_TWEEN:
 		e_PhaseManager.SetCurrentCurrentPhase(cTweenTest::TypeID);
+		break;
+	case eTestPhase::eTP_BATTLE_ATTACK_MOVING_OBJECT_TESTING:
+		e_PhaseManager.SetCurrentCurrentPhase(cBattleAttackMoveObjectTesting::TypeID);
 		break;
 	}
 }
