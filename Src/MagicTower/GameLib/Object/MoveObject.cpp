@@ -353,8 +353,10 @@ void	sTwoMovingObjectController::MouseMove(int e_iPosX,int e_iPosY)
 
 void	sTwoMovingObjectController::MouseUp(int e_iPosX,int e_iPosY)
 {
-	if( !bTouchInVaildArea )
+	if (!bTouchInVaildArea)
+	{
 		return;
+	}
 	if( IsCollide(e_iPosX,e_iPosY) )
 	{
 		//find out how close they were and give power value

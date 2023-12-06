@@ -17,6 +17,7 @@ cBattleAttackMoveObjectTesting::~cBattleAttackMoveObjectTesting()
 void cBattleAttackMoveObjectTesting::Init()
 {
 	m_pBattleAttackMoveObject = new cBattleAttackMoveObject(eBattleType::eBT_DEFENCE_1);
+	m_pBattleAttackMoveObject->Init();
 }
 
 void cBattleAttackMoveObjectTesting::Update(float e_fElpaseTime)
