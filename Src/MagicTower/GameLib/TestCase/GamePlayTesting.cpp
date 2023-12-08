@@ -16,13 +16,16 @@ cBattleAttackMoveObjectTesting::~cBattleAttackMoveObjectTesting()
 
 void cBattleAttackMoveObjectTesting::Init()
 {
-	m_pBattleAttackMoveObject = new cBattleAttackMoveObject(eBattleType::eBT_DEFENCE_1);
-	m_pBattleAttackMoveObject->Init();
+	//m_pBattleAttackMoveObject = new cBattleAttackMoveObject(eBattleType::eBT_DEFENCE_1);
+	//m_pBattleAttackMoveObject->Init();
 }
 
 void cBattleAttackMoveObjectTesting::Update(float e_fElpaseTime)
 {
-	m_pBattleAttackMoveObject->Update(e_fElpaseTime);
+	if (m_pBattleAttackMoveObject)
+	{
+		m_pBattleAttackMoveObject->Update(e_fElpaseTime);
+	}
 }
 
 void cBattleAttackMoveObjectTesting::Render()

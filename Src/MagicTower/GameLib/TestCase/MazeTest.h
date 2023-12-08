@@ -13,6 +13,8 @@
 //	virtual	void	KeyUp(unsigned char e_ucKey) {}
 //};
 
+#include "../Tween/TweenCurve.h"
+
 enum eTestPhase
 {
 	eTP_MAZE = 0,
@@ -37,7 +39,8 @@ public:
 
 class cTweenTest :public cSimplePhase
 {
-	class cTweenyTestObject* m_pTweenyTestObject;
+	class cTweenyTestObject* m_pTweenyTestObject = nullptr;
+	class cTweenyCurveWithTime* m_pTweenyCurveWithTime = nullptr;
 public:
 	cTweenTest();
 	~cTweenTest();

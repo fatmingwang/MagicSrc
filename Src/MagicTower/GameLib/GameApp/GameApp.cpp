@@ -14,7 +14,7 @@
 
 cSceneControl*					cMagicTowerApp::m_spSceneControl = 0;
 cOrthogonalCamera*				cMagicTowerApp::m_sp2DCamera = 0;
-cMainRoleData*					cMagicTowerApp::m_spMainRoleData = 0;;
+cMainRoleData*					cMagicTowerApp::m_spMainRoleData = 0;
 cMagicTowerApp*					g_pMagicTowerApp = 0;
 bool							g_bGameLeave = false;
 
@@ -66,9 +66,9 @@ void	cMagicTowerApp::Init()
 
 	//AddTestPhase(eTestPhase::eTP_MAZE,this->m_PhaseManager);
 	//SetWorkingTestPhase(eTestPhase::eTP_MAZE, this->m_PhaseManager);
-	//AddTestPhase(eTestPhase::eTP_TWEEN, this->m_PhaseManager);
-	//SetWorkingTestPhase(eTestPhase::eTP_TWEEN, this->m_PhaseManager);
-	AddTestPhase(eTestPhase::eTP_BATTLE_ATTACK_MOVING_OBJECT_TESTING, this->m_PhaseManager,true);
+	AddTestPhase(eTestPhase::eTP_TWEEN, this->m_PhaseManager);
+	SetWorkingTestPhase(eTestPhase::eTP_TWEEN, this->m_PhaseManager);
+	//AddTestPhase(eTestPhase::eTP_BATTLE_ATTACK_MOVING_OBJECT_TESTING, this->m_PhaseManager,true);
 }
 
 void	cMagicTowerApp::Destory()

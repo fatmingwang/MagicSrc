@@ -53,47 +53,78 @@ cTweenTest::cTweenTest()
 cTweenTest::~cTweenTest()
 {
 	SAFE_DELETE(m_pTweenyTestObject);
+	SAFE_DELETE(m_pTweenyCurveWithTime);
 	cGameCamera::DestroyInstance();
 }
 
 void cTweenTest::Init()
 {
-	m_pTweenyTestObject = new cTweenyTestObject();
-	//m_pTweenyTestObject->KeyUp();
+	//m_pTweenyTestObject = new cTweenyTestObject();
+	m_pTweenyCurveWithTime = new cTweenyCurveWithTime();
+	cCurveWithTime	l_Data;
+	l_Data.AddPoint(Vector3(50, 50, 0), 0);
+	l_Data.AddPoint(Vector3(150, 50, 0), 1);
+	l_Data.AddPoint(Vector3(50, 150, 0), 2);
+	l_Data.AddPoint(Vector3(250, 50, 0), 3);
+	l_Data.AddPoint(Vector3(50, 250, 0), 4);
+	l_Data.SetLOD(6);
+	m_pTweenyCurveWithTime->SetData(tweeny::easing::enumerated::quadraticInOut,3,&l_Data,nullptr);
 }
 
 void cTweenTest::Update(float e_fElpaseTime)
 {
+	if (m_pTweenyCurveWithTime)
+	{
+		m_pTweenyCurveWithTime->Update(e_fElpaseTime);
+	}
 }
 
 void cTweenTest::Render()
 {
+	if (m_pTweenyCurveWithTime)
+	{
+		m_pTweenyCurveWithTime->Render();
+	}
 	//cGameCamera::GetInstance()->Render();
-	glEnable2D(3940, 2160);
-	RenderFilledRectangle(Vector2::Zero, 1920 * 2, 1080 * 2, Vector4(0.1f, 0.1f, 0.1f, 0.7f), 0);
-	int l_iIndex = 1;
-	for (auto l_vPos : m_pTweenyTestObject->m_vTestVector)
+	if (m_pTweenyTestObject)
 	{
-		//cGameApp::RenderFont(50.f, l_vPos.y, ValueToString((tweeny::easing::enumerated)l_iIndex));
-		GLRender::RenderSphere(l_vPos, 30);
-		++l_iIndex;
+		glEnable2D(3940, 2160);
+		RenderFilledRectangle(Vector2::Zero, 1920 * 2, 1080 * 2, Vector4(0.1f, 0.1f, 0.1f, 0.7f), 0);
+		int l_iIndex = 1;
+		for (auto l_vPos : m_pTweenyTestObject->m_vTestVector)
+		{
+			//cGameApp::RenderFont(50.f, l_vPos.y, ValueToString((tweeny::easing::enumerated)l_iIndex));
+			GLRender::RenderSphere(l_vPos, 30);
+			++l_iIndex;
+		}
+		l_iIndex = 1;
+		for (auto l_vPos : m_pTweenyTestObject->m_vTestVector)
+		{
+			cGameApp::RenderFont(50.f, l_vPos.y, ValueToString((tweeny::easing::enumerated)l_iIndex));
+			//GLRender::RenderSphere(l_vPos, 30);
+			++l_iIndex;
+		}
+		if (m_pTweenyTestObject->m_vTestVector.size() == 0)
+		{
+			cGameApp::RenderFont(Vector2(1920, 1080), L"please press any key");
+		}
 	}
-	l_iIndex = 1;
-	for (auto l_vPos : m_pTweenyTestObject->m_vTestVector)
+	if (m_pTweenyCurveWithTime)
 	{
-		cGameApp::RenderFont(50.f, l_vPos.y, ValueToString((tweeny::easing::enumerated)l_iIndex));
-		//GLRender::RenderSphere(l_vPos, 30);
-		++l_iIndex;
-	}
-	if (m_pTweenyTestObject->m_vTestVector.size() == 0)
-	{
-		cGameApp::RenderFont(Vector2(1920, 1080), L"please press any key");
+		m_pTweenyCurveWithTime->Render();
 	}
 }
 
 void cTweenTest::KeyDown(char e_cKey)
 {
-	m_pTweenyTestObject->KeyUp();
+	if (m_pTweenyTestObject)
+	{
+		m_pTweenyTestObject->KeyUp();
+	}
+	if (m_pTweenyCurveWithTime)
+	{
+		m_pTweenyCurveWithTime->Reset();
+	}
 }
 
 void AddTestPhase(eTestPhase e_eTestPhase, cPhaseManager& e_PhaseManager, bool e_bSetCurrent)
