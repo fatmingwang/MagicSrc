@@ -8,7 +8,6 @@
 //===================
 class	cBattleAttackMoveObject:public cBattleBase
 {
-	struct sTwoMovingObjectController*m_pTwoMovingObjectController;
     virtual void			InternalMouseMove(int e_iPosX,int e_iPosY);
     virtual void			InternalMouseDown(int e_iPosX,int e_iPosY);
     virtual void    		InternalMouseUp(int e_iPosX,int e_iPosY);
@@ -20,4 +19,5 @@ public:
 	virtual	void	Update(float e_fElpaseTime);
 	virtual	void	Render();
 	virtual	void	DebugRender();
+	struct sTwoMovingObjectController* m_pTwoMovingObjectController;
 };

@@ -104,11 +104,13 @@ void	sMovingObject::Init(sData e_Data)
 				break;
 		}
 		pMovingObjectImage->SetPos(l_vShowPos);
+		pMovingObjectImage->Update(0.01f);
 	}
 }
 
 void	sMovingObject::Update(float e_fElpaseTime)
 {
+	e_fElpaseTime = 0.016f;
 	if( pMovingObjectImage )
 	{
 		Vector3	l_vCurrentPos = pMovingObjectImage->GetPos();
@@ -367,10 +369,12 @@ void	sTwoMovingObjectController::MouseUp(int e_iPosX,int e_iPosY)
 		float	l_fObjectMaxLength = l_vSize.Length();
 		l_fLength = l_fObjectMaxLength - l_fLength;
 		fTwoObjectCloseValue = l_fLength/l_fObjectMaxLength;
+		cGameApp::ShowInfoOnScreen(L"collided");
 	}
 	else
 	{
 		fTwoObjectCloseValue = 0.01f;
+		cGameApp::ShowInfoOnScreen(L"not collided");
 	}
 	bIsDone = true;
 	if( m_pHorverSound )

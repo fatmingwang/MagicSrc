@@ -18,7 +18,7 @@ cMazeRender::~cMazeRender()
 void cMazeRender::GenRandomMap(bool e_bRandomlyRemoveWall, float e_fPercentage)
 {
 	e_bRandomlyRemoveWall = true;
-	e_fPercentage = 0.1;
+	e_fPercentage = 0.1f;
 	auto l_vPos = this->GetWorldPosition();
 	cCyucelenMazeGrid::GenRandomMap(l_vPos.x, l_vPos.y, e_bRandomlyRemoveWall, e_fPercentage);
 	if (this->m_pMazeMovingObject)

@@ -12,4 +12,8 @@ public:
 	virtual	void	Update(float e_fElpaseTime)override;
 	virtual	void	Render()override;
 	virtual	void	KeyDown(char e_cKey)override;
+	virtual void	MouseMove(int e_iPosX, int e_iPosY)override;
+	virtual void	MouseDown(int e_iPosX, int e_iPosY)override;
+	virtual void    MouseUp(int e_iPosX, int e_iPosY)override;
+	virtual void    InternalMouseLeave(int e_iPosX, int e_iPosY)override;
 };
