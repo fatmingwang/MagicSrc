@@ -110,7 +110,7 @@ void	sMovingObject::Init(sData e_Data)
 
 void	sMovingObject::Update(float e_fElpaseTime)
 {
-	e_fElpaseTime = 0.016f;
+	//e_fElpaseTime = 0.016f;
 	if( pMovingObjectImage )
 	{
 		Vector3	l_vCurrentPos = pMovingObjectImage->GetPos();
