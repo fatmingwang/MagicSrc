@@ -28,7 +28,7 @@ class cMazeTest :public cSimplePhase
 	class cMazeRender* m_pCyucelenMazeGrid = nullptr;
 public:
 	cMazeTest();
-	~cMazeTest();
+	virtual ~cMazeTest();
 	DEFINE_TYPE_INFO();
 	virtual	void	Init()override;
 	virtual	void	Update(float e_fElpaseTime)override;
@@ -43,11 +43,28 @@ class cTweenTest :public cSimplePhase
 	class cTweenyCurveWithTime* m_pTweenyCurveWithTime = nullptr;
 public:
 	cTweenTest();
-	~cTweenTest();
+	virtual ~cTweenTest();
 	DEFINE_TYPE_INFO();
 	virtual	void	Init()override;
 	virtual	void	Update(float e_fElpaseTime)override;
 	virtual	void	Render()override;
+	virtual	void	KeyDown(char e_cKey)override;
+};
+
+class cSpecialTimingCurveClickObjectTesting :public cSimplePhase
+{
+	class cSpecialTimingCurveClickObject*m_pSpecialTimingCurveClickObject = nullptr;
+public:
+	DEFINE_TYPE_INFO();
+	cSpecialTimingCurveClickObjectTesting();
+	virtual ~cSpecialTimingCurveClickObjectTesting();
+	virtual	void	Init()override;
+	virtual	void	Update(float e_fElpaseTime)override;
+	virtual	void	Render()override;
+	virtual void	MouseMove(int e_iPosX, int e_iPosY)override;
+	virtual void	MouseDown(int e_iPosX, int e_iPosY)override;
+	virtual void    MouseUp(int e_iPosX, int e_iPosY)override;
+	virtual void    InternalMouseLeave(int e_iPosX, int e_iPosY)override;
 	virtual	void	KeyDown(char e_cKey)override;
 };
 

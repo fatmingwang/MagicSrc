@@ -3,9 +3,12 @@
 #include "../Level/MazeRender.h"
 #include "../GameCamera/GameCamera.h"
 #include "./GamePlayTesting.h"
+#include "../Object/SpecialTimingCurveClickObject.h"
 
 TYPDE_DEFINE_MARCO(cMazeTest);
 TYPDE_DEFINE_MARCO(cTweenTest);
+TYPDE_DEFINE_MARCO(cSpecialTimingCurveClickObjectTesting);
+
 
 cMazeTest::cMazeTest()
 {
@@ -173,4 +176,66 @@ void SetWorkingTestPhase(eTestPhase e_eTestPhase,cPhaseManager& e_PhaseManager)
 		e_PhaseManager.SetCurrentCurrentPhase(cBattleAttackMoveObjectTesting::TypeID);
 		break;
 	}
+}
+
+cSpecialTimingCurveClickObjectTesting::cSpecialTimingCurveClickObjectTesting()
+{
+	m_pSpecialTimingCurveClickObject = new cSpecialTimingCurveClickObject();
+}
+
+cSpecialTimingCurveClickObjectTesting::~cSpecialTimingCurveClickObjectTesting()
+{
+}
+
+void cSpecialTimingCurveClickObjectTesting::Init()
+{
+	m_pSpecialTimingCurveClickObject->Init();
+}
+
+void cSpecialTimingCurveClickObjectTesting::Update(float e_fElpaseTime)
+{
+	if (m_pSpecialTimingCurveClickObject)
+	{
+		m_pSpecialTimingCurveClickObject->Update(e_fElpaseTime);
+	}
+}
+
+void cSpecialTimingCurveClickObjectTesting::Render()
+{
+	if (m_pSpecialTimingCurveClickObject)
+	{
+		m_pSpecialTimingCurveClickObject->Render();
+	}
+}
+
+void cSpecialTimingCurveClickObjectTesting::MouseMove(int e_iPosX, int e_iPosY)
+{
+	if (m_pSpecialTimingCurveClickObject)
+	{
+		m_pSpecialTimingCurveClickObject->MouseMove(e_iPosX,e_iPosY);
+	}
+}
+
+void cSpecialTimingCurveClickObjectTesting::MouseDown(int e_iPosX, int e_iPosY)
+{
+	if (m_pSpecialTimingCurveClickObject)
+	{
+		m_pSpecialTimingCurveClickObject->MouseDown(e_iPosX, e_iPosY);
+	}
+}
+
+void cSpecialTimingCurveClickObjectTesting::MouseUp(int e_iPosX, int e_iPosY)
+{
+	if (m_pSpecialTimingCurveClickObject)
+	{
+		m_pSpecialTimingCurveClickObject->MouseUp(e_iPosX, e_iPosY);
+	}
+}
+
+void cSpecialTimingCurveClickObjectTesting::InternalMouseLeave(int e_iPosX, int e_iPosY)
+{
+}
+
+void cSpecialTimingCurveClickObjectTesting::KeyDown(char e_cKey)
+{
 }

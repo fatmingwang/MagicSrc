@@ -9,12 +9,21 @@ cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject()
 	auto l_MouseHorverFunction = std::bind(&cSpecialTimingCurveClickObject::MouseHorverFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_MouseUpFunction = std::bind(&cSpecialTimingCurveClickObject::MouseUpFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_MouseLeaveFunction = std::bind(&cSpecialTimingCurveClickObject::MouseLeaveFunction, this, std::placeholders::_1, std::placeholders::_2);
-	SetMouseFunction(l_CollideFunction,
+	this->SetMouseFunction(l_CollideFunction,
 		l_MouseDownFunction,
 		l_MouseHorverFunction,
 		l_MouseUpFunction,
 		nullptr,
 		l_MouseLeaveFunction);
+	m_pTweenyCurveWithTime = new cTweenyCurveWithTime();
+	cCurveWithTime	l_Data;
+	l_Data.AddPoint(Vector3(50, 50, 0), 0);
+	l_Data.AddPoint(Vector3(150, 50, 0), 1);
+	l_Data.AddPoint(Vector3(50, 150, 0), 2);
+	l_Data.AddPoint(Vector3(250, 50, 0), 3);
+	l_Data.AddPoint(Vector3(50, 250, 0), 4);
+	l_Data.SetLOD(6);
+	m_pTweenyCurveWithTime->SetData(tweeny::easing::enumerated::quadraticInOut, 3, &l_Data, nullptr);
 }
 
 cSpecialTimingCurveClickObject::~cSpecialTimingCurveClickObject()
@@ -24,10 +33,18 @@ cSpecialTimingCurveClickObject::~cSpecialTimingCurveClickObject()
 void cSpecialTimingCurveClickObject::Update(float e_fElpaseTime)
 {
 	cClickBehavior::Update(e_fElpaseTime);
+	if (m_pTweenyCurveWithTime)
+	{
+		m_pTweenyCurveWithTime->Update(e_fElpaseTime);
+	}
 }
 
 void cSpecialTimingCurveClickObject::Render()
 {
+	if (m_pTweenyCurveWithTime)
+	{
+		m_pTweenyCurveWithTime->Render();
+	}
 }
 
 bool cSpecialTimingCurveClickObject::CollideFunction(int e_iPosX, int e_iPosY)
