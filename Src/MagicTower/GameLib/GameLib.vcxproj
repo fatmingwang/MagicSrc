@@ -276,6 +276,7 @@
     <ClInclude Include="Object\MainCharacterBehavior.h" />
     <ClInclude Include="Object\MonsterBase.h" />
     <ClInclude Include="Object\MoveObject.h" />
+    <ClInclude Include="Object\SpecialTimingCurveClickObject.h" />
     <ClInclude Include="Phase\BattlePhase.h" />
     <ClInclude Include="Phase\MainMenuPhase.h" />
     <ClInclude Include="Phase\SceneControl.h" />
@@ -319,6 +320,7 @@
     <ClCompile Include="Object\MainCharacterBehavior.cpp" />
     <ClCompile Include="Object\MonsterBase.cpp" />
     <ClCompile Include="Object\MoveObject.cpp" />
+    <ClCompile Include="Object\SpecialTimingCurveClickObject.cpp" />
     <ClCompile Include="Phase\BattlePhase.cpp" />
     <ClCompile Include="Phase\MainMenuPhase.cpp" />
     <ClCompile Include="Phase\SceneControl.cpp" />
