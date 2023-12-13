@@ -20,6 +20,7 @@ enum eTestPhase
 	eTP_MAZE = 0,
 	eTP_TWEEN,
 	eTP_BATTLE_ATTACK_MOVING_OBJECT_TESTING,
+	eTP_SPECIAL_TIMING_CURVE_CLICK_OOBJECT_TESTING,
 	eTP_MAX
 };
 
@@ -53,7 +54,9 @@ public:
 
 class cSpecialTimingCurveClickObjectTesting :public cSimplePhase
 {
-	class cSpecialTimingCurveClickObject*m_pSpecialTimingCurveClickObject = nullptr;
+	cClickBehaviorGroup						m_ClickBehaviorGroup;
+	class cSpecialTimingCurveClickObject*	m_pSpecialTimingCurveClickObject = nullptr;
+	cBaseImage*								m_pLineImage;
 public:
 	DEFINE_TYPE_INFO();
 	cSpecialTimingCurveClickObjectTesting();

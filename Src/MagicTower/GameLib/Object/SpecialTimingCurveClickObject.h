@@ -22,7 +22,8 @@ class cSpecialTimingCurveClickObject:public cClickBehavior
 public:
 	cSpecialTimingCurveClickObject();
 	virtual ~cSpecialTimingCurveClickObject();
-
+	class cTweenyCurveWithTime*		GetTweenyCurveWithTime() { return m_pTweenyCurveWithTime; }
 	virtual void    				Update(float e_fElpaseTime)override;
 	void							Render();
+	void							AssignTestingData();
 };
