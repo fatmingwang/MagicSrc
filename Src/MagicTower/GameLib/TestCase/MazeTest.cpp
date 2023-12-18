@@ -230,6 +230,7 @@ void cSpecialTimingCurveClickObjectTesting::Render()
 			int a = 0;
 		}
 	}
+	cGameApp::ShowInfo();
 }
 
 void cSpecialTimingCurveClickObjectTesting::MouseMove(int e_iPosX, int e_iPosY)
@@ -253,4 +254,9 @@ void cSpecialTimingCurveClickObjectTesting::InternalMouseLeave(int e_iPosX, int 
 
 void cSpecialTimingCurveClickObjectTesting::KeyDown(char e_cKey)
 {
+	if (m_pSpecialTimingCurveClickObject)
+	{
+		m_pSpecialTimingCurveClickObject->GetTweenyCurveWithTime()->Reset();
+	}
+	
 }

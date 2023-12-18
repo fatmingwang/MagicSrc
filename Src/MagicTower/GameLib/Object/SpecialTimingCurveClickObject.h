@@ -6,6 +6,7 @@
 
 class cSpecialTimingCurveClickObject:public cClickBehavior
 {
+	bool				m_bColliede;
 	float				m_fRadiusForCollision = 30.f;
 	float				m_fTimeOffset = 0.5f;
 
@@ -25,5 +26,6 @@ public:
 	class cTweenyCurveWithTime*		GetTweenyCurveWithTime() { return m_pTweenyCurveWithTime; }
 	virtual void    				Update(float e_fElpaseTime)override;
 	void							Render();
+	void							DebugRender();
 	void							AssignTestingData();
 };

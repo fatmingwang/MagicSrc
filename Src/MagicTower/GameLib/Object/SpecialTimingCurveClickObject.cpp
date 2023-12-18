@@ -37,7 +37,15 @@ void cSpecialTimingCurveClickObject::Render()
 {
 	if (m_pTweenyCurveWithTime)
 	{
-		m_pTweenyCurveWithTime->Render();
+		m_pTweenyCurveWithTime->Render(m_fRadiusForCollision, m_bColliede?Vector4::Green:Vector4::Red);
+	}
+}
+
+void cSpecialTimingCurveClickObject::DebugRender()
+{
+	if (m_pTweenyCurveWithTime)
+	{
+		//m_pTweenyCurveWithTime->Render();
 	}
 }
 
@@ -48,13 +56,13 @@ void cSpecialTimingCurveClickObject::AssignTestingData()
 		float l_fStartX = 200;
 		float l_fStartY = 200;
 		cCurveWithTime	l_Data;
-		l_Data.AddPoint(Vector3(l_fStartX+50,  l_fStartY+50, 0), 0);
-		l_Data.AddPoint(Vector3(l_fStartX+150, l_fStartY+50, 0), 1);
-		l_Data.AddPoint(Vector3(l_fStartX+50,  l_fStartY+150, 0), 2);
-		l_Data.AddPoint(Vector3(l_fStartX+250, l_fStartY+50, 0), 3);
-		l_Data.AddPoint(Vector3(l_fStartX+50,  l_fStartY+250, 0), 4);
-		//l_Data.SetLOD(6);
-		m_pTweenyCurveWithTime->SetData(tweeny::easing::enumerated::quadraticInOut, 3, &l_Data, nullptr);
+		l_Data.AddPoint(Vector3(l_fStartX+0,  l_fStartY+0, 0), 0);
+		l_Data.AddPoint(Vector3(l_fStartX-150, l_fStartY+150, 0), 1);
+		l_Data.AddPoint(Vector3(l_fStartX+350,  l_fStartY+150, 0), 2);
+		l_Data.AddPoint(Vector3(l_fStartX-100, l_fStartY+100, 0), 3);
+		l_Data.AddPoint(Vector3(l_fStartX+0,  l_fStartY+250, 0), 4);
+		l_Data.SetLOD(2);
+		m_pTweenyCurveWithTime->SetData(tweeny::easing::enumerated::quadraticInOut, 20, &l_Data, nullptr);
 	}
 }
 
@@ -62,22 +70,27 @@ bool cSpecialTimingCurveClickObject::CollideFunction(int e_iPosX, int e_iPosY)
 {
 	auto l_pCurve = m_pTweenyCurveWithTime->GetCurve();
 	float l_fTime = l_pCurve->GetCurrentTime();
-	int l_iIndex = l_pCurve->GetTimeRelativeIndex(l_fTime);
+	int l_iIndex = l_pCurve->GetTimeRelativeIndexWithFinalPointList(l_fTime,0.2f);
 	if (l_iIndex != -1)
 	{
-		Vector3 l_vPos = l_pCurve->GetOriginalPointList()[l_iIndex];
+		Vector3 l_vPos = l_pCurve->GetPointList()[l_iIndex];
 		Vector3 l_vTouchPos((float)e_iPosX, (float)e_iPosY, 0.f);
 		float l_fDis = (l_vTouchPos - l_vPos).Length();
 		if (l_fDis <= m_fRadiusForCollision)
-		{
+		{//show mouse positio and sphere position for debug.
+			
+			m_bColliede = true;
 			return true;
 		}
+		m_bColliede = false;
+		//cGameApp::ShowInfoOnScreen(L"Missing");
 	}
 	return false;
 }
 
 bool cSpecialTimingCurveClickObject::MouseDownFunction(int e_iPosX, int e_iPosY)
 {
+	cGameApp::ShowInfoOnScreen(L"Hitted down");
 	return false;
 }
 
@@ -88,6 +101,7 @@ bool cSpecialTimingCurveClickObject::MouseHorverFunction(int e_iPosX, int e_iPos
 
 bool cSpecialTimingCurveClickObject::MouseUpFunction(int e_iPosX, int e_iPosY)
 {
+	cGameApp::ShowInfoOnScreen(L"Hitted up");
 	return false;
 }
 
