@@ -64,14 +64,14 @@ void cTweenTest::Init()
 {
 	//m_pTweenyTestObject = new cTweenyTestObject();
 	m_pTweenyCurveWithTime = new cTweenyCurveWithTime();
-	cCurveWithTime	l_Data;
-	l_Data.AddPoint(Vector3(50, 50, 0), 0);
-	l_Data.AddPoint(Vector3(150, 50, 0), 1);
-	l_Data.AddPoint(Vector3(50, 150, 0), 2);
-	l_Data.AddPoint(Vector3(250, 50, 0), 3);
-	l_Data.AddPoint(Vector3(50, 250, 0), 4);
-	l_Data.SetLOD(6);
-	m_pTweenyCurveWithTime->SetData(tweeny::easing::enumerated::quadraticInOut,3,&l_Data,nullptr);
+	cCurveWithTime*l_pData = new cCurveWithTime();
+	l_pData->AddPoint(Vector3(50, 50, 0), 0);
+	l_pData->AddPoint(Vector3(150, 50, 0), 1);
+	l_pData->AddPoint(Vector3(50, 150, 0), 2);
+	l_pData->AddPoint(Vector3(250, 50, 0), 3);
+	l_pData->AddPoint(Vector3(50, 250, 0), 4);
+	l_pData->SetLOD(6);
+	m_pTweenyCurveWithTime->SetData(tweeny::easing::enumerated::quadraticInOut,3,l_pData,nullptr);
 }
 
 void cTweenTest::Update(float e_fElpaseTime)
@@ -191,6 +191,7 @@ void SetWorkingTestPhase(eTestPhase e_eTestPhase,cPhaseManager& e_PhaseManager)
 cSpecialTimingCurveClickObjectTesting::cSpecialTimingCurveClickObjectTesting()
 {
 	this->SetName(cSpecialTimingCurveClickObjectTesting::TypeID);
+	m_pLineImage = nullptr;
 	m_pSpecialTimingCurveClickObject = new cSpecialTimingCurveClickObject();
 	m_pSpecialTimingCurveClickObject->AssignTestingData();
 	m_ClickBehaviorGroup.AddObject(m_pSpecialTimingCurveClickObject);
@@ -203,8 +204,8 @@ cSpecialTimingCurveClickObjectTesting::~cSpecialTimingCurveClickObjectTesting()
 
 void cSpecialTimingCurveClickObjectTesting::Init()
 {
-	m_pSpecialTimingCurveClickObject->Init();
 	m_pLineImage = new cBaseImage("MagicTower/Image/V_Wall.png");
+	m_pSpecialTimingCurveClickObject->Init();
 }
 
 void cSpecialTimingCurveClickObjectTesting::Update(float e_fElpaseTime)
@@ -217,7 +218,6 @@ void cSpecialTimingCurveClickObjectTesting::Render()
 	if (m_pSpecialTimingCurveClickObject)
 	{
 		auto l_Object = m_pSpecialTimingCurveClickObject->GetTweenyCurveWithTime();
-		m_pSpecialTimingCurveClickObject->Render();
 		if (m_pLineImage)
 		{
 			cCurve* l_pCurve = l_Object->GetCurve();
@@ -226,9 +226,10 @@ void cSpecialTimingCurveClickObjectTesting::Render()
 			Vector3 l_OutPos[l_ciTest];
 			Vector2 l_vOutUV[l_ciTest];
 			Vector4 l_vOutColor[l_ciTest];
-			m_pLineImage->GenerateCurveTriangulatorRenderDataForBatchRendering(l_pCurve, l_iNumVertices, l_OutPos, l_vOutUV, l_vOutColor,true);
+			m_pLineImage->GenerateCurveTriangulatorRenderDataForBatchRendering(l_pCurve, l_iNumVertices, l_OutPos, l_vOutUV, l_vOutColor, true);
 			int a = 0;
 		}
+		m_pSpecialTimingCurveClickObject->Render();
 	}
 	cGameApp::ShowInfo();
 }

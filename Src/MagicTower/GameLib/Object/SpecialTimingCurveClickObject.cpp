@@ -55,14 +55,19 @@ void cSpecialTimingCurveClickObject::AssignTestingData()
 	{
 		float l_fStartX = 200;
 		float l_fStartY = 200;
-		cCurveWithTime	l_Data;
-		l_Data.AddPoint(Vector3(l_fStartX+0,  l_fStartY+0, 0), 0);
-		l_Data.AddPoint(Vector3(l_fStartX-150, l_fStartY+150, 0), 1);
-		l_Data.AddPoint(Vector3(l_fStartX+350,  l_fStartY+150, 0), 2);
-		l_Data.AddPoint(Vector3(l_fStartX-100, l_fStartY+100, 0), 3);
-		l_Data.AddPoint(Vector3(l_fStartX+0,  l_fStartY+250, 0), 4);
-		l_Data.SetLOD(2);
-		m_pTweenyCurveWithTime->SetData(tweeny::easing::enumerated::quadraticInOut, 20, &l_Data, nullptr);
+		cCurveWithTime*l_pData = new cCurveWithTime();
+		//l_Data.AddPoint(Vector3(l_fStartX+0,  l_fStartY+0, 0), 0);
+		//l_Data.AddPoint(Vector3(l_fStartX-150, l_fStartY+150, 0), 1);
+		//l_Data.AddPoint(Vector3(l_fStartX+350,  l_fStartY+150, 0), 2);
+		//l_Data.AddPoint(Vector3(l_fStartX-100, l_fStartY+100, 0), 3);
+		//l_Data.AddPoint(Vector3(l_fStartX+0,  l_fStartY+250, 0), 4);
+		l_pData->AddPoint(Vector3(l_fStartX + 0,   l_fStartY + 0, 0), 0);
+		l_pData->AddPoint(Vector3(l_fStartX + 150, l_fStartY + 0, 0), 1);
+		l_pData->AddPoint(Vector3(l_fStartX + 150, l_fStartY + 150, 0), 2);
+		l_pData->AddPoint(Vector3(l_fStartX + 0,   l_fStartY + 150, 0), 3);// 
+		l_pData->AddPoint(Vector3(l_fStartX + 0,   l_fStartY + 0, 0), 4);// 
+		l_pData->SetLOD(3);
+		m_pTweenyCurveWithTime->SetData(tweeny::easing::enumerated::quadraticInOut, 10, l_pData, nullptr);
 	}
 }
 

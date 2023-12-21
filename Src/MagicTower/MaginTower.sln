@@ -77,6 +77,7 @@ Global
 		{D5962A80-CFCF-437A-B224-01C03CF9FD1A}.Debug|Emscripten.ActiveCfg = Debug_NoPthread|Emscripten
 		{D5962A80-CFCF-437A-B224-01C03CF9FD1A}.Debug|Emscripten.Build.0 = Debug_NoPthread|Emscripten
 		{D5962A80-CFCF-437A-B224-01C03CF9FD1A}.Debug|x64.ActiveCfg = Debug|x64
+		{D5962A80-CFCF-437A-B224-01C03CF9FD1A}.Debug|x64.Build.0 = Debug|x64
 		{D5962A80-CFCF-437A-B224-01C03CF9FD1A}.Debug|x86.ActiveCfg = Debug|x64
 		{D5962A80-CFCF-437A-B224-01C03CF9FD1A}.Debug|x86.Build.0 = Debug|x64
 		{D5962A80-CFCF-437A-B224-01C03CF9FD1A}.Release_NO_PTHREAD_WITH_BULLET|Emscripten.ActiveCfg = Release_NO_PTHREAD_WITH_BULLET|Emscripten
@@ -298,7 +299,6 @@ Global
 		{446A6D50-5176-4D3C-938B-65E7B41D0873}.Debug|Emscripten.ActiveCfg = Debug|Emscripten
 		{446A6D50-5176-4D3C-938B-65E7B41D0873}.Debug|Emscripten.Build.0 = Debug|Emscripten
 		{446A6D50-5176-4D3C-938B-65E7B41D0873}.Debug|x64.ActiveCfg = Debug|x64
-		{446A6D50-5176-4D3C-938B-65E7B41D0873}.Debug|x64.Build.0 = Debug|x64
 		{446A6D50-5176-4D3C-938B-65E7B41D0873}.Debug|x86.ActiveCfg = Debug|x64
 		{446A6D50-5176-4D3C-938B-65E7B41D0873}.Debug|x86.Build.0 = Debug|x64
 		{446A6D50-5176-4D3C-938B-65E7B41D0873}.Release_NO_PTHREAD_WITH_BULLET|Emscripten.ActiveCfg = Release|Emscripten
