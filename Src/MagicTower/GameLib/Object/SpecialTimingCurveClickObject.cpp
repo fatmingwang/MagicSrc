@@ -2,15 +2,19 @@
 #include "SpecialTimingCurveClickObject.h"
 #include "../Tween/TweenCurve.h"
 
-cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject()
+cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject(bool e_bTrackCurveNotKeyPoint)
 {
+	m_bTrackCurveNotKeyPoint = e_bTrackCurveNotKeyPoint;
 	m_pTweenyCurveWithTime = new cTweenyCurveWithTime(2,2, "MagicTower/Image/V_Wall.png");
-	auto l_CollideFunction = std::bind(&cSpecialTimingCurveClickObject::CollideFunction, this, std::placeholders::_1, std::placeholders::_2);
+	auto l_CollideTrackCurveFunction = std::bind(&cSpecialTimingCurveClickObject::CollideWithCurveFunction, this, std::placeholders::_1, std::placeholders::_2);
+	auto l_CollideKeyPointFunction = std::bind(&cSpecialTimingCurveClickObject::CollideOnlyKeyPointFunction, this, std::placeholders::_1, std::placeholders::_2);
+	auto l_CollideFunction = std::bind(&cSpecialTimingCurveClickObject::CollideWithCurveFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_MouseDownFunction = std::bind(&cSpecialTimingCurveClickObject::MouseDownFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_MouseHorverFunction = std::bind(&cSpecialTimingCurveClickObject::MouseHorverFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_MouseUpFunction = std::bind(&cSpecialTimingCurveClickObject::MouseUpFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_MouseLeaveFunction = std::bind(&cSpecialTimingCurveClickObject::MouseLeaveFunction, this, std::placeholders::_1, std::placeholders::_2);
-	this->SetMouseFunction(l_CollideFunction,
+	this->SetMouseFunction(
+		m_bTrackCurveNotKeyPoint ? l_CollideTrackCurveFunction : l_CollideKeyPointFunction,
 		l_MouseDownFunction,
 		l_MouseHorverFunction,
 		l_MouseUpFunction,
@@ -70,7 +74,7 @@ void cSpecialTimingCurveClickObject::AssignTestingData()
 	}
 }
 
-bool cSpecialTimingCurveClickObject::CollideFunction(int e_iPosX, int e_iPosY)
+bool cSpecialTimingCurveClickObject::CollideWithCurveFunction(int e_iPosX, int e_iPosY)
 {
 	auto l_pCurve = m_pTweenyCurveWithTime->GetCurve();
 	float l_fTime = l_pCurve->GetCurrentTime();
@@ -88,6 +92,30 @@ bool cSpecialTimingCurveClickObject::CollideFunction(int e_iPosX, int e_iPosY)
 		}
 		m_bColliede = false;
 		//cGameApp::ShowInfoOnScreen(L"Missing");
+	}
+	return false;
+}
+
+bool cSpecialTimingCurveClickObject::CollideOnlyKeyPointFunction(int e_iPosX, int e_iPosY)
+{
+	auto l_pCurve = m_pTweenyCurveWithTime->GetCurve();
+	auto l_CollisionPointIndexOfCurveAndTimeLerpHintMap = m_pTweenyCurveWithTime->GetCollisionPointIndexOfCurveAndTimeLerpHintMap();
+	if (l_CollisionPointIndexOfCurveAndTimeLerpHintMap.size())
+	{
+		Vector3 l_vTouchPos((float)e_iPosX, (float)e_iPosY, 0.f);
+		for (auto l_Iterator = l_CollisionPointIndexOfCurveAndTimeLerpHintMap.begin(); l_Iterator != l_CollisionPointIndexOfCurveAndTimeLerpHintMap.end(); ++l_Iterator)
+		{
+			Vector3 l_vPos = l_pCurve->GetPointList()[l_Iterator->first];
+			float l_fDis = (l_vTouchPos - l_vPos).Length();
+			if (l_fDis <= m_fRadiusForCollision)
+			{//show mouse positio and sphere position for debug.
+
+				m_bColliede = true;
+				return true;
+			}
+			m_bColliede = false;
+			//cGameApp::ShowInfoOnScreen(L"Missing");
+		}
 	}
 	return false;
 }

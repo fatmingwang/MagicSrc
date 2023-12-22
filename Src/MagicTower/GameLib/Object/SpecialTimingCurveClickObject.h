@@ -6,22 +6,22 @@
 
 class cSpecialTimingCurveClickObject:public cClickBehavior
 {
-	bool				m_bColliede;
-	float				m_fRadiusForCollision = 30.f;
-	float				m_fTimeOffset = 0.5f;
+	bool						m_bColliede;
+	float						m_fRadiusForCollision = 30.f;
+	float						m_fTimeOffset = 0.5f;
 
 	//
-	bool	CollideFunction(int e_iPosX,int e_iPosY);
-	bool	MouseDownFunction(int e_iPosX, int e_iPosY);
-	bool	MouseHorverFunction(int e_iPosX, int e_iPosY);
-	bool	MouseUpFunction(int e_iPosX, int e_iPosY);
-	bool	MouseLeaveFunction(int e_iPosX, int e_iPosY);
-	//CollideFunction					m_CollideFunction;
+	bool						CollideWithCurveFunction(int e_iPosX, int e_iPosY);
+	bool						CollideOnlyKeyPointFunction(int e_iPosX,int e_iPosY);
+	bool						MouseDownFunction(int e_iPosX, int e_iPosY);
+	bool						MouseHorverFunction(int e_iPosX, int e_iPosY);
+	bool						MouseUpFunction(int e_iPosX, int e_iPosY);
+	bool						MouseLeaveFunction(int e_iPosX, int e_iPosY);
 	class cTweenyCurveWithTime* m_pTweenyCurveWithTime = nullptr;
-	//std::vector<Vector3>		m_KeyIndexPosVector;
-	//std::vector<float>		m_TimeVector;
+	bool						m_bTrackCurveNotKeyPoint;
+	std::vector<int>			m_ColliededKeyPointVector;
 public:
-	cSpecialTimingCurveClickObject();
+	cSpecialTimingCurveClickObject(bool e_bTrackCurveNotKeyPoint = true);
 	virtual ~cSpecialTimingCurveClickObject();
 	class cTweenyCurveWithTime*		GetTweenyCurveWithTime() { return m_pTweenyCurveWithTime; }
 	virtual void    				Update(float e_fElpaseTime)override;
