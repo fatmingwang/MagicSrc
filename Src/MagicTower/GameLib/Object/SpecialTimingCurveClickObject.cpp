@@ -4,7 +4,8 @@
 
 cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject()
 {
-	auto l_CollideFunction = std::bind(&cSpecialTimingCurveClickObject::CollideFunction, this,std::placeholders::_1, std::placeholders::_2);
+	m_pTweenyCurveWithTime = new cTweenyCurveWithTime(2,2, "MagicTower/Image/V_Wall.png");
+	auto l_CollideFunction = std::bind(&cSpecialTimingCurveClickObject::CollideFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_MouseDownFunction = std::bind(&cSpecialTimingCurveClickObject::MouseDownFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_MouseHorverFunction = std::bind(&cSpecialTimingCurveClickObject::MouseHorverFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_MouseUpFunction = std::bind(&cSpecialTimingCurveClickObject::MouseUpFunction, this, std::placeholders::_1, std::placeholders::_2);
@@ -15,8 +16,6 @@ cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject()
 		l_MouseUpFunction,
 		nullptr,
 		l_MouseLeaveFunction);
-	m_pTweenyCurveWithTime = new cTweenyCurveWithTime();
-	//AssignTestingData();
 }
 
 cSpecialTimingCurveClickObject::~cSpecialTimingCurveClickObject()

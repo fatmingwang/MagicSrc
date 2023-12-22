@@ -191,7 +191,6 @@ void SetWorkingTestPhase(eTestPhase e_eTestPhase,cPhaseManager& e_PhaseManager)
 cSpecialTimingCurveClickObjectTesting::cSpecialTimingCurveClickObjectTesting()
 {
 	this->SetName(cSpecialTimingCurveClickObjectTesting::TypeID);
-	m_pLineImage = nullptr;
 	m_pSpecialTimingCurveClickObject = new cSpecialTimingCurveClickObject();
 	m_pSpecialTimingCurveClickObject->AssignTestingData();
 	m_ClickBehaviorGroup.AddObject(m_pSpecialTimingCurveClickObject);
@@ -199,12 +198,10 @@ cSpecialTimingCurveClickObjectTesting::cSpecialTimingCurveClickObjectTesting()
 
 cSpecialTimingCurveClickObjectTesting::~cSpecialTimingCurveClickObjectTesting()
 {
-	SAFE_DELETE(m_pLineImage);
 }
 
 void cSpecialTimingCurveClickObjectTesting::Init()
 {
-	m_pLineImage = new cBaseImage("MagicTower/Image/V_Wall.png");
 	m_pSpecialTimingCurveClickObject->Init();
 }
 
@@ -217,18 +214,6 @@ void cSpecialTimingCurveClickObjectTesting::Render()
 {
 	if (m_pSpecialTimingCurveClickObject)
 	{
-		auto l_Object = m_pSpecialTimingCurveClickObject->GetTweenyCurveWithTime();
-		if (m_pLineImage)
-		{
-			cCurve* l_pCurve = l_Object->GetCurve();
-			int l_iNumVertices = 0;
-			const int l_ciTest = 9999;
-			Vector3 l_OutPos[l_ciTest];
-			Vector2 l_vOutUV[l_ciTest];
-			Vector4 l_vOutColor[l_ciTest];
-			m_pLineImage->GenerateCurveTriangulatorRenderDataForBatchRendering(l_pCurve, l_iNumVertices, l_OutPos, l_vOutUV, l_vOutColor, true);
-			int a = 0;
-		}
 		m_pSpecialTimingCurveClickObject->Render();
 	}
 	cGameApp::ShowInfo();

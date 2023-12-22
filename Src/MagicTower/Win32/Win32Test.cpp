@@ -4,6 +4,7 @@
 
 
 #include "../GameLib/GameApp/GameApp.h"
+#include "../Tween/TweenCurve.h"
 //
 #define MAX_LOADSTRING 100
 //

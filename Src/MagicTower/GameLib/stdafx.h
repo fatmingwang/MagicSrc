@@ -4,6 +4,7 @@
 #endif
 #include "../Tween/TweenyManager.h"
 #include "AllCoreInclude.h" 
+#include "../Tween/TweenCurve.h"
 #include "FatmingAI/AllFatmingAIInclude.h" 
 #include "FMLevelData/AllLevelDataInclude.h" 
 #include "AllPhaseName.h"

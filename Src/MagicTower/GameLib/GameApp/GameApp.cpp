@@ -49,21 +49,23 @@ cMagicTowerApp::~cMagicTowerApp()
 void	cMagicTowerApp::Init()
 {
 	cGameApp::Init();
-	cNodeISAX	l_cNodeISAX;
-	if(l_cNodeISAX.ParseDataIntoXMLNode(MAIN_ROLE_SETUP_DATA))
+	bool l_bNotDoTest = false;
+	if (l_bNotDoTest)
 	{
-		m_spMainRoleData = new cMainRoleData(l_cNodeISAX.GetRootElement());
+		cNodeISAX	l_cNodeISAX;
+		if (l_cNodeISAX.ParseDataIntoXMLNode(MAIN_ROLE_SETUP_DATA))
+		{
+			m_spMainRoleData = new cMainRoleData(l_cNodeISAX.GetRootElement());
+		}
+		m_sp2DCamera = new cOrthogonalCamera(Vector2(480, 320));
+		m_spSceneControl = new cSceneControl();
+		POINT	l_ViewSize = { 480,320 };
+		m_sp2DCamera->SetResolution(Vector2(480, 320));
+		//m_sp2DCamera->Update(l_ViewSize);
+		if (m_spSceneControl)
+			m_spSceneControl->Load();
+		m_pUIInfo = new cUIInfo();
 	}
-	m_sp2DCamera = new cOrthogonalCamera(Vector2(480,320));
-	m_spSceneControl = new cSceneControl();
-	POINT	l_ViewSize = {480,320};
-	m_sp2DCamera->SetResolution(Vector2(480,320));
-	//m_sp2DCamera->Update(l_ViewSize);
-	if( m_spSceneControl )
-		m_spSceneControl->Load();
-	m_pUIInfo = new cUIInfo();
-	//g_pDebugFont = new cGlyphFontRender("MagicTower/Font");
-
 	//AddTestPhase(eTestPhase::eTP_MAZE,this->m_PhaseManager,true);
 	//AddTestPhase(eTestPhase::eTP_TWEEN, this->m_PhaseManager,true);
 	//AddTestPhase(eTestPhase::eTP_BATTLE_ATTACK_MOVING_OBJECT_TESTING, this->m_PhaseManager,true);

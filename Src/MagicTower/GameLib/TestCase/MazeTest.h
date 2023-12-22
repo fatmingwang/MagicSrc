@@ -13,8 +13,6 @@
 //	virtual	void	KeyUp(unsigned char e_ucKey) {}
 //};
 
-#include "../Tween/TweenCurve.h"
-
 enum eTestPhase
 {
 	eTP_MAZE = 0,
@@ -56,7 +54,6 @@ class cSpecialTimingCurveClickObjectTesting :public cSimplePhase
 {
 	cClickBehaviorGroup						m_ClickBehaviorGroup;
 	class cSpecialTimingCurveClickObject*	m_pSpecialTimingCurveClickObject = nullptr;
-	cBaseImage*								m_pLineImage;
 public:
 	DEFINE_TYPE_INFO();
 	cSpecialTimingCurveClickObjectTesting();
