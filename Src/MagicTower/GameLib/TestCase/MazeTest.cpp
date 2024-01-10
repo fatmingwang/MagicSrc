@@ -191,47 +191,50 @@ void SetWorkingTestPhase(eTestPhase e_eTestPhase,cPhaseManager& e_PhaseManager)
 cSpecialTimingCurveClickObjectTesting::cSpecialTimingCurveClickObjectTesting()
 {
 	this->SetName(cSpecialTimingCurveClickObjectTesting::TypeID);
-	m_pSpecialTimingCurveClickObject = new cSpecialTimingCurveClickObject();
-	m_pSpecialTimingCurveClickObject->AssignTestingData();
-	m_ClickBehaviorGroup.AddObject(m_pSpecialTimingCurveClickObject);
+	m_pSpecialTimingCurveClickObject = new cSpecialTimingCurveClickObject(true, "MagicTower/Image/V_Wall.png");
+	m_pSpecialTimingCurveClickObject->AssignTestingData(0,0);
+	m_RenderAndClickObject.AddObject(m_pSpecialTimingCurveClickObject);
 }
 
 cSpecialTimingCurveClickObjectTesting::~cSpecialTimingCurveClickObjectTesting()
 {
+	m_RenderAndClickObject.Destroy();
 }
 
 void cSpecialTimingCurveClickObjectTesting::Init()
 {
-	m_pSpecialTimingCurveClickObject->Init();
+	//m_pSpecialTimingCurveClickObject->Init();
+	m_RenderAndClickObject.Init();
 }
 
 void cSpecialTimingCurveClickObjectTesting::Update(float e_fElpaseTime)
 {
-	m_ClickBehaviorGroup.Update(e_fElpaseTime);
+	m_RenderAndClickObject.Update(e_fElpaseTime);
 }
 
 void cSpecialTimingCurveClickObjectTesting::Render()
 {
-	if (m_pSpecialTimingCurveClickObject)
-	{
-		m_pSpecialTimingCurveClickObject->Render();
-	}
+	m_RenderAndClickObject.Render();
+	//if (m_pSpecialTimingCurveClickObject)
+	//{
+	//	m_pSpecialTimingCurveClickObject->Render();
+	//}
 	cGameApp::ShowInfo();
 }
 
 void cSpecialTimingCurveClickObjectTesting::MouseMove(int e_iPosX, int e_iPosY)
 {
-	m_ClickBehaviorGroup.MouseMove(e_iPosX,e_iPosY);
+	m_RenderAndClickObject.MouseMove(e_iPosX,e_iPosY);
 }
 
 void cSpecialTimingCurveClickObjectTesting::MouseDown(int e_iPosX, int e_iPosY)
 {
-	m_ClickBehaviorGroup.MouseDown(e_iPosX, e_iPosY);
+	m_RenderAndClickObject.MouseDown(e_iPosX, e_iPosY);
 }
 
 void cSpecialTimingCurveClickObjectTesting::MouseUp(int e_iPosX, int e_iPosY)
 {
-	m_ClickBehaviorGroup.MouseUp(e_iPosX, e_iPosY);
+	m_RenderAndClickObject.MouseUp(e_iPosX, e_iPosY);
 }
 
 void cSpecialTimingCurveClickObjectTesting::InternalMouseLeave(int e_iPosX, int e_iPosY)

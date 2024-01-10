@@ -52,7 +52,8 @@ public:
 
 class cSpecialTimingCurveClickObjectTesting :public cSimplePhase
 {
-	cClickBehaviorGroup						m_ClickBehaviorGroup;
+	cRenderAndClickObject					m_RenderAndClickObject;
+	//cClickBehaviorGroup						m_ClickBehaviorGroup;
 	class cSpecialTimingCurveClickObject*	m_pSpecialTimingCurveClickObject = nullptr;
 public:
 	DEFINE_TYPE_INFO();

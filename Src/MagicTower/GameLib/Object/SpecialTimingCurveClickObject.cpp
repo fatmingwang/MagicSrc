@@ -2,10 +2,14 @@
 #include "SpecialTimingCurveClickObject.h"
 #include "../Tween/TweenCurve.h"
 
-cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject(bool e_bTrackCurveNotKeyPoint)
+cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject(bool e_bTrackCurveNotKeyPoint, const char* e_strDebugLineFileName)
 {
+	e_bTrackCurveNotKeyPoint = false;
 	m_bTrackCurveNotKeyPoint = e_bTrackCurveNotKeyPoint;
-	m_pTweenyCurveWithTime = new cTweenyCurveWithTime(2,2, "MagicTower/Image/V_Wall.png");
+	m_pTweenyCurveWithTime = new cTweenyCurveWithTime(2,2, e_strDebugLineFileName);
+	auto l_pRenderObject = this->CreateRenderObject();
+	l_pRenderObject->AddChild(m_pTweenyCurveWithTime);
+	//l_pRenderObject->AddChild(m_pTweenyCurveWithTime->m_pDeugLineImage);
 	auto l_CollideTrackCurveFunction = std::bind(&cSpecialTimingCurveClickObject::CollideWithCurveFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_CollideKeyPointFunction = std::bind(&cSpecialTimingCurveClickObject::CollideOnlyKeyPointFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_CollideFunction = std::bind(&cSpecialTimingCurveClickObject::CollideWithCurveFunction, this, std::placeholders::_1, std::placeholders::_2);
@@ -24,7 +28,7 @@ cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject(bool e_bTrackCurv
 
 cSpecialTimingCurveClickObject::~cSpecialTimingCurveClickObject()
 {
-	SAFE_DELETE(m_pTweenyCurveWithTime);
+	//SAFE_DELETE(m_pTweenyCurveWithTime);
 }
 
 void cSpecialTimingCurveClickObject::Update(float e_fElpaseTime)
@@ -36,13 +40,13 @@ void cSpecialTimingCurveClickObject::Update(float e_fElpaseTime)
 	}
 }
 
-void cSpecialTimingCurveClickObject::Render()
-{
-	if (m_pTweenyCurveWithTime)
-	{
-		m_pTweenyCurveWithTime->Render(m_fRadiusForCollision, m_bColliede?Vector4::Green:Vector4::Red);
-	}
-}
+//void cSpecialTimingCurveClickObject::Render()
+//{
+//	if (m_pTweenyCurveWithTime)
+//	{
+//		m_pTweenyCurveWithTime->Render(m_fRadiusForCollision, m_bColliede?Vector4::Green:Vector4::Red);
+//	}
+//}
 
 void cSpecialTimingCurveClickObject::DebugRender()
 {
@@ -52,24 +56,42 @@ void cSpecialTimingCurveClickObject::DebugRender()
 	}
 }
 
-void cSpecialTimingCurveClickObject::AssignTestingData()
+void cSpecialTimingCurveClickObject::AssignTestingData(int e_iIndex, float e_fOffsetStartTime)
 {
 	if (m_pTweenyCurveWithTime)
 	{
-		float l_fStartX = 200;
-		float l_fStartY = 200;
 		cCurveWithTime*l_pData = new cCurveWithTime();
 		//l_Data.AddPoint(Vector3(l_fStartX+0,  l_fStartY+0, 0), 0);
 		//l_Data.AddPoint(Vector3(l_fStartX-150, l_fStartY+150, 0), 1);
 		//l_Data.AddPoint(Vector3(l_fStartX+350,  l_fStartY+150, 0), 2);
 		//l_Data.AddPoint(Vector3(l_fStartX-100, l_fStartY+100, 0), 3);
 		//l_Data.AddPoint(Vector3(l_fStartX+0,  l_fStartY+250, 0), 4);
-		l_pData->AddPoint(Vector3(l_fStartX + 0,   l_fStartY + 0, 0), 0);
-		l_pData->AddPoint(Vector3(l_fStartX + 150, l_fStartY + 0, 0), 1);
-		l_pData->AddPoint(Vector3(l_fStartX + 150, l_fStartY + 150, 0), 2);
-		l_pData->AddPoint(Vector3(l_fStartX + 0,   l_fStartY + 150, 0), 3);// 
-		l_pData->AddPoint(Vector3(l_fStartX + 0,   l_fStartY + 0, 0), 4);// 
-		l_pData->SetLOD(3);
+		if (e_iIndex == 0)
+		{
+			float l_fStartX = 200;
+			float l_fStartY = 200;
+			l_pData->AddPoint(Vector3(l_fStartX + 0, l_fStartY + 0, 0), 0+ e_fOffsetStartTime);
+			l_pData->AddPoint(Vector3(l_fStartX + 150, l_fStartY + 0, 0), 1+ e_fOffsetStartTime);
+			l_pData->AddPoint(Vector3(l_fStartX + 150, l_fStartY + 150, 0), 2+ e_fOffsetStartTime);
+			l_pData->AddPoint(Vector3(l_fStartX + 0, l_fStartY + 150, 0), 3+ e_fOffsetStartTime);// 
+			l_pData->AddPoint(Vector3(l_fStartX + 0, l_fStartY + 0, 0), 4+ e_fOffsetStartTime);// 
+			l_pData->SetLOD(3);
+		}
+		else
+		if (e_iIndex == 1)
+		{
+			float l_fStartX = 600;
+			float l_fStartY = 200;
+			l_pData->AddPoint(Vector3(l_fStartX + 0, l_fStartY + 0, 0), 0 + e_fOffsetStartTime);
+			l_pData->AddPoint(Vector3(l_fStartX + 150, l_fStartY + 0, 0), 1 + e_fOffsetStartTime);
+			l_pData->AddPoint(Vector3(l_fStartX + 150, l_fStartY + 150, 0), 2 + e_fOffsetStartTime);
+			l_pData->AddPoint(Vector3(l_fStartX + 0, l_fStartY + 150, 0), 3 + e_fOffsetStartTime);// 
+			l_pData->AddPoint(Vector3(l_fStartX + 0, l_fStartY + 0, 0), 4 + e_fOffsetStartTime);// 
+			l_pData->SetLOD(3);
+		}
+		{
+
+		}
 		m_pTweenyCurveWithTime->SetData(tweeny::easing::enumerated::quadraticInOut, 10, l_pData, nullptr);
 	}
 }
