@@ -117,6 +117,14 @@ void cSpecialTimingCurveClickObject::AssignTestingData(int e_iIndex, float e_fOf
 	}
 }
 
+void cSpecialTimingCurveClickObject::Reset()
+{
+	if (m_pTweenyCurveWithTime)
+	{
+		m_pTweenyCurveWithTime->Reset();
+	}
+}
+
 bool cSpecialTimingCurveClickObject::CollideWithCurveFunction(int e_iPosX, int e_iPosY)
 {
 	auto l_pCurve = m_pTweenyCurveWithTime->GetCurve();

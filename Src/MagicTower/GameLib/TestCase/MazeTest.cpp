@@ -193,9 +193,9 @@ cSpecialTimingCurveClickObjectTesting::cSpecialTimingCurveClickObjectTesting()
 	this->SetName(cSpecialTimingCurveClickObjectTesting::TypeID);
 	for (int i = 0; i < 4; ++i)
 	{
-		m_pSpecialTimingCurveClickObject = new cSpecialTimingCurveClickObject(true, "MagicTower/Image/V_Wall.png");
-		m_pSpecialTimingCurveClickObject->AssignTestingData(i, i*4.f);
-		m_RenderAndClickObject.AddObject(m_pSpecialTimingCurveClickObject);
+		cSpecialTimingCurveClickObject*l_pSpecialTimingCurveClickObject = new cSpecialTimingCurveClickObject(true, "MagicTower/Image/V_Wall.png");
+		l_pSpecialTimingCurveClickObject->AssignTestingData(i, i*4.f);
+		m_RenderAndClickObject.AddObject(l_pSpecialTimingCurveClickObject);
 	}
 }
 
@@ -246,9 +246,9 @@ void cSpecialTimingCurveClickObjectTesting::InternalMouseLeave(int e_iPosX, int 
 
 void cSpecialTimingCurveClickObjectTesting::KeyDown(char e_cKey)
 {
-	if (m_pSpecialTimingCurveClickObject)
+	for (int i = 0; i < 4; ++i)
 	{
-		m_pSpecialTimingCurveClickObject->GetTweenyCurveWithTime()->Reset();
+		cSpecialTimingCurveClickObject*l_pSpecialTimingCurveClickObject = (cSpecialTimingCurveClickObject*)m_RenderAndClickObject[i];
+		l_pSpecialTimingCurveClickObject->GetTweenyCurveWithTime()->Reset();
 	}
-	
 }

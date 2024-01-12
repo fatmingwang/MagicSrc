@@ -183,6 +183,7 @@ void	cMagicTowerApp::KeyDown(char e_char)
 {
 	if( g_bGameLeave )
 		return;
+	cGameApp::KeyDown(e_char);
 	m_PhaseManager.KeyDown(e_char);
 	cGameCamera::GetInstance()->KeyUp(e_char);
 	//cGameApp::KeyDown(e_char);

@@ -28,4 +28,5 @@ public:
 	//void							Render();
 	void							DebugRender();
 	void							AssignTestingData(int e_iIndex,float e_fOffsetStartTime = 0);
+	void							Reset();
 };
