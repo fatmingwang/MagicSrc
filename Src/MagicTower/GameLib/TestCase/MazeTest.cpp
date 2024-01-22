@@ -71,7 +71,7 @@ void cTweenTest::Init()
 	l_pData->AddPoint(Vector3(250, 50, 0), 3);
 	l_pData->AddPoint(Vector3(50, 250, 0), 4);
 	l_pData->SetLOD(6);
-	m_pTweenyCurveWithTime->SetData(tweeny::easing::enumerated::quadraticInOut,3,l_pData,nullptr,0);
+	m_pTweenyCurveWithTime->SetData(tweeny::easing::enumerated::quadraticInOut,3,l_pData,nullptr,0,4);
 }
 
 void cTweenTest::Update(float e_fElpaseTime)
@@ -191,10 +191,12 @@ void SetWorkingTestPhase(eTestPhase e_eTestPhase,cPhaseManager& e_PhaseManager)
 cSpecialTimingCurveClickObjectTesting::cSpecialTimingCurveClickObjectTesting()
 {
 	this->SetName(cSpecialTimingCurveClickObjectTesting::TypeID);
+	//for (int i = 0; i < 4; ++i)
 	for (int i = 0; i < 4; ++i)
 	{
 		cSpecialTimingCurveClickObject*l_pSpecialTimingCurveClickObject = new cSpecialTimingCurveClickObject(true, "MagicTower/Image/V_Wall.png");
-		l_pSpecialTimingCurveClickObject->AssignTestingData(i, i*4.f);
+		//l_pSpecialTimingCurveClickObject->AssignTestingData(i, 0);
+		l_pSpecialTimingCurveClickObject->AssignTestingData(i, i * 4.f);
 		m_RenderAndClickObject.AddObject(l_pSpecialTimingCurveClickObject);
 	}
 }

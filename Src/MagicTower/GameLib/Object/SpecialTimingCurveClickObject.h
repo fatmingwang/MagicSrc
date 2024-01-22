@@ -27,6 +27,6 @@ public:
 	virtual void    				Update(float e_fElpaseTime)override;
 	//void							Render();
 	void							DebugRender();
-	void							AssignTestingData(int e_iIndex,float e_fOffsetStartTime = 0);
+	void							AssignTestingData(int e_iIndex,float e_fOffsetStartTime = 0,float e_fGenerateCurveTime = 3);
 	void							Reset();
 };
