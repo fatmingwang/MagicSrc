@@ -4,7 +4,7 @@
 
 cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject(bool e_bTrackCurveNotKeyPoint, const char* e_strDebugLineFileName)
 {
-	e_bTrackCurveNotKeyPoint = false;
+	e_bTrackCurveNotKeyPoint = true;
 	m_bTrackCurveNotKeyPoint = e_bTrackCurveNotKeyPoint;
 	m_pTweenyCurveWithTime = new cTweenyCurveWithTime(2,2, e_strDebugLineFileName);
 	auto l_pRenderObject = this->CreateRenderObject();
@@ -123,11 +123,16 @@ void cSpecialTimingCurveClickObject::Reset()
 	}
 }
 
-bool cSpecialTimingCurveClickObject::CollideWithCurveFunction(int e_iPosX, int e_iPosY)
+bool cSpecialTimingCurveClickObject::CollideOnlyKeyPointFunction(int e_iPosX, int e_iPosY)
 {
+	if (!m_pTweenyCurveWithTime || !m_pTweenyCurveWithTime ->IsTimeLegal(m_fTimeOffset))
+	{
+		return false;
+	}
+	//m_pTweenyCurveWithTime->
 	auto l_pCurve = m_pTweenyCurveWithTime->GetCurve();
 	float l_fTime = l_pCurve->GetCurrentTime();
-	int l_iIndex = l_pCurve->GetTimeRelativeIndexWithFinalPointList(l_fTime,0.2f);
+	int l_iIndex = l_pCurve->GetTimeRelativeIndexWithFinalPointList(l_fTime, m_fTimeOffset);
 	if (l_iIndex != -1)
 	{
 		Vector3 l_vPos = l_pCurve->GetPointList()[l_iIndex];
@@ -145,28 +150,44 @@ bool cSpecialTimingCurveClickObject::CollideWithCurveFunction(int e_iPosX, int e
 	return false;
 }
 
-bool cSpecialTimingCurveClickObject::CollideOnlyKeyPointFunction(int e_iPosX, int e_iPosY)
+bool cSpecialTimingCurveClickObject::CollideWithCurveFunction(int e_iPosX, int e_iPosY)
 {
-	auto l_pCurve = m_pTweenyCurveWithTime->GetCurve();
-	auto l_CollisionPointIndexOfCurveAndTimeLerpHintMap = m_pTweenyCurveWithTime->GetCollisionPointIndexOfCurveAndTimeLerpHintMap();
-	if (l_CollisionPointIndexOfCurveAndTimeLerpHintMap.size())
+	if (!m_pTweenyCurveWithTime || !m_pTweenyCurveWithTime->IsStart())
 	{
-		Vector3 l_vTouchPos((float)e_iPosX, (float)e_iPosY, 0.f);
-		for (auto l_Iterator = l_CollisionPointIndexOfCurveAndTimeLerpHintMap.begin(); l_Iterator != l_CollisionPointIndexOfCurveAndTimeLerpHintMap.end(); ++l_Iterator)
-		{
-			Vector3 l_vPos = l_pCurve->GetPointList()[l_Iterator->first];
-			float l_fDis = (l_vTouchPos - l_vPos).Length();
-			if (l_fDis <= m_fRadiusForCollision)
-			{//show mouse positio and sphere position for debug.
-
-				m_bColliede = true;
-				return true;
-			}
-			m_bColliede = false;
-			//cGameApp::ShowInfoOnScreen(L"Missing");
-		}
+		return false;
 	}
-	return false;
+	auto l_pCurve = m_pTweenyCurveWithTime->GetCurve();
+	Vector3 l_vTouchPos((float)e_iPosX, (float)e_iPosY, 0.f);
+	auto l_vPos = l_pCurve->GetCurrentPosition();
+	float l_fDis = (l_vTouchPos - l_vPos).Length();
+	if (l_fDis <= m_fRadiusForCollision)
+	{//show mouse position and sphere position for debug.
+		m_bColliede = true;
+	}
+	else
+	{
+		m_bColliede = false;
+	}
+	return m_bColliede;
+	auto l_CollisionPointIndexOfCurveAndTimeLerpHintMap = m_pTweenyCurveWithTime->GetCollisionPointIndexOfCurveAndTimeLerpHintMap();
+	//if (l_CollisionPointIndexOfCurveAndTimeLerpHintMap.size())
+	//{
+	//	Vector3 l_vTouchPos((float)e_iPosX, (float)e_iPosY, 0.f);
+	//	for (auto l_Iterator = l_CollisionPointIndexOfCurveAndTimeLerpHintMap.begin(); l_Iterator != l_CollisionPointIndexOfCurveAndTimeLerpHintMap.end(); ++l_Iterator)
+	//	{
+	//		Vector3 l_vPos = l_pCurve->GetPointList()[l_Iterator->first];
+	//		float l_fDis = (l_vTouchPos - l_vPos).Length();
+	//		if (l_fDis <= m_fRadiusForCollision)
+	//		{//show mouse positio and sphere position for debug.
+
+	//			m_bColliede = true;
+	//			return true;
+	//		}
+	//		m_bColliede = false;
+	//		//cGameApp::ShowInfoOnScreen(L"Missing");
+	//	}
+	//}
+	//return false;
 }
 
 bool cSpecialTimingCurveClickObject::MouseDownFunction(int e_iPosX, int e_iPosY)

@@ -196,7 +196,7 @@ cSpecialTimingCurveClickObjectTesting::cSpecialTimingCurveClickObjectTesting()
 	{
 		cSpecialTimingCurveClickObject*l_pSpecialTimingCurveClickObject = new cSpecialTimingCurveClickObject(true, "MagicTower/Image/V_Wall.png");
 		//l_pSpecialTimingCurveClickObject->AssignTestingData(i, 0);
-		l_pSpecialTimingCurveClickObject->AssignTestingData(i, i * 4.f);
+		l_pSpecialTimingCurveClickObject->AssignTestingData(i, i * 4.f,i/2.f);
 		m_RenderAndClickObject.AddObject(l_pSpecialTimingCurveClickObject);
 	}
 }
