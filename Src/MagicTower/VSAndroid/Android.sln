@@ -11,15 +11,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AndroidGameApp.NativeActivi
 EndProject
 Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "FTC", "FTC\FTC.androidproj", "{2E98D5A2-79C6-438E-BD2C-3D736ED1F971}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "..\..\..\..\FM79979\Src\FM79979Engine\VSAndroid\Core\Core.vcxproj", "{BA2B29C9-8213-4642-B5BE-141013442CFB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "..\..\..\FM79979\Src\FM79979Engine\VSAndroid\Core\Core.vcxproj", "{BA2B29C9-8213-4642-B5BE-141013442CFB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bullet", "..\..\..\..\FM79979\Src\FM79979Engine\VSAndroid\Bullet\Bullet.vcxproj", "{BFF03A93-E0A2-439E-A402-AB285C35CEF9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bullet", "..\..\..\FM79979\Src\FM79979Engine\VSAndroid\Bullet\Bullet.vcxproj", "{BFF03A93-E0A2-439E-A402-AB285C35CEF9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FreeType", "..\..\..\..\FM79979\Src\FM79979Engine\VSAndroid\FreeType\FreeType.vcxproj", "{45C14273-AE58-4DAF-B18A-FA7781D7FCFD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FreeType", "..\..\..\FM79979\Src\FM79979Engine\VSAndroid\FreeType\FreeType.vcxproj", "{45C14273-AE58-4DAF-B18A-FA7781D7FCFD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ogg", "..\..\..\..\FM79979\Src\FM79979Engine\VSAndroid\ogg\ogg.vcxproj", "{3C0CACD9-3EA2-4571-8A5A-FF138DB4B243}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ogg", "..\..\..\FM79979\Src\FM79979Engine\VSAndroid\ogg\ogg.vcxproj", "{3C0CACD9-3EA2-4571-8A5A-FF138DB4B243}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FatmingAI", "..\..\..\..\FM79979\Src\FM79979Engine\VSAndroid\FatmingAI\FatmingAI.vcxproj", "{1EF444E5-F83E-4FC0-81BA-6841B89913F8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FatmingAI", "..\..\..\FM79979\Src\FM79979Engine\VSAndroid\FatmingAI\FatmingAI.vcxproj", "{1EF444E5-F83E-4FC0-81BA-6841B89913F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

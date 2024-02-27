@@ -2,23 +2,36 @@
 #include "SpecialTimingCurveClickObject.h"
 #include "../Tween/TweenCurve.h"
 
-cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject(bool e_bTrackCurveNotKeyPoint, const char* e_strDebugLineFileName)
+//cSpecialTimingCurveClickObject(eTrackTYpe e_eTrackTYpe = eTrackTYpe::eTY_KEY_POINT, const char* e_strDebugLineFileName = "MagicTower/Image/V_Wall.png");
+cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject(eTrackTYpe e_eTrackTYpe, const char* e_strDebugLineFileName)
 {
-	e_bTrackCurveNotKeyPoint = true;
-	m_bTrackCurveNotKeyPoint = e_bTrackCurveNotKeyPoint;
+	m_eTrackTYpe = e_eTrackTYpe;
+	std::function<bool(int e_iPosX, int e_iPosY)>	l_Function;
 	m_pTweenyCurveWithTime = new cTweenyCurveWithTime(2,2, e_strDebugLineFileName);
 	auto l_pRenderObject = this->CreateRenderObject();
 	l_pRenderObject->AddChild(m_pTweenyCurveWithTime);
 	//l_pRenderObject->AddChild(m_pTweenyCurveWithTime->m_pDeugLineImage);
-	auto l_CollideTrackCurveFunction = std::bind(&cSpecialTimingCurveClickObject::CollideWithCurveFunction, this, std::placeholders::_1, std::placeholders::_2);
-	auto l_CollideKeyPointFunction = std::bind(&cSpecialTimingCurveClickObject::CollideOnlyKeyPointFunction, this, std::placeholders::_1, std::placeholders::_2);
+	switch (m_eTrackTYpe)
+	{
+		case eTrackTYpe::eTY_DRAW_CURVE:
+			l_Function = std::bind(&cSpecialTimingCurveClickObject::CollideDrawCurveFunction, this, std::placeholders::_1, std::placeholders::_2);
+			break;
+		case eTrackTYpe::eTY_FOLLOW_CURVE:
+			l_Function = std::bind(&cSpecialTimingCurveClickObject::CollideWithCurveFunction, this, std::placeholders::_1, std::placeholders::_2);
+			m_pDrawCurveTouchData = new sDrawCurveTouchData();
+			break;
+		case eTrackTYpe::eTY_KEY_POINT:
+			l_Function = std::bind(&cSpecialTimingCurveClickObject::CollideOnlyKeyPointFunction, this, std::placeholders::_1, std::placeholders::_2);
+			break;
+	}
 	auto l_CollideFunction = std::bind(&cSpecialTimingCurveClickObject::CollideWithCurveFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_MouseDownFunction = std::bind(&cSpecialTimingCurveClickObject::MouseDownFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_MouseHorverFunction = std::bind(&cSpecialTimingCurveClickObject::MouseHorverFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_MouseUpFunction = std::bind(&cSpecialTimingCurveClickObject::MouseUpFunction, this, std::placeholders::_1, std::placeholders::_2);
 	auto l_MouseLeaveFunction = std::bind(&cSpecialTimingCurveClickObject::MouseLeaveFunction, this, std::placeholders::_1, std::placeholders::_2);
 	this->SetMouseFunction(
-		m_bTrackCurveNotKeyPoint ? l_CollideTrackCurveFunction : l_CollideKeyPointFunction,
+		l_Function,
+		//m_bTrackCurveNotKeyPoint ? l_CollideTrackCurveFunction : l_CollideKeyPointFunction,
 		l_MouseDownFunction,
 		l_MouseHorverFunction,
 		l_MouseUpFunction,
@@ -28,7 +41,13 @@ cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject(bool e_bTrackCurv
 
 cSpecialTimingCurveClickObject::~cSpecialTimingCurveClickObject()
 {
-	//SAFE_DELETE(m_pTweenyCurveWithTime);
+	SAFE_DELETE(m_pDrawCurveTouchData);
+}
+
+cSpecialTimingCurveClickObject* cSpecialTimingCurveClickObject::CreateWithData(float e_fTimeOffset, float e_fRadiusForCollision, eTrackTYpe e_eTrackTYpe, const char* e_strDebugLineFileName)
+{
+	cSpecialTimingCurveClickObject*l_pSpecialTimingCurveClickObject = new cSpecialTimingCurveClickObject();
+	return l_pSpecialTimingCurveClickObject;
 }
 
 void cSpecialTimingCurveClickObject::Update(float e_fElpaseTime)
@@ -150,9 +169,35 @@ bool cSpecialTimingCurveClickObject::CollideOnlyKeyPointFunction(int e_iPosX, in
 	return false;
 }
 
+bool cSpecialTimingCurveClickObject::CollideDrawCurveFunction(int e_iPosX, int e_iPosY)
+{
+	if (m_pDrawCurveTouchData && m_pTweenyCurveWithTime)
+	{
+		if (!m_pDrawCurveTouchData->bFinish)
+		{
+			auto l_pCurve = m_pTweenyCurveWithTime->GetCurve();
+			auto l_KeyPoint = l_pCurve->GetKeyPositionByTime();
+			int l_iSize = (int)l_KeyPoint.size();
+			if (m_pDrawCurveTouchData->iCurrentIndex < l_iSize)
+			{
+				bool l_bHitted = false;
+				if (l_bHitted)
+				{
+					if (m_pDrawCurveTouchData->iCurrentIndex + 1 == l_iSize)
+					{//finish
+						m_pDrawCurveTouchData->bFinish = true;
+					}
+				}
+
+			}
+		}
+	}
+	return false;
+}
+
 bool cSpecialTimingCurveClickObject::CollideWithCurveFunction(int e_iPosX, int e_iPosY)
 {
-	if (!m_pTweenyCurveWithTime || !m_pTweenyCurveWithTime->IsStart())
+	if (!m_pTweenyCurveWithTime || !m_pTweenyCurveWithTime->IsTimeLegal(this->m_fTimeOffset))
 	{
 		return false;
 	}
@@ -210,4 +255,8 @@ bool cSpecialTimingCurveClickObject::MouseUpFunction(int e_iPosX, int e_iPosY)
 bool cSpecialTimingCurveClickObject::MouseLeaveFunction(int e_iPosX, int e_iPosY)
 {
 	return false;
+}
+
+void cSpecialTimingCurveClickObject::sDrawCurveTouchData::SetDataByCurve(cTweenyCurveWithTime* e_pTweenyCurveWithTime)
+{
 }
