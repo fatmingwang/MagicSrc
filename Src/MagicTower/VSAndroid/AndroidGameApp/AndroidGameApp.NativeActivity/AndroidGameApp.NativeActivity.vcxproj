@@ -134,7 +134,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <CompileAs>CompileAsCpp</CompileAs>
       <PreprocessorDefinitions>ANDROID;DEBUG;__ANDROID_API__=$(AndroidAPILevelNumber);%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\FTCGameLib;..\..\..\..\..\FM79979\Src\FM79979Engine\Core;E:\Work\FTC\FTC_1_Src\FM79979\Src\FM79979Engine\Core;E:\Work\FTC\FTC_1_Src\FM79979\Src\FM79979Engine\Core\Sound\OpenAL_Android\__src__ALSoft;E:\Work\FTC\FTC_1_Src\FM79979\Src\FM79979Engine\Core\Sound\OpenAL_Android\__src__ALSoft\OpenAL32\Include;$(StlIncludeDirectories);$(Sysroot)\usr\include;$(Sysroot)\usr\include\$(AndroidHeaderTriple);$(VS_NdkRoot)\sources\android\support\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\FTCGameLib;..\..\..\..\..\FM79979\Src\FM79979Engine\Core;..\..\..\..\..\FM79979\Src\FM79979Engine\Core\Sound\OpenAL_Android\__src__ALSoft;..\..\..\..\..\FM79979\Src\FM79979Engine\Core\Sound\OpenAL_Android\__src__ALSoft\OpenAL32\Include;$(StlIncludeDirectories);$(Sysroot)\usr\include;$(Sysroot)\usr\include\$(AndroidHeaderTriple);$(VS_NdkRoot)\sources\android\support\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
@@ -150,7 +150,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>..\..\..\FTCGameLib;..\..\..\..\..\FM79979\Src\FM79979Engine\Core;E:\Work\FTC\FTC_1_Src\FM79979\Src\FM79979Engine\Core;E:\Work\FTC\FTC_1_Src\FM79979\Src\FM79979Engine\Core\Sound\OpenAL_Android\__src__ALSoft;E:\Work\FTC\FTC_1_Src\FM79979\Src\FM79979Engine\Core\Sound\OpenAL_Android\__src__ALSoft\OpenAL32\Include;$(StlIncludeDirectories);$(Sysroot)\usr\include;$(Sysroot)\usr\include\$(AndroidHeaderTriple);$(VS_NdkRoot)\sources\android\support\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\FTCGameLib;..\..\..\..\..\FM79979\Src\FM79979Engine\Core;..\..\..\..\..\FM79979\Src\FM79979Engine\Core\Sound\OpenAL_Android\__src__ALSoft;..\..\..\..\..\FM79979\Src\FM79979Engine\Core\Sound\OpenAL_Android\__src__ALSoft\OpenAL32\Include;$(StlIncludeDirectories);$(Sysroot)\usr\include;$(Sysroot)\usr\include\$(AndroidHeaderTriple);$(VS_NdkRoot)\sources\android\support\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>ANDROID;__ANDROID_API__=$(AndroidAPILevelNumber);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
