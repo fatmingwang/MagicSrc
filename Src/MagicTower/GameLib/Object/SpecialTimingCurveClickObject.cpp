@@ -3,9 +3,11 @@
 #include "../Tween/TweenCurve.h"
 
 //cSpecialTimingCurveClickObject(eTrackTYpe e_eTrackTYpe = eTrackTYpe::eTY_KEY_POINT, const char* e_strDebugLineFileName = "MagicTower/Image/V_Wall.png");
-cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject(eTrackTYpe e_eTrackTYpe, const char* e_strDebugLineFileName)
+cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject(eTrackTYpe e_eTrackTYpe, const char* e_strDebugLineFileName, float e_fTimeOffset, float e_fRadiusForCollision)
 {
 	m_eTrackTYpe = e_eTrackTYpe;
+	m_fRadiusForCollision = e_fRadiusForCollision;
+	m_fTimeOffset = e_fTimeOffset;
 	std::function<bool(int e_iPosX, int e_iPosY)>	l_Function;
 	m_pTweenyCurveWithTime = new cTweenyCurveWithTime(2,2, e_strDebugLineFileName);
 	auto l_pRenderObject = this->CreateRenderObject();
@@ -15,6 +17,8 @@ cSpecialTimingCurveClickObject::cSpecialTimingCurveClickObject(eTrackTYpe e_eTra
 	{
 		case eTrackTYpe::eTY_DRAW_CURVE:
 			l_Function = std::bind(&cSpecialTimingCurveClickObject::CollideDrawCurveFunction, this, std::placeholders::_1, std::placeholders::_2);
+			m_pDrawCurveTouchData = new sDrawCurveTouchData();
+			m_pDrawCurveTouchData->SetDataByCurve(m_pTweenyCurveWithTime);
 			break;
 		case eTrackTYpe::eTY_FOLLOW_CURVE:
 			l_Function = std::bind(&cSpecialTimingCurveClickObject::CollideWithCurveFunction, this, std::placeholders::_1, std::placeholders::_2);
@@ -44,9 +48,9 @@ cSpecialTimingCurveClickObject::~cSpecialTimingCurveClickObject()
 	SAFE_DELETE(m_pDrawCurveTouchData);
 }
 
-cSpecialTimingCurveClickObject* cSpecialTimingCurveClickObject::CreateWithData(float e_fTimeOffset, float e_fRadiusForCollision, eTrackTYpe e_eTrackTYpe, const char* e_strDebugLineFileName)
+cSpecialTimingCurveClickObject* cSpecialTimingCurveClickObject::CreateWithData(eTrackTYpe e_eTrackTYpe, const char* e_strDebugLineFileName, float e_fTimeOffset, float e_fRadiusForCollision)
 {
-	cSpecialTimingCurveClickObject*l_pSpecialTimingCurveClickObject = new cSpecialTimingCurveClickObject();
+	cSpecialTimingCurveClickObject*l_pSpecialTimingCurveClickObject = new cSpecialTimingCurveClickObject(e_eTrackTYpe,e_strDebugLineFileName,e_fRadiusForCollision);
 	return l_pSpecialTimingCurveClickObject;
 }
 
@@ -168,11 +172,12 @@ bool cSpecialTimingCurveClickObject::CollideOnlyKeyPointFunction(int e_iPosX, in
 	}
 	return false;
 }
-
+//this ignore wrong drawing only detect is it close to target point index,if not try again unitil touched.
 bool cSpecialTimingCurveClickObject::CollideDrawCurveFunction(int e_iPosX, int e_iPosY)
 {
 	if (m_pDrawCurveTouchData && m_pTweenyCurveWithTime)
 	{
+		m_pTweenyCurveWithTime->IsTimeLegal(this->m_fTimeOffset);
 		if (!m_pDrawCurveTouchData->bFinish)
 		{
 			auto l_pCurve = m_pTweenyCurveWithTime->GetCurve();
@@ -181,14 +186,27 @@ bool cSpecialTimingCurveClickObject::CollideDrawCurveFunction(int e_iPosX, int e
 			if (m_pDrawCurveTouchData->iCurrentIndex < l_iSize)
 			{
 				bool l_bHitted = false;
+				auto l_vPos = l_KeyPoint[m_pDrawCurveTouchData->iCurrentIndex];
+				l_bHitted = l_vPos.IsCollided((float)e_iPosX, (float)e_iPosY,this->m_fRadiusForCollision);
 				if (l_bHitted)
 				{
-					if (m_pDrawCurveTouchData->iCurrentIndex + 1 == l_iSize)
-					{//finish
+					++m_pDrawCurveTouchData->iCurrentIndex;
+#ifdef DEBUG
+					std::wstring l_strInfo = ValueToStringW(m_pDrawCurveTouchData->iCurrentIndex);
+					cGameApp::ShowInfoOnScreen(l_strInfo.c_str());
+#endif
+					if (m_pDrawCurveTouchData->iCurrentIndex == l_iSize)
+					{
 						m_pDrawCurveTouchData->bFinish = true;
+#ifdef DEBUG
+						cGameApp::ShowInfoOnScreen(L"Finish!!");
+#endif
 					}
 				}
-
+				if (m_pDrawCurveTouchData->iCurrentIndex > 0)
+				{
+					return true;
+				}
 			}
 		}
 	}

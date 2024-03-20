@@ -46,9 +46,9 @@ protected:
 	eTrackTYpe					m_eTrackTYpe;
 	std::vector<int>			m_ColliededKeyPointVector;
 public:
-	cSpecialTimingCurveClickObject(eTrackTYpe e_eTrackTYpe = eTrackTYpe::eTY_KEY_POINT, const char* e_strDebugLineFileName = "MagicTower/Image/V_Wall.png");
+	cSpecialTimingCurveClickObject(eTrackTYpe e_eTrackTYpe = eTrackTYpe::eTY_KEY_POINT, const char* e_strDebugLineFileName = "MagicTower/Image/V_Wall.png", float e_fTimeOffset = 3.5f, float e_fRadiusForCollision = 30.f);
 	virtual ~cSpecialTimingCurveClickObject();
-	static cSpecialTimingCurveClickObject* CreateWithData(float e_fTimeOffset,float e_fRadiusForCollision, eTrackTYpe e_eTrackTYpe = eTrackTYpe::eTY_KEY_POINT, const char* e_strDebugLineFileName = "MagicTower/Image/V_Wall.png");
+	static cSpecialTimingCurveClickObject* CreateWithData(eTrackTYpe e_eTrackTYpe = eTrackTYpe::eTY_KEY_POINT, const char* e_strDebugLineFileName = "MagicTower/Image/V_Wall.png", float e_fTimeOffset = 0.5f, float e_fRadiusForCollision = 30.f);
 	class cTweenyCurveWithTime*		GetTweenyCurveWithTime() { return m_pTweenyCurveWithTime; }
 	virtual void    				Update(float e_fElpaseTime)override;
 	//void							Render();
