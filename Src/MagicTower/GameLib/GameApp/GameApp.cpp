@@ -49,7 +49,7 @@ cMagicTowerApp::~cMagicTowerApp()
 void	cMagicTowerApp::Init()
 {
 	cGameApp::Init();
-	bool l_bNotDoTest = false;
+	bool l_bNotDoTest = true;
 	if (l_bNotDoTest)
 	{
 		cNodeISAX	l_cNodeISAX;
@@ -69,7 +69,7 @@ void	cMagicTowerApp::Init()
 	//AddTestPhase(eTestPhase::eTP_MAZE,this->m_PhaseManager,true);
 	//AddTestPhase(eTestPhase::eTP_TWEEN, this->m_PhaseManager,true);
 	//AddTestPhase(eTestPhase::eTP_BATTLE_ATTACK_MOVING_OBJECT_TESTING, this->m_PhaseManager,true);
-	AddTestPhase(eTestPhase::eTP_SPECIAL_TIMING_CURVE_CLICK_OOBJECT_TESTING, this->m_PhaseManager, true);
+	//AddTestPhase(eTestPhase::eTP_SPECIAL_TIMING_CURVE_CLICK_OOBJECT_TESTING, this->m_PhaseManager, true);
 }
 
 void	cMagicTowerApp::Destory()

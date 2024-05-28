@@ -48,6 +48,9 @@
     <Filter Include="Game\TestCase">
       <UniqueIdentifier>{305f4a5b-16c6-4f1d-83a6-2806b2b7d774}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\UI\NineGrid">
+      <UniqueIdentifier>{d2d2ba0f-a4b5-4968-b23e-6f9a068360d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -182,6 +185,9 @@
     <ClInclude Include="Object\SpecialTimingCurveClickObject.h">
       <Filter>Game\Object</Filter>
     </ClInclude>
+    <ClInclude Include="UI\NineGridFrame.h">
+      <Filter>Game\UI\NineGrid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameApp\GameApp.cpp">
@@ -309,6 +315,9 @@
     </ClCompile>
     <ClCompile Include="Object\SpecialTimingCurveClickObject.cpp">
       <Filter>Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\NineGridFrame.cpp">
+      <Filter>Game\UI\NineGrid</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
