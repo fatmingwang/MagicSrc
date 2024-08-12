@@ -6,6 +6,7 @@
 #include "../FileNameDefine.h"
 #include "../GameCamera/GameCamera.h"
 #include "../TestCase/MazeTest.h"
+#include "../UI/NineGridFrame.h"
 //#include "../Level/MazeRender.h"
 
 //cMazeRender* g_pCyucelenMazeGrid = nullptr;
@@ -17,6 +18,8 @@ cOrthogonalCamera*				cMagicTowerApp::m_sp2DCamera = 0;
 cMainRoleData*					cMagicTowerApp::m_spMainRoleData = 0;
 cMagicTowerApp*					g_pMagicTowerApp = 0;
 bool							g_bGameLeave = false;
+
+cNineGridFrame* g_pNineGridFrame = nullptr;
 
 
 #ifdef WIN32
@@ -34,6 +37,7 @@ cMagicTowerApp::cMagicTowerApp(Vector2 e_vGameResolution, Vector2 e_vViewportSiz
 	m_spSceneControl = 0;
 	m_sp2DCamera = 0;
 	m_pUIInfo = 0;
+	g_pNineGridFrame = cNineGridFrame::GenerateDebugObject(Vector2(50, 50), Vector2(10, 10), Vector2(200, 200));
 }
 
 cMagicTowerApp::~cMagicTowerApp()
@@ -43,6 +47,7 @@ cMagicTowerApp::~cMagicTowerApp()
 	SAFE_DELETE(m_spSceneControl);
 	SAFE_DELETE(m_sp2DCamera);
 	SAFE_DELETE(m_spMainRoleData);
+	SAFE_DELETE(g_pNineGridFrame);
 	cTweenyManager::DestroyInstance();
 }
 
@@ -106,6 +111,10 @@ void	cMagicTowerApp::Render()
 		return;
 	}
 	cGameApp::Render();
+	if (g_pNineGridFrame)
+	{
+		g_pNineGridFrame->DebugRender();
+	}
 	if (m_PhaseManager.GetCurrentPhase() != -1)
 	{
 		m_PhaseManager.Render();

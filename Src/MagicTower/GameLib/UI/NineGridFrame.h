@@ -25,13 +25,20 @@ class cNineGridFrame:public cBaseImage
 	Vector2		m_vOriginalLeftupSize;
 	Vector2		m_vOriginalCenterSize;
 	Vector2		m_vContentSize;
-	void		SetContentSize(Vector2 e_vContentSize);
+	cNineGridFrame(Vector2 e_vOriginalCenterSize, Vector2 e_vOriginalLeftupSize);;
+
+	std::vector<Vector3>	m_vAllGridPosVector;
+
 public:
 	cNineGridFrame(const char* e_strImageName,float*e_pfNineTexturesUV);
 	//please take order by eCorrnerType_LeftUp to eCorrnerType_RightBottom
 	cNineGridFrame(cPuzzleImageUnit*e_pLeftUp, cPuzzleImageUnit*e_pRightBottom);
 	~cNineGridFrame();
-	virtual	void		Render()override;								//render by texture behavior.
+	//for testing
+	static cNineGridFrame*		GenerateDebugObject(Vector2 e_vOriginalCenterSize,Vector2 e_vOriginalLeftupSize,Vector2 e_vContentSize);
+	void						SetContentSize(Vector2 e_vContentSize);
+	virtual	void				Render()override;								//render by texture behavior.
+	virtual	void				DebugRender()override;
 	//cBaseImage(const char* e_strImageName, bool e_bFetchPixels = false);
 	//cBaseImage(cBaseImage* e_pBaseImage);					//here is clone,but be sure do not delete original one before all resource release
 	//cBaseImage(cTexture* e_pTexture);
