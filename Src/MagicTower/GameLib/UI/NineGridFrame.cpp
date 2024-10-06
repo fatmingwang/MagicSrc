@@ -114,6 +114,7 @@ void cNineGridFrame::SetContentSize(Vector2 e_vContentSize)
 		m_vOriginalLeftupSize,
 	};
 	Vector3 l_vTempPos[A_QUAD_4_VERTICES];
+	this->m_vAllGridPosVector.clear();
 	for (int i = 0; i < eCorrnerType::eCorrnerType_MAX; ++i)
 	{
 		CenterPosTo4Vertices(l_vGridCenterPosArray[i], l_vGridSizeArray[i], l_vTempPos);

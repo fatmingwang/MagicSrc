@@ -78,7 +78,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_NO_PTHREAD_WITH_BULLET|Emscripten'">
     <Link>
-      <AdditionalOptions>-lidbfs.js --bind -s ALLOW_MEMORY_GROWTH=1 -s FETCH=1  -s FULL_ES2=1 --profiling  -s ERROR_ON_UNDEFINED_SYMBOLS=0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-lidbfs.js --bind -s ERROR_ON_UNDEFINED_SYMBOLS=0  -s FETCH=1 -s FULL_ES2=1 -–closure=1 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>
       </AdditionalDependencies>
       <PreloadFile>./assets</PreloadFile>
