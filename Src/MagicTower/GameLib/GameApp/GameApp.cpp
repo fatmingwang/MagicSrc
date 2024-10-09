@@ -3,6 +3,7 @@
 #include "../Phase/SceneControl.h"
 #include "../Object/MainCharacterBehavior.h"
 #include "../UI/UIInfo.h"
+#include "../UI/GameUI.h"
 #include "../FileNameDefine.h"
 #include "../GameCamera/GameCamera.h"
 #include "../TestCase/MazeTest.h"
@@ -49,6 +50,7 @@ cMagicTowerApp::~cMagicTowerApp()
 	SAFE_DELETE(m_spMainRoleData);
 	SAFE_DELETE(g_pNineGridFrame);
 	cTweenyManager::DestroyInstance();
+	ImGuiShutDown();
 }
 
 void	cMagicTowerApp::Init()
@@ -71,6 +73,7 @@ void	cMagicTowerApp::Init()
 			m_spSceneControl->Load();
 		m_pUIInfo = new cUIInfo();
 	}
+	ImGuiInit();
 	//AddTestPhase(eTestPhase::eTP_MAZE,this->m_PhaseManager,true);
 	//AddTestPhase(eTestPhase::eTP_TWEEN, this->m_PhaseManager,true);
 	//AddTestPhase(eTestPhase::eTP_BATTLE_ATTACK_MOVING_OBJECT_TESTING, this->m_PhaseManager,true);
@@ -102,6 +105,7 @@ void	cMagicTowerApp::Update(float e_fElpaseTime)
 		if (m_pUIInfo)
 			m_pUIInfo->Update(e_fElpaseTime);
 	}
+	ImGuiUpdateTesting();
 }
 
 void	cMagicTowerApp::Render()
@@ -131,6 +135,7 @@ void	cMagicTowerApp::Render()
 		cGameApp::RenderFont(0, 0, UT::ComposeMsgByFormat(L"Mouse:%d,%d", cGameApp::m_sMousePosition.x, cGameApp::m_sMousePosition.y).c_str());
 		GLRender::glDisable2D();
 	}
+	ImGuiRenderTesting();
 	RenderShowInfoOnScreen();
 #ifdef WIN32
 	SwapBuffers (this->m_spOpenGLRender->m_Hdc);

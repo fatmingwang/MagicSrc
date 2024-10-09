@@ -5,8 +5,10 @@
 
 #include "../GameLib/GameApp/GameApp.h"
 #include "../Tween/TweenCurve.h"
+#include "../../../FM79979/Src/FM79979Engine/imgui/ImGuiRender.h"
 //
 #define MAX_LOADSTRING 100
+extern LRESULT  ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 //
 // Global Variables:
 HINSTANCE			hInst;								// current instance
@@ -255,6 +257,10 @@ bool	g_bTimerDone = false;
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam))
+	{
+		return true;
+	}
 	g_cMouseWhellDelta = 0;
 	float   l_fScaleX = cGameApp::m_spOpenGLRender->m_vGameResolution.x/ cGameApp::m_spOpenGLRender->m_vViewPortSize.x;
 	float   l_fScaleY = cGameApp::m_spOpenGLRender->m_vGameResolution.y/ cGameApp::m_spOpenGLRender->m_vViewPortSize.y;
@@ -346,7 +352,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
-	return 0;
+	return DefWindowProc(hWnd, message, wParam, lParam);
 }
 
 

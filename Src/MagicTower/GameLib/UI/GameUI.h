@@ -12,3 +12,8 @@ public:
 	virtual void	Update(float e_fElpaseTime)override;
 	void	Render();
 };
+
+void	ImGuiInit();
+void	ImGuiUpdateTesting();
+void	ImGuiRenderTesting();
+void	ImGuiShutDown();

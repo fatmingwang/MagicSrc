@@ -191,6 +191,9 @@
     <ProjectReference Include="..\..\..\FM79979\Src\FM79979Engine\Freetype\Freetype.vcxproj">
       <Project>{29840bd0-19c2-4ddd-bc75-2ec94b6c9eec}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\FM79979\Src\FM79979Engine\imgui\imgui.vcxproj">
+      <Project>{84dac78d-00ae-4fe3-aa06-be43606abbfc}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\FM79979\Src\FM79979Engine\Tween\Tween.vcxproj">
       <Project>{b1296c8b-910c-4090-a16a-42c739b864fb}</Project>
     </ProjectReference>
