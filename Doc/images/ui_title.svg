@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <style>
+    .bg{fill:#f6f6f6}
+    .panel{fill:none;stroke:#333;stroke-width:2}
+    .btn{fill:#fff;stroke:#333;stroke-width:2}
+    .title{font-family:Arial, sans-serif;font-size:48px;fill:#222}
+    .hint{font-family:Arial, sans-serif;font-size:14px;fill:#666}
+  </style>
+  <rect class="bg" x="0" y="0" width="1200" height="700"/>
+  <!-- mockup screenshots carousel -->
+  <rect class="panel" x="80" y="60" width="720" height="420" rx="8"/>
+  <text x="120" y="100" class="hint">&#x8CC7;&#x6599;&#x8F09;&#x5165; Loading &#x4E2D;</text>
+  <rect x="120" y="120" width="640" height="320" fill="#e9e9e9"/>
+  <!-- loading bar -->
+  <rect class="panel" x="120" y="460" width="640" height="18" rx="9"/>
+  <rect x="120" y="460" width="320" height="18" rx="9" fill="#9fd88f"/>
+  <text x="780" y="470" class="hint">&#x8F09;&#x5165; 50%</text>
+
+  <!-- title and menu -->
+  <text x="920" y="140" class="title" text-anchor="middle">Age-like&#xFF08;&#x5DE5;&#x4F5C;&#x540D;&#xFF09;</text>
+  <rect class="btn" x="860" y="180" width="220" height="48" rx="6"/>
+  <text x="970" y="213" text-anchor="middle" font-family="Arial" font-size="18">&#x65B0;&#x904A;&#x6232;</text>
+  <rect class="btn" x="860" y="240" width="220" height="48" rx="6"/>
+  <text x="970" y="273" text-anchor="middle" font-family="Arial" font-size="18">&#x7E7C;&#x7E8C;</text>
+  <rect class="btn" x="860" y="300" width="220" height="48" rx="6"/>
+  <text x="970" y="333" text-anchor="middle" font-family="Arial" font-size="18">&#x8A2D;&#x5B9A;</text>
+  <rect class="btn" x="860" y="360" width="220" height="48" rx="6"/>
+  <text x="970" y="393" text-anchor="middle" font-family="Arial" font-size="18">&#x591A;&#x4EBA;&#xFF08;DLC&#xFF09;</text>
+  <rect class="btn" x="860" y="420" width="220" height="48" rx="6"/>
+  <text x="970" y="453" text-anchor="middle" font-family="Arial" font-size="18">&#x96E2;&#x958B;</text>
+
+  <!-- footer hints -->
+  <text x="120" y="520" class="hint">&#x63D0;&#x793A;&#xFF1A;Press Enter &#x5FEB;&#x901F;&#x958B;&#x59CB; &#xFF0B; Esc &#x555F;&#x52D5; Menu</text>
+</svg>

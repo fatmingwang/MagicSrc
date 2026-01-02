@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+  <style>
+    .bg{fill:#eef3ef}
+    .panel{fill:none;stroke:#333;stroke-width:2}
+    .hud{fill:#fff;stroke:#333}
+    .title{font-family:Arial, sans-serif;font-size:20px;fill:#222}
+    .hint{font-family:Arial, sans-serif;font-size:12px;fill:#666}
+  </style>
+  <rect class="bg" x="0" y="0" width="1400" height="800"/>
+
+  <!-- main playfield -->
+  <rect x="40" y="40" width="960" height="640" fill="#dfe8df" stroke="#ccc"/>
+  <text x="60" y="70" class="title">&#x904A;&#x6232;&#x4E3B;&#x756B;&#x9762;&#xFF08;&#x55AE;&#x8EF8;&#x6230;&#x9B25;&#x793A;&#x610F;&#xFF09;</text>
+  <text x="60" y="100" class="hint">&#x55AE;&#x4F4D;&#x6CBF;&#x6C34;&#x5E73;&#x8EF8;&#x6216;&#x5782;&#x76F4;&#x8EF8;&#x524D;&#x9032;&#xFF0C;HUD &#x63D0;&#x4F9B;&#x5FEB;&#x901F;&#x64CD;&#x4F5C;&#x6309;&#x92ED;</text>
+
+  <!-- HUD right side panels -->
+  <rect x="1020" y="40" width="320" height="220" class="hud" rx="6"/>
+  <text x="1180" y="70" text-anchor="middle" font-family="Arial" font-size="16">&#x8CC7;&#x6E90;</text>
+  <text x="1080" y="100" font-family="Arial" font-size="14">&#x8089;&#xFF1A;120</text>
+  <text x="1080" y="124" font-family="Arial" font-size="14">&#x91D1;&#x9322;&#xFF1A;80</text>
+  <text x="1080" y="148" font-family="Arial" font-size="14">&#x91D1;&#x5C6C;&#xFF1A;40</text>
+  <text x="1080" y="172" font-family="Arial" font-size="14">&#x6728;&#x6750;&#xFF1A;60</text>
+
+  <rect x="1020" y="280" width="320" height="200" class="hud" rx="6"/>
+  <text x="1180" y="300" text-anchor="middle" font-family="Arial" font-size="16">&#x5FEB;&#x901F;&#x6309;&#x92ED;</text>
+  <g>
+    <rect x="1050" y="330" width="120" height="40" fill="#fff" stroke="#333" rx="6"/>
+    <text x="1110" y="357" text-anchor="middle">&#x5DE5;&#x4EBA;</text>
+    <rect x="1180" y="330" width="120" height="40" fill="#fff" stroke="#333" rx="6"/>
+    <text x="1240" y="357" text-anchor="middle">&#x8ECD;&#x968A;</text>
+    <rect x="1050" y="380" width="250" height="40" fill="#fff" stroke="#333" rx="6"/>
+    <text x="1180" y="407" text-anchor="middle">&#x5B78;&#x6821; / &#x5DE5;&#x5EE0; / &#x9632;&#x79A6;</text>
+  </g>
+
+  <!-- bottom action bar -->
+  <rect x="40" y="700" width="960" height="60" fill="#fff" stroke="#333" rx="6"/>
+  <text x="60" y="736" font-family="Arial" font-size="14">HUD&#xFF1A;&#x7576;&#x524D;&#x76EE;&#x6A19;&#xFF0C;&#x51B7;&#x5358;&#xFF0C;&#x7D44;&#x5408;&#x6280;&#x6309;&#x92ED;&#x986F;&#x793A;&#x5340;</text>
+
+  <!-- left minimap area -->
+  <rect x="40" y="700" width="200" height="60" fill="#f8f8f8" stroke="#aaa"/>
+  <text x="140" y="736" font-family="Arial" font-size="12" text-anchor="middle">&#x5C0F;&#x5730;&#x5716;</text>
+
+  <!-- top center: attack mode indicator -->
+  <rect x="420" y="700" width="200" height="60" fill="#ffd6d6" stroke="#b33" rx="6"/>
+  <text x="520" y="736" font-family="Arial" font-size="14" text-anchor="middle">&#x653B;&#x64CA;&#x6A21;&#x5F0F;&#x555F;&#x52D5;</text>
+
+</svg>

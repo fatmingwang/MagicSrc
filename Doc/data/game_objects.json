@@ -1,0 +1,244 @@
+[
+  {
+    "name": "Farmer",
+    "description_zh": "專職耕作的工人，擅長食物採集（田地）",
+    "type": "worker",
+    "speed": 1.0,
+    "attack": {"damage": 1, "rate": 1.0, "range": [1,1]},
+    "HP": 50,
+    "thinking_idle_time": 3.0,
+    "behavior": {
+      "allowTasks": ["farm","gather_food"],
+      "resourceFilter": ["meat"],
+      "priority": ["farm","deliver"],
+      "canRepair": false,
+      "requiresTool": false
+    },
+    "level": 1,
+    "exp": 0,
+    "levelUpRules": {
+      "expToNext": 60,
+      "expSource": "每 5 秒持續耕作獲得 1 EXP（等效 5 分鐘可達 60 EXP）",
+      "onLevelUp": {"gatherRatePercent": 10, "HPPlus": 5, "note": "提高採集速率與少量生命值"}
+    }
+  },
+  {
+    "name": "Fisherman",
+    "description_zh": "在水域採集食物的工人，需水域才能工作",
+    "type": "worker",
+    "speed": 0.9,
+    "attack": {"damage": 1, "rate": 1.0, "range": [1,1]},
+    "HP": 45,
+    "thinking_idle_time": 4.0,
+    "behavior": {
+      "allowTasks": ["fish","gather_food"],
+      "requiredTerrain": ["water"],
+      "priority": ["fish","deliver"]
+    },
+    "level": 1,
+    "exp": 0,
+    "levelUpRules": {
+      "expToNext": 50,
+      "expSource": "每 6 秒持續垂釣／採集水域資源獲得 1 EXP（約 5 分鐘可達 50 EXP）",
+      "onLevelUp": {"gatherRatePercent": 12, "HPPlus": 4, "note": "提升漁獲效率"}
+    }
+  },
+  {
+    "name": "Miner",
+    "description_zh": "採掘礦石與石料的工人，能操作採礦相關機具",
+    "type": "worker",
+    "speed": 0.8,
+    "attack": {"damage": 2, "rate": 1.0, "range": [1,1]},
+    "HP": 55,
+    "thinking_idle_time": 5.0,
+    "behavior": {
+      "allowTasks": ["mine","dig_stone","dig_gold"],
+      "resourceFilter": ["metal","stone"],
+      "priority": ["mine","deliver"],
+      "canOperateMachinery": true
+    },
+    "level": 1,
+    "exp": 0,
+    "levelUpRules": {
+      "expToNext": 60,
+      "expSource": "每 5 秒持續採礦獲得 1 EXP",
+      "onLevelUp": {"gatherRatePercent": 15, "HPPlus": 6, "note": "採礦效率與耐久提升"}
+    }
+  },
+  {
+    "name": "Knight",
+    "description_zh": "重裝近戰單位，耐久與近戰傷害較高",
+    "type": "soldier",
+    "speed": 1.6,
+    "attack": {"damage": 18, "rate": 1.0, "range": [1,1]},
+    "HP": 200,
+    "thinking_idle_time": 1.0,
+    "behavior": {
+      "role": "melee",
+      "engageRange": [1,2],
+      "preferTarget": ["archer","worker"],
+      "formationPosition": "front"
+    },
+    "level": 1,
+    "exp": 0,
+    "levelUpRules": {
+      "expToNext": 100,
+      "expSource": "每擊殺敵方單位獲得 20 EXP；受傷或造成大量傷害亦可獲少量 EXP",
+      "onLevelUp": {"attackPercent": 8, "HPPercent": 10, "speedPercent": 2, "note": "近戰傷害與耐久提升"}
+    }
+  },
+  {
+    "name": "Archer",
+    "description_zh": "遠程單位，具有最小與最大射程限制，適合在後方輸出",
+    "type": "soldier",
+    "speed": 1.1,
+    "attack": {"damage": 9, "rate": 1.2, "range": [3,8]},
+    "HP": 80,
+    "thinking_idle_time": 1.5,
+    "behavior": {
+      "role": "ranged",
+      "minRange": 3,
+      "maxRange": 8,
+      "preferTarget": ["cavalry","melee"],
+      "holdPosition": true
+    },
+    "level": 1,
+    "exp": 0,
+    "levelUpRules": {
+      "expToNext": 90,
+      "expSource": "每擊中敵方單位獲得 10 EXP；命中越多累積越快",
+      "onLevelUp": {"attackPercent": 10, "maxRangePlus": 1, "HPPlus": 6, "note": "射程或攻擊力微幅提升"}
+    }
+  },
+  {
+    "name": "Scout",
+    "description_zh": "快速偵查單位，優先發現敵情並避免交戰",
+    "type": "soldier",
+    "speed": 2.4,
+    "attack": {"damage": 4, "rate": 1.0, "range": [1,1]},
+    "HP": 40,
+    "thinking_idle_time": 0.8,
+    "behavior": {
+      "role": "scout",
+      "avoidCombat": true,
+      "scoutRadius": 8
+    },
+    "level": 1,
+    "exp": 0,
+    "levelUpRules": {
+      "expToNext": 50,
+      "expSource": "每 20 秒持續偵查／探索獲得 1 EXP；或發現敵方目標獲得額外 EXP",
+      "onLevelUp": {"speedPercent": 8, "scoutRadiusPlus": 1, "HPPlus": 3, "note": "偵查範圍與速度提升"}
+    }
+  },
+  {
+    "name": "School",
+    "description_zh": "研究與訓練中心，可進行科技研究與解鎖升級",
+    "type": "building",
+    "speed": 0,
+    "attack": null,
+    "HP": 600,
+    "thinking_idle_time": 10.0,
+    "behavior": {
+      "canResearch": true,
+      "researchSpeed": 1.0,
+      "availableUpgrades": ["worker_efficiency","army_offense"]
+    },
+    "level": 1,
+    "exp": 0,
+    "levelUpRules": {
+      "expToNext": 0,
+      "expSource": "建築等級由資源升級（非經驗）控制",
+      "onLevelUp": {"researchSpeedPercent": 15, "availableSlotsPlus": 1, "note": "提高研究速度並開放更多隊列"}
+    }
+  },
+  {
+    "name": "Trainer",
+    "description_zh": "在學校內負責訓練單位，提升經驗獲得或短期增益",
+    "type": "worker",
+    "speed": 1.0,
+    "attack": {"damage":2,"rate":1.0,"range":[1,1]},
+    "HP": 70,
+    "thinking_idle_time": 6.0,
+    "behavior": {
+      "role": "train",
+      "canTrain": ["soldier","worker"],
+      "bonusExpRate": 1.2
+    },
+    "level": 1,
+    "exp": 0,
+    "levelUpRules": {
+      "expToNext": 80,
+      "expSource": "透過訓練任務獲得 EXP；每完成 N 次訓練給予 X EXP",
+      "onLevelUp": {"bonusExpRatePercent": 10, "HPPlus": 5, "note": "提升訓練加成"}
+    }
+  },
+  {
+    "name": "Basic Pickaxe",
+    "description_zh": "基礎採礦工具，增加採礦效率",
+    "type": "equipment",
+    "speed": 0,
+    "attack": null,
+    "HP": null,
+    "thinking_idle_time": 0,
+    "behavior": {
+      "equipFor": ["worker"],
+      "gatherBonus": {"metal": 1.5}
+    },
+    "level": null,
+    "exp": null,
+    "levelUpRules": null
+  },
+  {
+    "name": "Iron Bow",
+    "description_zh": "基礎弓具，提供弓手使用以增加遠程傷害",
+    "type": "equipment",
+    "attack": {"damage": 5, "rate": 1.2, "range": [3,7]},
+    "behavior": {"equipFor": ["Archer"]},
+    "level": null,
+    "exp": null,
+    "levelUpRules": null
+  },
+  {
+    "name": "Arrow Tower",
+    "description_zh": "自動防禦建築，提供範圍內遠程打擊",
+    "type": "building",
+    "speed": 0,
+    "attack": {"damage": 12, "rate": 0.8, "range": [2,10]},
+    "HP": 800,
+    "thinking_idle_time": 2.0,
+    "behavior": {
+      "requiresCrew": 1,
+      "crewType": ["worker","soldier"],
+      "targetPriority": ["infantry","cavalry","scout"]
+    },
+    "level": 1,
+    "exp": 0,
+    "levelUpRules": {
+      "expToNext": 0,
+      "expSource": "防禦建築升級以資源為主；若綁定駐守人可有額外經驗值增長",
+      "onLevelUp": {"attackPercent": 12, "HPPercent": 15, "note": "透過升級強化火力與耐久"}
+    }
+  },
+  {
+    "name": "Catapult",
+    "description_zh": "投射大範圍彈藥的攻城武器，需多名駐守與彈藥供給",
+    "type": "building",
+    "speed": 0,
+    "attack": {"damage": 60, "rate": 0.2, "range": [6,20]},
+    "HP": 1200,
+    "thinking_idle_time": 5.0,
+    "behavior": {
+      "requiresCrew": 2,
+      "ammunitionType": "stone",
+      "areaEffectRadius": 3
+    },
+    "level": 1,
+    "exp": 0,
+    "levelUpRules": {
+      "expToNext": 0,
+      "expSource": "同上以資源升級為主",
+      "onLevelUp": {"attackPercent": 20, "areaEffectRadiusPlus": 1, "note": "提升投射威力與範圍"}
+    }
+  }
+]
