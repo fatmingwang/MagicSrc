@@ -1,0 +1,267 @@
+[
+  {
+    "id": "gather",
+    "name": "Gather",
+    "description_zh": "採集類：負責採集、運送與基地生產作業",
+    "currentLevel": 0,
+    "maxLevel": 5,
+    "baseUnitMax": 20,
+    "unitIncreasePerLevel": 10,
+    "nextLevelCost": {
+      "1": {
+        "meat": 10,
+        "money": 200,
+        "metal": 50,
+        "wood": 50,
+        "featureToken": 0
+      },
+      "2": {
+        "meat": 20,
+        "money": 400,
+        "metal": 120,
+        "wood": 100,
+        "featureToken": 1
+      },
+      "3": {
+        "meat": 40,
+        "money": 900,
+        "metal": 300,
+        "wood": 240,
+        "featureToken": 2
+      },
+      "4": {
+        "meat": 80,
+        "money": 2000,
+        "metal": 800,
+        "wood": 600,
+        "featureToken": 4
+      },
+      "5": {
+        "meat": 200,
+        "money": 5000,
+        "metal": 2000,
+        "wood": 1500,
+        "featureToken": 8
+      }
+    },
+    "unlocks": {
+      "1": [ "increase_unit_max+10" ],
+      "2": [ "increase_unit_max+20" ],
+      "3": [ "unlock_extra_tools_slots" ],
+      "4": [ "auto_assign_tools" ],
+      "5": [ "unlock_advanced_worker_techs" ]
+    }
+  },
+  {
+    "id": "fight",
+    "name": "Fight",
+    "description_zh": "戰鬥類：包含騎士、弓手、偵查等戰鬥單位",
+    "currentLevel": 0,
+    "maxLevel": 5,
+    "baseUnitMax": 20,
+    "unitIncreasePerLevel": 10,
+    "nextLevelCost": {
+      "1": {
+        "meat": 20,
+        "money": 300,
+        "metal": 120,
+        "wood": 80,
+        "featureToken": 0
+      },
+      "2": {
+        "meat": 40,
+        "money": 700,
+        "metal": 300,
+        "wood": 200,
+        "featureToken": 1
+      },
+      "3": {
+        "meat": 80,
+        "money": 1600,
+        "metal": 800,
+        "wood": 480,
+        "featureToken": 2
+      },
+      "4": {
+        "meat": 160,
+        "money": 3800,
+        "metal": 1800,
+        "wood": 1200,
+        "featureToken": 4
+      },
+      "5": {
+        "meat": 400,
+        "money": 9000,
+        "metal": 5000,
+        "wood": 3000,
+        "featureToken": 8
+      }
+    },
+    "unlocks": {
+      "1": [ "increase_unit_max+10" ],
+      "2": [ "unlock_combo_slots" ],
+      "3": [ "increase_squad_size" ],
+      "4": [ "unlock_elite_units" ],
+      "5": [ "unlock_multiplayer_ranked" ]
+    }
+  },
+  {
+    "id": "research",
+    "name": "Research",
+    "description_zh": "研究：提供科技、訓練與加成",
+    "currentLevel": 0,
+    "maxLevel": 5,
+    "baseUnitMax": 20,
+    "unitIncreasePerLevel": 10,
+    "nextLevelCost": {
+      "1": {
+        "meat": 5,
+        "money": 500,
+        "metal": 50,
+        "wood": 50,
+        "featureToken": 0
+      },
+      "2": {
+        "meat": 10,
+        "money": 1200,
+        "metal": 150,
+        "wood": 120,
+        "featureToken": 1
+      },
+      "3": {
+        "meat": 20,
+        "money": 3000,
+        "metal": 400,
+        "wood": 300,
+        "featureToken": 2
+      },
+      "4": {
+        "meat": 40,
+        "money": 7000,
+        "metal": 1000,
+        "wood": 800,
+        "featureToken": 4
+      },
+      "5": {
+        "meat": 100,
+        "money": 18000,
+        "metal": 2500,
+        "wood": 2000,
+        "featureToken": 8
+      }
+    },
+    "unlocks": {
+      "1": [ "increase_unit_max+10" ],
+      "2": [ "research_speed+10%" ],
+      "3": [ "unlock_professions" ],
+      "4": [ "reduce_research_costs" ],
+      "5": [ "unlock_advanced_technologies" ]
+    }
+  },
+  {
+    "id": "forge",
+    "name": "Forge",
+    "description_zh": "鍛造 / 工具工廠：製造裝備與彈藥",
+    "currentLevel": 0,
+    "maxLevel": 5,
+    "baseUnitMax": 20,
+    "unitIncreasePerLevel": 10,
+    "nextLevelCost": {
+      "1": {
+        "meat": 15,
+        "money": 400,
+        "metal": 200,
+        "wood": 100,
+        "featureToken": 0
+      },
+      "2": {
+        "meat": 30,
+        "money": 900,
+        "metal": 500,
+        "wood": 300,
+        "featureToken": 1
+      },
+      "3": {
+        "meat": 60,
+        "money": 2200,
+        "metal": 1200,
+        "wood": 800,
+        "featureToken": 2
+      },
+      "4": {
+        "meat": 120,
+        "money": 4800,
+        "metal": 3000,
+        "wood": 2000,
+        "featureToken": 4
+      },
+      "5": {
+        "meat": 300,
+        "money": 12000,
+        "metal": 8000,
+        "wood": 5000,
+        "featureToken": 8
+      }
+    },
+    "unlocks": {
+      "1": [ "increase_unit_max+10" ],
+      "2": [ "unlock_better_tools" ],
+      "3": [ "quality_production" ],
+      "4": [ "auto_equip" ],
+      "5": [ "unlock_legendary_recipes" ]
+    }
+  },
+  {
+    "id": "fortify",
+    "name": "Fortify",
+    "description_zh": "防禦：基地防禦、建築與駐守系統",
+    "currentLevel": 0,
+    "maxLevel": 5,
+    "baseUnitMax": 20,
+    "unitIncreasePerLevel": 10,
+    "nextLevelCost": {
+      "1": {
+        "meat": 10,
+        "money": 300,
+        "metal": 150,
+        "wood": 150,
+        "featureToken": 0
+      },
+      "2": {
+        "meat": 20,
+        "money": 700,
+        "metal": 400,
+        "wood": 350,
+        "featureToken": 1
+      },
+      "3": {
+        "meat": 40,
+        "money": 1600,
+        "metal": 1000,
+        "wood": 900,
+        "featureToken": 2
+      },
+      "4": {
+        "meat": 80,
+        "money": 3800,
+        "metal": 2400,
+        "wood": 2200,
+        "featureToken": 4
+      },
+      "5": {
+        "meat": 200,
+        "money": 9000,
+        "metal": 6000,
+        "wood": 5000,
+        "featureToken": 8
+      }
+    },
+    "unlocks": {
+      "1": [ "increase_unit_max+10" ],
+      "2": [ "increase_turret_effectiveness" ],
+      "3": [ "unlock_advanced_munitions" ],
+      "4": [ "automated_defenses" ],
+      "5": [ "fortification_mastery" ]
+    }
+  }
+]
