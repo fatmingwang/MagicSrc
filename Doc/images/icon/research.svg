@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect rx="16" ry="16" width="128" height="128" fill="#F3F7FF" />
+  <!-- book -->
+  <rect x="26" y="32" width="76" height="56" rx="6" fill="#90CAF9" stroke="#1E88E5" stroke-width="2" />
+  <line x1="36" y1="44" x2="92" y2="44" stroke="#BBDEFB" stroke-width="3" />
+  <!-- magnifier -->
+  <circle cx="86" cy="84" r="14" fill="#FFF" stroke="#90A4AE" stroke-width="3" />
+  <rect x="96" y="92" width="18" height="6" rx="2" fill="#90A4AE" transform="rotate(45 105 95)" />
+</svg>

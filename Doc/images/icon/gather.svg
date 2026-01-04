@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect rx="16" ry="16" width="128" height="128" fill="#E9F5E9" />
+  <!-- handle -->
+  <rect x="58" y="30" width="8" height="52" rx="3" fill="#7B5A3F" transform="rotate(-30 62 56)" />
+  <!-- head -->
+  <path d="M30 40 L58 34 L66 42 L40 60 Z" fill="#A67C52" transform="rotate(-30 48 48)" />
+  <!-- leaf accent -->
+  <path d="M88 28 C98 38, 106 50, 82 64 C70 72, 66 60, 74 52 C86 40, 82 28, 88 28 Z" fill="#4CAF50" opacity="0.95" />
+</svg>

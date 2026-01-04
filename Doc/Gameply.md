@@ -1,4 +1,4 @@
-# GamePlay 設計筆記（參考 UI：GameUI_Fight.jpg、GameUI_Fortify.jpg、GameUI_Research.jpg、GameUI_Forge.jpg、GameUI_Gather.jpg）
+第一版只有步兵工兵騎兵就好
 
 ## 概要
 此文件根據五張 UI 原型提出單位升級（Level Up）、經驗取得、裝備與介面互動的設計構想。重點在建立「行為→成長→回饋」的迴路，並在 UI 上給玩家清晰的進度與效果預覽。

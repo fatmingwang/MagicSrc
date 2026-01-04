@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect rx="16" ry="16" width="128" height="128" fill="#FFF8E1" />
+  <!-- anvil -->
+  <rect x="26" y="62" width="76" height="18" rx="4" fill="#37474F" />
+  <rect x="42" y="46" width="44" height="20" rx="3" fill="#546E7A" />
+  <!-- hammer -->
+  <rect x="80" y="28" width="8" height="36" rx="2" fill="#8D6E63" transform="rotate(-30 84 46)" />
+  <rect x="68" y="22" width="26" height="10" rx="2" fill="#BCAAA4" transform="rotate(-30 81 27)" />
+  <!-- spark -->
+  <path d="M36 40 L42 34 L44 42 L50 36 L48 46 L56 46 L46 50 L50 58 L40 50 L34 56 Z" fill="#FFD54F" opacity="0.95" />
+</svg>

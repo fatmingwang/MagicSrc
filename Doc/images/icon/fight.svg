@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect rx="16" ry="16" width="128" height="128" fill="#FFECEA" />
+  <!-- shield -->
+  <path d="M64 22 L94 38 L94 70 C64 94 34 70 34 38 Z" fill="#FF7043" stroke="#BF3B24" stroke-width="2" />
+  <!-- sword -->
+  <rect x="60" y="34" width="8" height="48" fill="#ECEFF1" transform="rotate(20 64 58)" />
+  <polygon points="64,20 58,34 70,34" fill="#CFD8DC" transform="rotate(20 64 32)" />
+</svg>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cavalry sprite sheet: 4 frames (idle, gallop1, gallop2, attack) each 64x64 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="64" viewBox="0 0 256 64">
+  <g id="idle" transform="translate(0,0)">
+    <rect width="64" height="64" fill="#00000000" />
+    <!-- horse body -->
+    <ellipse cx="36" cy="36" rx="18" ry="10" fill="#8D6E63" />
+    <circle cx="22" cy="26" r="8" fill="#F4A460" />
+  </g>
+  <g id="gallop1" transform="translate(64,0)">
+    <rect width="64" height="64" fill="#00000000" />
+    <ellipse cx="36" cy="34" rx="18" ry="10" fill="#8D6E63" transform="skewX(-6)" />
+    <circle cx="22" cy="24" r="8" fill="#F4A460" />
+  </g>
+  <g id="gallop2" transform="translate(128,0)">
+    <rect width="64" height="64" fill="#00000000" />
+    <ellipse cx="36" cy="34" rx="18" ry="10" fill="#8D6E63" transform="skewX(6)" />
+    <circle cx="22" cy="24" r="8" fill="#F4A460" />
+  </g>
+  <g id="attack" transform="translate(192,0)">
+    <rect width="64" height="64" fill="#00000000" />
+    <ellipse cx="36" cy="34" rx="18" ry="10" fill="#8D6E63" />
+    <rect x="46" y="18" width="16" height="4" fill="#C0C0C0" transform="rotate(-10 54 20)" />
+  </g>
+</svg>

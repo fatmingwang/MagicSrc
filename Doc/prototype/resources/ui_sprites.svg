@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="128" viewBox="0 0 512 128">
+  <!-- Buttons (5) -->
+  <g id="buttons" transform="translate(0,0)">
+    <rect x="0" y="0" width="96" height="96" rx="12" fill="#E9F5E9" />
+    <rect x="104" y="0" width="96" height="96" rx="12" fill="#FFECEA" />
+    <rect x="208" y="0" width="96" height="96" rx="12" fill="#F3F7FF" />
+    <rect x="312" y="0" width="96" height="96" rx="12" fill="#FFF8E1" />
+    <rect x="416" y="0" width="96" height="96" rx="12" fill="#E8F5FF" />
+  </g>
+  <!-- Bars and icons -->
+  <rect x="0" y="104" width="500" height="20" rx="6" fill="#FFF" stroke="#DDD" />
+</svg>
