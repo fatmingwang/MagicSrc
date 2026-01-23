@@ -1,0 +1,67 @@
+{
+  "version": "1.0",
+  "description": "Agent skill rules for generating code in MiniGame module. Machine-readable naming and style rules.",
+  "naming": {
+    "memberPrefix": "m_",
+    "functionParamPrefix": "e_",
+    "localVarPrefix": "l_",
+    "classPrefix": "c",
+    "structPrefix": "s",
+    "globalPrefix": "g_",
+    "fileIncludeStyle": "pragma_once",
+    "useNamespaces": false
+  },
+  "rules": [
+    {
+      "id": "R001",
+      "title": "Members must start with memberPrefix",
+      "example": "int m_iValue;"
+    },
+    {
+      "id": "R002",
+      "title": "Function parameters must start with functionParamPrefix",
+      "example": "void Foo(int e_iValue1)",
+      "note": "Apply to all functions (methods, free functions, lambdas parameters where practical)."
+    },
+    {
+      "id": "R003",
+      "title": "Local variables must start with localVarPrefix",
+      "example": "{ int l_iValue = 0; }"
+    },
+    {
+      "id": "R004",
+      "title": "Class and struct naming",
+      "example": "class cMyClass {}; struct sMyStruct {};",
+      "note": "All user-defined classes must start with 'c'. All structs must start with 's'."
+    },
+    {
+      "id": "R005",
+      "title": "Global variables",
+      "example": "int g_iValue;",
+      "note": "Avoid globals when possible; if used follow prefix."
+    },
+    {
+      "id": "R006",
+      "title": "Include guard style",
+      "example": "#pragma once",
+      "note": "Do not use old-style #ifndef/#define header guards."
+    }
+    ,
+    {
+      "id": "R007",
+      "title": "Variable naming with scope and type prefixes",
+      "example": "m_iValue, g_strName, l_dbAmount",
+      "note": "Variable name must start with a scope prefix (m_/l_/g_), then a type prefix (i for int, db for double, f for float, i64 for int64, str for string, etc.), then the identifier where the first character is UpperCase (e.g. m_iValue, l_fSpeed, g_i64Counter)."
+    }
+  ],
+  "examples": {
+    "classExample": "class cExample { private: int m_iCount; public: cExample(int e_iInit); void Update(int e_iDelta); };",
+    "structExample": "struct sResult { bool m_bOk; int m_iValue; };",
+    "variableExample": "m_iValue, g_strName, l_dbAmount"
+  },
+  "generatorHints": {
+    "autoFix": true,
+    "preferredFileExt": [".h", ".cpp", ".json"],
+    "applyTo": ["Src/MagicTower/GameLib/**"]
+  }
+}
