@@ -73,8 +73,15 @@ void	ImGuiInit()
 	ImGui::StyleColorsDark();
 }
 
+int FirstIdx = 0;
+
+int SecondIdx = 0;
+
+void	TreeNodeDragDropTest();
+
 void ImGuiUpdateTesting()
 {
+	//https://github.com/ocornut/imgui/issues/5885
 	auto io = ImGui::GetIO();
 
 #ifdef WASM
@@ -93,18 +100,45 @@ void ImGuiUpdateTesting()
 	// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
 	if (show_demo_window)
 		ImGui::ShowDemoWindow(&show_demo_window);
-
+	TreeNodeDragDropTest();
 	// 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
 	{
 		static float f = 0.0f;
 		static int counter = 0;
+		ImVec4 color_multipler(1, 1, 1, 1);
 		ImGui::PushFont(g_pFont_title);
 		ImGui::Begin("Chinese Text Example");
 		ImGui::Text("您好，世界！");  // This is "Hello, World!" in Traditional Chinese
+		ImGui::Image((void*)2, ImVec2((float)300, (float)300), ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f), color_multipler);
 		ImGui::End();
 
 
 		ImGui::Begin("你好");                          // Create a window called "Hello, world!" and append into it.
+		if (ImGui::TreeNode("options"))
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				if (i == 0)
+					ImGui::SetNextItemOpen(true, ImGuiCond_Once);
+				if (ImGui::TreeNode((void*)(intptr_t)i, "功能 %d", i))
+				{
+					ImGui::Text("icon");
+					ImGui::SameLine();
+					if (ImGui::SmallButton("按钮1")) 
+					{
+						FirstIdx = i; SecondIdx = 0; 
+					}
+					ImGui::Text("icon");
+					ImGui::SameLine();
+					if (ImGui::SmallButton("按钮2"))
+					{
+						FirstIdx = i; SecondIdx = 1; 
+					}
+					ImGui::TreePop();
+				}
+			}
+			ImGui::TreePop();
+		}
 		ImGui::PopFont();
 		ImGui::Text("您好，世界！");               // Display some text (you can use a format strings too)
 		ImGui::PushFont(g_pFont_title2);
@@ -147,3 +181,92 @@ void	ImGuiShutDown()
 	ImGui_ImplWin32_Shutdown();
 #endif
 }
+
+
+
+// Structure to hold our tree item data
+struct TreeNodeData 
+{
+	const char* name;
+	bool is_dragging = false;
+};
+
+// Array of tree nodes
+TreeNodeData treeNodes[] =
+{
+	{ "Node 1" },
+	{ "Node 2" },
+	{ "Node 3" }
+};
+
+void	TreeNodeDragDropTest()
+{
+	// Root tree node
+	if (ImGui::TreeNode("Root Node"))
+	{
+		for (int i = 0; i < IM_ARRAYSIZE(treeNodes); i++)
+		{
+			TreeNodeData& node = treeNodes[i];
+
+			// Create a tree node for each item
+			if (ImGui::TreeNode(node.name))
+			{
+
+				// Drag Source
+				if (ImGui::BeginDragDropSource())
+				{
+					ImGui::SetDragDropPayload("DND_DEMO", &i, sizeof(int));  // Set payload to index
+					ImGui::Text("Dragging %s", node.name);
+					node.is_dragging = true;
+					ImGui::EndDragDropSource();
+				}
+				else
+				{
+					node.is_dragging = false;
+				}
+
+				// Drag Target
+				if (ImGui::BeginDragDropTarget())
+				{
+					if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("DND_DEMO"))
+					{
+						IM_ASSERT(payload->DataSize == sizeof(int));
+						int sourceIndex = *(const int*)payload->Data;
+						std::swap(treeNodes[i], treeNodes[sourceIndex]);  // Swap nodes on drop
+					}
+					ImGui::EndDragDropTarget();
+				}
+				ImGui::TreePop();
+			}
+		}
+		ImGui::TreePop();
+	}
+}
+
+
+//// Helper function to display JSON in ImGui
+//void RenderJson(const nlohmann::json& jsonData, const std::string& name = "root") 
+//{
+//	if (jsonData.is_object()) {
+//		// JSON Object (Dictionary)
+//		if (ImGui::TreeNode(name.c_str())) {
+//			for (auto& item : jsonData.items()) {
+//				RenderJson(item.value(), item.key());
+//			}
+//			ImGui::TreePop();
+//		}
+//	}
+//	else if (jsonData.is_array()) {
+//		// JSON Array
+//		if (ImGui::TreeNode((name + " (array)").c_str())) {
+//			for (size_t i = 0; i < jsonData.size(); ++i) {
+//				RenderJson(jsonData[i], "[" + std::to_string(i) + "]");
+//			}
+//			ImGui::TreePop();
+//		}
+//	}
+//	else {
+//		// JSON Value (String, Number, Boolean, etc.)
+//		ImGui::Text("%s: %s", name.c_str(), jsonData.dump().c_str());
+//	}
+//}
