@@ -1,0 +1,157 @@
+{
+  "version": "1.4",
+  "entities": {
+    "100": {
+      "alias": "npc_elder",
+      "nodes": [
+        {
+          "nodeId": 0,
+          "type": "normal",
+          "speaker": "OldMan",
+          "textKey": "dlg_100_0_text",
+          "options": [
+            { "labelKey": "dlg_100_0_opt0", "nextNodeId": 1 },
+            { "labelKey": "dlg_100_0_opt1", "nextEntityId": "600", "nextNodeId": 0 },
+            { "labelKey": "dlg_common_goodbye", "nextNodeId": -1 }
+          ]
+        },
+        {
+          "nodeId": 1,
+          "type": "normal",
+          "speaker": "OldMan",
+          "textKey": "dlg_100_1_text",
+          "options": [
+            { "labelKey": "dlg_100_1_opt0", "nextNodeId": 2, "setFlags": ["asked_elder"] },
+            { "labelKey": "dlg_common_not_now", "nextNodeId": -1 }
+          ]
+        },
+        {
+          "nodeId": 2,
+          "type": "conditional",
+          "speaker": "OldMan",
+          "branches": [
+            { "conditions": ["quest_wood_done"], "textKey": "dlg_100_2_branch0_text", "options": [{ "labelKey": "dlg_common_thanks", "nextNodeId": -1, "actions": ["GiveItem:Gold:100"] }] },
+            { "conditions": ["has_quest_wood"], "textKey": "dlg_100_2_branch1_text", "options": [{ "labelKey": "dlg_100_2_branch1_opt0", "nextNodeId": -1 }] },
+            { "conditions": [], "textKey": "dlg_100_2_branch2_text", "options": [{ "labelKey": "dlg_100_2_branch2_opt0", "nextNodeId": -1, "actions": ["StartQuest:Wood:10"], "setFlags": ["has_quest_wood"] }] }
+          ]
+        }
+      ]
+    },
+    "200": {
+      "alias": "npc_shopkeeper",
+      "nodes": [
+        {
+          "nodeId": 0,
+          "type": "normal",
+          "speaker": "Shopkeeper",
+          "textKey": "dlg_200_0_text",
+          "options": [
+            { "labelKey": "dlg_common_buy", "nextNodeId": -1, "actions": ["OpenShop:general"] },
+            { "labelKey": "dlg_common_sell", "nextNodeId": -1, "actions": ["OpenShop:sell"] }
+          ]
+        }
+      ]
+    },
+    "300": {
+      "alias": "npc_villager",
+      "nodes": [
+        {
+          "nodeId": 0,
+          "type": "sequence",
+          "speaker": "Villager",
+          "sequenceFlag": "villager_300_seq",
+          "loop": true,
+          "contents": [
+            { "textKey": "dlg_300_0_seq0_text", "options": [{ "labelKey": "dlg_300_0_seq0_opt0", "nextNodeId": -1 }] },
+            { "textKey": "dlg_300_0_seq1_text", "options": [{ "labelKey": "dlg_300_0_seq1_opt0", "nextNodeId": 1 }, { "labelKey": "dlg_300_0_seq1_opt1", "nextNodeId": -1 }] },
+            { "textKey": "dlg_300_0_seq2_text", "options": [{ "labelKey": "dlg_common_thanks", "nextNodeId": -1 }] }
+          ]
+        },
+        {
+          "nodeId": 1,
+          "type": "normal",
+          "speaker": "Villager",
+          "textKey": "dlg_300_1_text",
+          "options": [
+            { "labelKey": "dlg_300_1_opt0", "nextNodeId": -1 }
+          ]
+        }
+      ]
+    },
+    "400": {
+      "alias": "npc_drunk",
+      "nodes": [
+        {
+          "nodeId": 0,
+          "type": "random",
+          "speaker": "Drunk",
+          "contents": [
+            { "textKey": "dlg_400_0_rnd0_text", "options": [{ "labelKey": "dlg_400_0_rnd0_opt0", "nextNodeId": -1 }] },
+            { "textKey": "dlg_400_0_rnd1_text", "options": [{ "labelKey": "dlg_common_no", "nextNodeId": -1 }] },
+            { "textKey": "dlg_400_0_rnd2_text", "options": [{ "labelKey": "dlg_common_ellipsis", "nextNodeId": -1 }] }
+          ]
+        }
+      ]
+    },
+    "500": {
+      "alias": "item_sign",
+      "nodes": [
+        {
+          "nodeId": 0,
+          "type": "once",
+          "speaker": "",
+          "onceFlag": "read_sign_500",
+          "firstTime": { "textKey": "dlg_500_0_first_text", "options": [{ "labelKey": "dlg_common_ok", "nextNodeId": -1 }], "setFlags": ["know_danger_ahead"] },
+          "repeat": { "textKey": "dlg_500_0_repeat_text", "options": [{ "labelKey": "dlg_common_ok", "nextNodeId": -1 }] }
+        }
+      ]
+    },
+    "600": {
+      "alias": "npc_guard",
+      "nodes": [
+        {
+          "nodeId": 0,
+          "type": "check",
+          "speaker": "Guard",
+          "checkType": "HasItem",
+          "checkParam": "PassCard",
+          "pass": { "textKey": "dlg_600_0_pass_text", "options": [{ "labelKey": "dlg_common_thanks", "nextNodeId": -1, "actions": ["OpenDoor:castle_gate"] }] },
+          "fail": { "textKey": "dlg_600_0_fail_text", "options": [{ "labelKey": "dlg_600_0_fail_opt0", "nextNodeId": -1 }, { "labelKey": "dlg_600_0_fail_opt1", "nextEntityId": "100", "nextNodeId": 0 }] }
+        }
+      ]
+    },
+    "700": {
+      "alias": "event_throne_room",
+      "nodes": [
+        {
+          "nodeId": 0,
+          "type": "normal",
+          "speaker": "King",
+          "textKey": "dlg_700_0_text",
+          "options": [
+            { "labelKey": "dlg_common_continue", "nextNodeId": 1 }
+          ]
+        },
+        {
+          "nodeId": 1,
+          "type": "normal",
+          "speaker": "Advisor",
+          "textKey": "dlg_700_1_text",
+          "options": [
+            { "labelKey": "dlg_common_continue", "nextNodeId": 2 }
+          ]
+        },
+        {
+          "nodeId": 2,
+          "type": "normal",
+          "speaker": "King",
+          "textKey": "dlg_700_2_text",
+          "options": [
+            { "labelKey": "dlg_700_2_opt0", "nextEntityId": "100", "nextNodeId": 2, "setFlags": ["met_king"] },
+            { "labelKey": "dlg_700_2_opt1", "nextNodeId": -1 }
+          ]
+        }
+      ]
+    }
+  }
+}
