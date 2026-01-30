@@ -40,49 +40,19 @@ void cNineGridFrame::SetContentSize(Vector2 e_vContentSize)
 	float l_fCenterImageOriginalWidth = m_vOriginalCenterSize.x;
 	float l_fCenterImageOriginalHeight = m_vOriginalCenterSize.y;
 	
-	//float l_fSizableWidth = e_vContentSize.x - m_pImageArray[eCorrnerType_LeftUp]->GetWidth() - m_pImageArray[eCorrnerType_RightUp]->GetWidth();
-	//float l_fSizableHeight = e_vContentSize.y - m_pImageArray[eCorrnerType_LeftUp]->GetHeight() - m_pImageArray[eCorrnerType_RightBottom]->GetWidth();
 	float l_fSizableWidth = e_vContentSize.x - (m_vOriginalLeftupSize.x*2);
 	float l_fSizableHeight = e_vContentSize.y - (m_vOriginalLeftupSize.y*2);
 	float l_fHorizontalScale = l_fSizableWidth / l_fCenterImageOriginalWidth;
 	float l_fVerticalScale = l_fSizableHeight / l_fCenterImageOriginalHeight;
-	float l_fCenterScaleX = l_fHorizontalScale;
-	float l_fCenterScaleY = l_fVerticalScale;
-
 
 	float l_fRescaledCenterWidth = l_fCenterImageOriginalWidth * l_fHorizontalScale;
 	float l_fRescaledCenterHeight = l_fCenterImageOriginalHeight * l_fVerticalScale;
-
-	//Position corners
-  //[self setAnchorPoint:CGPointMake(0.5f,0.5f)];
 
 	float l_fCenterPosX = this->m_vContentSize.x * 0.5f;
 	float l_fCenterPosY = this->m_vContentSize.y * 0.5f;
 	Vector2	l_vHalfCornerSize(m_vOriginalLeftupSize.x * 0.5f, m_vOriginalLeftupSize.y * 0.5f);
 	Vector2	l_vHalfCenterSize(l_fRescaledCenterWidth*0.5f, l_fRescaledCenterHeight*0.5f);
-	
 
-	//Position corners
-	//[topLeft setPosition : CGPointMake(-rescaledWidth / 2 - topLeft.contentSize.width / 2 + l_fCenterPosX, rescaledHeight / 2 + topLeft.contentSize.height * 0.5 + l_fCenterPosY)];
-	//[topRight setPosition : CGPointMake(rescaledWidth / 2 + topRight.contentSize.width / 2 + l_fCenterPosX, rescaledHeight / 2 + topRight.contentSize.height * 0.5 + l_fCenterPosY)];
-	//[bottomLeft setPosition : CGPointMake(-rescaledWidth / 2 - bottomLeft.contentSize.width / 2 + l_fCenterPosX, -rescaledHeight / 2 - bottomLeft.contentSize.height * 0.5 + l_fCenterPosY)] ;
-	//[bottomRight setPosition : CGPointMake(rescaledWidth / 2 + bottomRight.contentSize.width / 2 + l_fCenterPosX, -rescaledHeight / 2 + -bottomRight.contentSize.height * 0.5 + l_fCenterPosY)] ;
-	//top.scaleX = horizontalScale;
-	//[top setPosition : CGPointMake(0 + l_fCenterPosX, rescaledHeight / 2 + topLeft.contentSize.height * 0.5 + l_fCenterPosY)] ;
-	//bottom.scaleX = horizontalScale;
-	//[bottom setPosition : CGPointMake(0 + l_fCenterPosX, -rescaledHeight / 2 - bottomLeft.contentSize.height * 0.5 + l_fCenterPosY)] ;
-	//left.scaleY = verticalScale;
-	//[left setPosition : CGPointMake(-rescaledWidth / 2 - topLeft.contentSize.width / 2 + l_fCenterPosX, 0 + l_fCenterPosY)] ;
-	//right.scaleY = verticalScale;
-	//[right setPosition : CGPointMake(rescaledWidth / 2 + topRight.contentSize.width / 2 + l_fCenterPosX, 0 + l_fCenterPosY)] ;
-	//[centre setPosition : CGPointMake(l_fCenterPosX, l_fCenterPosY)] ;
-
-
-
-	//try below function to generate 2 triangle vertices data
-	//GetDrawQuadFVFDataByTwoTriangles
-	//Position corners
-	//[topLeft setPosition : CGPointMake(-rescaledWidth / 2 - topLeft.contentSize.width / 2 + l_fCenterPosX, l_vHalfCenterSize.y + topLeft.contentSize.height * 0.5 + l_fCenterPosY)];
 	Vector3 l_vLeftUpPos	=	Vector3(-l_vHalfCenterSize.x - l_vHalfCornerSize.x + l_fCenterPosX, l_fCenterPosY-l_vHalfCenterSize.y - l_vHalfCornerSize.y ,0.f);
 	Vector3 l_vCenterTop	=	Vector3( l_fCenterPosX, l_vLeftUpPos.y,0.f);
 	Vector3 l_vTopRightPos	=	Vector3( l_vHalfCenterSize.x + l_vHalfCornerSize.x + l_fCenterPosX, l_vLeftUpPos.y, 0.f);
@@ -104,11 +74,9 @@ void cNineGridFrame::SetContentSize(Vector2 e_vContentSize)
 		m_vOriginalLeftupSize,
 		Vector2(l_fRescaledCenterWidth,m_vOriginalCenterSize.y),
 		m_vOriginalLeftupSize,
-		//
 		Vector2(m_vOriginalLeftupSize.x,l_fRescaledCenterHeight),
 		Vector2(l_fRescaledCenterWidth,l_fRescaledCenterHeight),
 		Vector2(m_vOriginalLeftupSize.x,l_fRescaledCenterHeight),
-		//
 		m_vOriginalLeftupSize,
 		Vector2(l_fRescaledCenterWidth,m_vOriginalCenterSize.y),
 		m_vOriginalLeftupSize,
@@ -121,8 +89,6 @@ void cNineGridFrame::SetContentSize(Vector2 e_vContentSize)
 		QuadTo2TriangleVertices(l_vTempPos, m_vAllGridPosVector);
 	}
 }
-
-
 
 cNineGridFrame::cNineGridFrame(Vector2 e_vOriginalCenterSize, Vector2 e_vOriginalLeftupSize) :cBaseImage(L"QoocNineGridFrame")
 {
@@ -151,10 +117,6 @@ cNineGridFrame::cNineGridFrame(cPuzzleImageUnit* e_pLeftUp, cPuzzleImageUnit* e_
 			}
 			l_pPIUnit->GetNext();
 		}
-		//m_pfTexCoordinate[i*4  ] = ;
-		//m_pfTexCoordinate[i*4+1] = m_fUV[1];
-		//m_pfTexCoordinate[i*4+2] = i*l_fStep+l_fStep+m_fUV[0];
-		//m_pfTexCoordinate[i*4+3] = m_fUV[3];
 	}
 }
 
@@ -162,12 +124,124 @@ cNineGridFrame::~cNineGridFrame()
 {
 }
 
-
 void	cNineGridFrame::Render()
 {
+	if (m_vAllGridPosVector.empty())
+	{
+		return;
+	}
+	
+	// Get texture from base image or first grid image
+	cTexture* l_pTexture = m_pTexture;
+	if (!l_pTexture && m_pImageArray[0])
+	{
+		l_pTexture = m_pImageArray[0]->GetTexture();
+	}
+	
+	if (!l_pTexture || l_pTexture->GetImageIndex() == -1)
+	{
+		// No texture, render debug colored quads
+		DebugRender();
+		return;
+	}
+	
+	// Apply local transform
+	Vector3 l_vPos = GetLocalPosition();
+	Vector3 l_vRotation = GetRotation();
+	
+	// Render each of the 9 grids
+	for (int i = 0; i < eCorrnerType_MAX; ++i)
+	{
+		int l_iStartVertex = i * TWO_TRIANGLE_VERTICES_TO_QUAD_COUNT;
+		
+		if (l_iStartVertex + TWO_TRIANGLE_VERTICES_TO_QUAD_COUNT > static_cast<int>(m_vAllGridPosVector.size()))
+		{
+			continue;
+		}
+		
+		// Get UV for this grid section
+		float* l_pfUV = m_Vertices[i].fUV;
+		
+		// Extract quad bounds from triangle vertices
+		// Triangle vertices order: [LB, RB, LT, LT, RB, RT]
+		Vector3& l_vLB = m_vAllGridPosVector[l_iStartVertex + 0];
+		Vector3& l_vRB = m_vAllGridPosVector[l_iStartVertex + 1];
+		Vector3& l_vLT = m_vAllGridPosVector[l_iStartVertex + 2];
+		
+		float l_fWidth = l_vRB.x - l_vLB.x;
+		float l_fHeight = l_vLB.y - l_vLT.y;
+		
+		// Calculate center position for the quad
+		float l_fCenterX = l_vLT.x + l_fWidth * 0.5f + l_vPos.x;
+		float l_fCenterY = l_vLT.y + l_fHeight * 0.5f + l_vPos.y;
+		
+		// Use GLRender::RenderQuadTexture
+		GLRender::RenderQuadTexture(
+			l_fCenterX,
+			l_fCenterY,
+			l_vPos.z,
+			l_fWidth,
+			l_fHeight,
+			m_vColor,
+			l_pfUV,
+			l_pTexture,
+			l_vRotation
+		);
+	}
 }
 
 void	cNineGridFrame::DebugRender()
 {
-	m_vAllGridPosVector;
+	if (m_vAllGridPosVector.empty())
+	{
+		return;
+	}
+	
+	Vector3 l_vPos = GetLocalPosition();
+	Vector3 l_vRotation = GetRotation();
+	
+	// Debug colors for each grid section
+	Vector4 l_vColors[eCorrnerType_MAX] = 
+	{
+		Vector4(0.8f, 0.2f, 0.2f, 0.8f), // LeftUp - Red
+		Vector4(0.2f, 0.8f, 0.2f, 0.8f), // CenterTop - Green
+		Vector4(0.2f, 0.2f, 0.8f, 0.8f), // RightUp - Blue
+		Vector4(0.8f, 0.8f, 0.2f, 0.8f), // LeftCenter - Yellow
+		Vector4(0.3f, 0.3f, 0.5f, 0.9f), // Center - Dark Blue (main area)
+		Vector4(0.8f, 0.2f, 0.8f, 0.8f), // RightCenter - Magenta
+		Vector4(0.2f, 0.8f, 0.8f, 0.8f), // LeftBottom - Cyan
+		Vector4(0.5f, 0.5f, 0.5f, 0.8f), // CenterBottom - Gray
+		Vector4(0.8f, 0.5f, 0.2f, 0.8f), // RightBottom - Orange
+	};
+	
+	for (int i = 0; i < eCorrnerType_MAX; ++i)
+	{
+		int l_iStartVertex = i * TWO_TRIANGLE_VERTICES_TO_QUAD_COUNT;
+		
+		if (l_iStartVertex + TWO_TRIANGLE_VERTICES_TO_QUAD_COUNT > static_cast<int>(m_vAllGridPosVector.size()))
+		{
+			continue;
+		}
+		
+		// Extract quad bounds from triangle vertices
+		Vector3& l_vLB = m_vAllGridPosVector[l_iStartVertex + 0];
+		Vector3& l_vRB = m_vAllGridPosVector[l_iStartVertex + 1];
+		Vector3& l_vLT = m_vAllGridPosVector[l_iStartVertex + 2];
+		
+		float l_fWidth = l_vRB.x - l_vLB.x;
+		float l_fHeight = l_vLB.y - l_vLT.y;
+		
+		// Calculate center position for the quad
+		float l_fCenterX = l_vLT.x + l_fWidth * 0.5f + l_vPos.x;
+		float l_fCenterY = l_vLT.y + l_fHeight * 0.5f + l_vPos.y;
+		
+		// Use GLRender::RenderRectangle for debug
+		GLRender::RenderRectangle(
+			Vector3(l_fCenterX, l_fCenterY, l_vPos.z),
+			l_fWidth,
+			l_fHeight,
+			l_vColors[i],
+			l_vRotation
+		);
+	}
 }
